@@ -1,0 +1,9 @@
+{
+  "env": {
+    "environment": {
+      "plugins": [ 
+        "@virtualpatterns/mablung-babel-environment-plugin"
+      ]
+    }
+  }
+}

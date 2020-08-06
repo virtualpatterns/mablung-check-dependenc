@@ -1,0 +1,11 @@
+{
+  "babel": {
+    "env": {
+      "environment": {
+        "presets": [
+          "@virtualpatterns/mablung-babel-environment-preset"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../../../../source/test/library/resource/missing/dependency/dependency.js"],"names":[],"mappings":"AAAA,OAAO,qCAAP","sourcesContent":["import '@virtualpatterns/mablung-dependency'\n"],"file":"dependency.js"}

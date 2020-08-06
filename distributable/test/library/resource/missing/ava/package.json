@@ -1,0 +1,7 @@
+{
+  "ava": {
+    "require": [
+      "@virtualpatterns/mablung-ava"
+    ]
+  }
+}

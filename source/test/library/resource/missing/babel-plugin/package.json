@@ -1,0 +1,7 @@
+{
+  "babel": {
+    "plugins": [ 
+      "@virtualpatterns/mablung-babel-plugin"
+    ]
+  }
+}

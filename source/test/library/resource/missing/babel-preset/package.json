@@ -1,0 +1,7 @@
+{
+  "babel": {
+    "presets": [
+      "@virtualpatterns/mablung-babel-preset"
+    ]
+  }
+}
