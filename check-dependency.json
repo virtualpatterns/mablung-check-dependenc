@@ -1,5 +1,3 @@
 {
-  "ignoreMatch": [
-    "@virtualpatterns/mablung-source-map-support/*"
-  ]
+  "ignoreMatch": []
 }
