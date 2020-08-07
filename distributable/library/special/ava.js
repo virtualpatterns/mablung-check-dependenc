@@ -1,5 +1,4 @@
 import FileSystem from 'fs-extra';
-import Is from '@pwn/is';
 import JSON5 from 'json5';
 import Match from 'minimatch';
 import Path from 'path';
