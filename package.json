@@ -47,7 +47,7 @@
     "clean": "run-s --silent clean:*",
     "lint:10": "eslint --ignore-path .gitignore source",
     "lint": "run-s --silent lint:*",
-    "build:10": "babel source --copy-files --extensions .cjs,.js --keep-file-extension --out-dir distributable --source-maps",
+    "build:10": "babel source --copy-files --extensions .js --keep-file-extension --out-dir distributable --source-maps",
     "build": "run-s --silent clean lint build:*",
     "test:10": "c8 ava",
     "test": "run-s --silent build \"test:10 {@}\" --",
