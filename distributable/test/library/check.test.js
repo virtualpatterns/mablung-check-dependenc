@@ -2,7 +2,7 @@ import Path from 'path';
 import Test from 'ava';
 import URL from 'url';
 
-import { Check } from '../../index.js';
+import { Check, FileParseError } from '../../index.js';
 
 const FilePath = URL.fileURLToPath(import.meta.url);
 const FolderPath = Path.dirname(FilePath);
@@ -87,7 +87,7 @@ Test('Check(\'ignore-pattern\', { ignorePattern: [ ... ] })', async test => {
   test.deepEqual(await Check(`${ResourcePath}/ignore-pattern`, { 'ignorePattern': ['ignore-pattern.js'] }), { 'missing': {}, 'unused': ['@virtualpatterns/mablung-dependency'] });
 });
 
-Test('Check(\'error/babelrc.json\') throws SyntaxError', async test => {
-  await test.throwsAsync(Check(`${ResourcePath}/error/babelrc.json`), { 'instanceOf': SyntaxError });
+Test('Check(\'error/babelrc.json\') throws FileParseError', async test => {
+  await test.throwsAsync(Check(`${ResourcePath}/error/babelrc.json`), { 'instanceOf': FileParseError });
 });
 //# sourceMappingURL=check.test.js.map

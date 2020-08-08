@@ -1,12 +1,16 @@
 import BaseCheck from 'depcheck';
+import BaseTransform from 'node-json-transform';
 import Is from '@pwn/is';
 import Merge from 'deepmerge';
-import Transform from 'node-json-transform';
 
 import { Ava } from './special/ava.js';
 import { Babel } from './special/babel.js';
 
+import { FileParseError } from './error/file-parse-error.js';
+import { FolderParseError } from './error/folder-parse-error.js';
+
 const Process = process;
+const { transform: Transform } = BaseTransform;
 
 export function Check(userPath = Process.cwd(), userOption = {}) {
 
@@ -14,15 +18,10 @@ export function Check(userPath = Process.cwd(), userOption = {}) {
 
     try {
 
-      let path = userPath;
-
       let defaultOption = {
-        'ignorePattern': [
-        'distributable'],
-
         'parser': {
-          '*.js': BaseCheck.parser.es6,
-          '*.cjs': BaseCheck.parser.es6 },
+          '*.cjs': BaseCheck.parser.es7.default,
+          '*.js': BaseCheck.parser.es7.default },
 
         'special': [
         BaseCheck.special.bin,
@@ -53,7 +52,8 @@ export function Check(userPath = Process.cwd(), userOption = {}) {
         } };
 
 
-      let option = Transform.transform(Merge(defaultOption, userOption), map);
+      let path = userPath;
+      let option = Transform(Merge(defaultOption, userOption), map);
 
       BaseCheck(path, option, unused => {
 
@@ -68,16 +68,29 @@ export function Check(userPath = Process.cwd(), userOption = {}) {
         } else {
 
           if (Is.emptyObject(unused.invalidDirs)) {
-            let fileError = Object.entries(unused.invalidFiles);
-            reject(fileError[0][1]);
+
+            let item = Object.entries(unused.invalidFiles);
+
+            let path = item[0][0];
+            let error = item[0][1];
+
+            reject(new FileParseError(path, error));
+
           } else {
-            let folderError = Object.entries(unused.invalidDirs);
-            reject(folderError[0][1]);
+
+            let item = Object.entries(unused.invalidDirs);
+
+            let path = item[0][0];
+            let error = item[0][1];
+
+            reject(new FolderParseError(path, error));
+
           }
 
         }
 
       });
+
     } catch (error) {
       reject(error);
     }
