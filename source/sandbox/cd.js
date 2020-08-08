@@ -58,19 +58,19 @@ async function main() {
 
   try {
 
-    let option = {}
-    //   'parsers': {
-    //     '*.js': Check.parser.es6
-    //     ,
-    //     '*.cjs': Check.parser.es6
-    //   },
-    //   'specials': [
-    //     Check.special.bin,
-    //     Check.special.eslint
-    //     // ,
-    //     // parseStaticBabelConfiguration
-    //   ]
-    // }
+    let option = {
+      'ignorePatterns': [
+        'distributable'
+      ],
+      'parsers': {
+        '*.js': Check.parser.es7.default,
+        '*.cjs': Check.parser.es6
+      },
+      'special': [
+        Check.special.bin,
+        Check.special.eslint
+      ]
+    }
 
     Check(Process.cwd(), option, (unused) => {
       console.dir(unused.dependencies) // an array containing the unused dependencies

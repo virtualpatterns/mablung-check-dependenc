@@ -9,8 +9,8 @@
       "request": "launch",
       "name": "Launch ...",
       "internalConsoleOptions": "openOnSessionStart",
-      "preLaunchTask": "build",
-      "program": "${workspaceFolder}/distributable/command/check-dependency.js",
+      // "preLaunchTask": "build",
+      "program": "${workspaceFolder}/distributable/sandbox/cd.js",
       "runtimeArgs": [ "--experimental-import-meta-resolve" ],
       "skipFiles": [ "<node_internals>/**" ]
     },
