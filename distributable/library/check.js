@@ -69,7 +69,6 @@ export function Check(userPath = Process.cwd(), userOption = {}) {
 
           if (Is.emptyObject(unused.invalidDirs)) {
             let fileError = Object.entries(unused.invalidFiles);
-            console.log(fileError[0][0]);
             reject(fileError[0][1]);
           } else {
             let folderError = Object.entries(unused.invalidDirs);
