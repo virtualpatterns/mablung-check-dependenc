@@ -27,7 +27,8 @@
   },
   "description": "TBD",
   "exports": {
-    "./": "./"
+    ".": "./distributable/index.js",
+    "./package.json": "./package.json"
   },
   "license": "GPL-3.0+",
   "name": "@virtualpatterns/mablung-check-dependency",
