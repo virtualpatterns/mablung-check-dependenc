@@ -27,8 +27,7 @@
   },
   "description": "TBD",
   "exports": {
-    ".": "./distributable/index.js",
-    "./package.json": "./package.json"
+    "./": "./"
   },
   "license": "GPL-3.0+",
   "name": "@virtualpatterns/mablung-check-dependency",
@@ -65,7 +64,7 @@
     "push": "run-s --silent pre:push push:*"
   },
   "type": "module",
-  "version": "0.0.1-9",
+  "version": "0.0.1-8",
   "devDependencies": {
     "@babel/cli": "^7.10.5",
     "@babel/core": "^7.11.0",
