@@ -4,8 +4,10 @@ import Match from 'minimatch';
 import Path from 'path';
 import Query from 'jsonpath';
 
+import { GetDependencyName } from './get-dependency-name.js';
+
 export async function Ava(path) {
-  // console.log(`parseStaticAvaConfiguration('${Path.relative('', path)}') { ... }`)
+  // console.log(`Ava('${Path.relative('', path)}') { ... }`)
 
   let dependency = [];
 
@@ -20,7 +22,7 @@ export async function Ava(path) {
 
     let require = Query.query(configuration, '$.require[*]');
 
-    dependency = [...require];
+    dependency = require.map(dependency => GetDependencyName(dependency));
 
   }
 

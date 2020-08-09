@@ -61,8 +61,9 @@ export function Check(userPath = Process.cwd(), userOption = {}) {
         Is.emptyObject(unused.invalidDirs)) {
 
           resolve({
+            'missing': unused.missing,
             'unused': [...unused.dependencies, ...unused.devDependencies],
-            'missing': unused.missing });
+            'used': unused.using });
 
 
         } else {

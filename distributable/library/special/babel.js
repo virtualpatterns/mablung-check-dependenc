@@ -5,6 +5,8 @@ import Match from 'minimatch';
 import Path from 'path';
 import Query from 'jsonpath';
 
+import { GetDependencyName } from './get-dependency-name.js';
+
 export async function Babel(path) {
   // console.log(`Babel('${Path.relative('', path)}') { ... }`)
 
@@ -29,7 +31,7 @@ export async function Babel(path) {
     preset = Query.query(configuration, '$..presets[*]');
     preset = preset.map(preset => Is.array(preset) ? preset[0] : preset);
 
-    dependency = [...plugin, ...preset];
+    dependency = [...plugin, ...preset].map(dependency => GetDependencyName(dependency));
 
   }
 

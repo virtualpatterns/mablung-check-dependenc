@@ -5,7 +5,9 @@ Test.before(async test => {
 });
 
 [
-'Check'].
+'Check',
+'FileParseError',
+'FolderParseError'].
 forEach(name => {
 
   Test(name, async test => {
