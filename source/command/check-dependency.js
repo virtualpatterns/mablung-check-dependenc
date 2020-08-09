@@ -24,7 +24,7 @@ Command
       let path = option.projectPath
       let configuration = null
 
-      if (FileSystem.pathExists(option.configurationPath)) {
+      if (await FileSystem.pathExists(option.configurationPath)) {
         configuration = JSON5.parse(await FileSystem.readFile(option.configurationPath, { 'encoding': 'utf-8' }))
       } else {
         configuration = {}
@@ -47,7 +47,7 @@ Command
           console.log(path.sort().map((path) => `  ${Path.relative('', path)}`).join('\n'))
         })
 
-        // console.log()
+        console.log()
 
         process.exitCode = 1
 
@@ -59,7 +59,7 @@ Command
         console.log('Unused dependencies')
         console.log('-'.repeat(80))
         console.log(dependency.unused.sort().map((dependency) => `${dependency}`).join('\n'))
-        // console.log()
+        console.log()
 
         process.exitCode = 1
 
@@ -81,7 +81,7 @@ Command
           console.log(path.sort().map((path) => `  ${Path.relative('', path)}`).join('\n'))
         })
 
-        // console.log()
+        console.log()
 
       }
 
