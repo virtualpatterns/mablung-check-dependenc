@@ -1,15 +1,17 @@
 // import '@virtualpatterns/mablung-source-map-support/install'
 import Check from 'depcheck'
+import { createRequire as CreateRequire } from 'module'
 // import FileSystem from 'fs-extra'
 // import Is from '@pwn/is'
 // import JSON5 from 'json5'
 // import Match from 'minimatch'
-// import Path from 'path'
+import Path from 'path'
 // import Query from 'jsonpath'
 
 // const FilePath = __filePath
 // const FolderPath = Path.dirname(FilePath)
 const Process = process
+const Require = CreateRequire(import.meta.url)
 
 // function parseAvaFromPackage(filePath) {
 
@@ -58,13 +60,13 @@ async function main() {
 
   try {
 
+    let filePath = Require.resolve('../../../mablung-babel-plugin/package.json')
+    let folderPath = Path.dirname(filePath) // Process.cwd() // 
+
     let option = {
-      'ignorePatterns': [
-        'distributable'
-      ],
       'parsers': {
         '*.js': Check.parser.es7.default,
-        '*.cjs': Check.parser.es6
+        '*.cjs': Check.parser.es7.default
       },
       'special': [
         Check.special.bin,
@@ -72,7 +74,9 @@ async function main() {
       ]
     }
 
-    Check(Process.cwd(), option, (unused) => {
+    console.log(folderPath)
+
+    Check(folderPath, option, (unused) => {
       console.dir(unused.dependencies) // an array containing the unused dependencies
       console.dir(unused.devDependencies) // an array containing the unused devDependencies
       console.dir(unused.missing) // a lookup containing the dependencies missing in `package.json` and where they are used

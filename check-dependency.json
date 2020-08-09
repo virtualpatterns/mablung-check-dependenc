@@ -1,5 +1,5 @@
 {
-  "ignoreMatch": [
-    "@virtualpatterns/mablung-source-map-support/install"
+  "ignorePattern": [
+    "distributable"
   ]
 }

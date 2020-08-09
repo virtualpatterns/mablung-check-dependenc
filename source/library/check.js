@@ -56,13 +56,14 @@ export function Check(userPath = Process.cwd(), userOption = {}) {
       let option = Transform(Merge(defaultOption, userOption), map)
 
       BaseCheck(path, option, (unused) => {
-  
+        
         if (Is.emptyObject(unused.invalidFiles) && 
             Is.emptyObject(unused.invalidDirs)) {
   
           resolve({
+            'missing': unused.missing,
             'unused': [ ...unused.dependencies, ...unused.devDependencies ],
-            'missing': unused.missing
+            'used': unused.using
           })
   
         } else {

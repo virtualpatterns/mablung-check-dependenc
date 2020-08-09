@@ -10,7 +10,7 @@
       "name": "Launch ...",
       "internalConsoleOptions": "openOnSessionStart",
       // "preLaunchTask": "build",
-      "program": "${workspaceFolder}/distributable/sandbox/cd.js",
+      "program": "${workspaceFolder}/distributable/command/check-dependency.js",
       "runtimeArgs": [ "--experimental-import-meta-resolve" ],
       "skipFiles": [ "<node_internals>/**" ]
     },
@@ -25,12 +25,13 @@
       "runtimeArgs": [
         "debug",
         "--break",
-        "distributable/test/library/check.test.js"
+        "distributable/test/command/check-dependency.test.js"
       ],
       "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/ava",
       "skipFiles": [
         "<node_internals>/**/*.js"
-      ]
+      ],
+      "autoAttachChildProcesses": true
     }  
   ]
 }
