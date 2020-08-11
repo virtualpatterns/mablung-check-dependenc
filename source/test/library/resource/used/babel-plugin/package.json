@@ -1,0 +1,10 @@
+{
+  "babel": {
+    "plugins": [ 
+      "babel-plugin"
+    ]
+  },
+  "devDependencies": {
+    "@virtualpatterns/mablung-babel-plugin": "^1.0.0"
+  }
+}

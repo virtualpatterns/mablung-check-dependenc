@@ -1,5 +1,6 @@
 
 export function GetDependencyName(dependency) {
-  // console.log(`GetDependencyName('${dependency}') { ... }`)
-  return dependency.replace(/(\/.*?)(\/.*?)$/gi, '$1')
+  // e.g. from @virtualpatterns/mablung-dependency/install
+  //      to   @virtualpatterns/mablung-dependency
+  return dependency.replace(/(\/.*?)(\/.*)$/gi, '$1')
 }
