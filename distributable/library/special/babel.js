@@ -7,35 +7,37 @@ import Query from 'jsonpath';
 
 import { GetDependencyName } from './get-dependency-name.js';
 
-export async function Babel(path) {
-  // console.log(`Babel('${Path.relative('', path)}') { ... }`)
+export async function Babel(filePath, packageDependency) {
+  // console.log(`Babel('${Path.relative('', filePath)}', packageDependency) { ... }`)
+  // console.dir(packageDependency)
 
-  let dependency = [];
+  let fileDependency = [];
 
-  let fileName = Path.basename(path);
-
+  let fileName = Path.basename(filePath);
   let pattern = ['package.json', 'babel.config.json', '.babelrc.json'];
 
   if (pattern.reduce((isMatch, pattern) => isMatch ? isMatch : Match(fileName, pattern, { 'dot': true }), false)) {
 
     let configuration = null;
-    configuration = JSON5.parse(await FileSystem.readFile(path, { 'encoding': 'utf-8' }));
+    configuration = JSON5.parse(await FileSystem.readFile(filePath, { 'encoding': 'utf-8' }));
     configuration = fileName === 'package.json' ? configuration.babel || {} : configuration;
 
     let plugin = null;
     plugin = Query.query(configuration, '$..plugins[*]');
     plugin = plugin.filter(plugin => Is.array(plugin) || plugin !== 'importMeta');
     plugin = plugin.map(plugin => Is.array(plugin) ? plugin[0] : plugin);
+    plugin = plugin.map(plugin => GetDependencyName(plugin));
 
     let preset = null;
     preset = Query.query(configuration, '$..presets[*]');
     preset = preset.map(preset => Is.array(preset) ? preset[0] : preset);
+    preset = preset.map(preset => GetDependencyName(preset));
 
-    dependency = [...plugin, ...preset].map(dependency => GetDependencyName(dependency));
+    fileDependency = (packageDependency.length <= 0 ? [...plugin, ...preset] : packageDependency).filter(packageDependency => [...plugin, ...preset].filter(name => packageDependency.endsWith(name)).length > 0);
 
   }
 
-  return dependency;
+  return fileDependency;
 
 }
 //# sourceMappingURL=babel.js.map

@@ -1,0 +1,10 @@
+{
+  "ava": {
+    "require": [
+      "@virtualpatterns/mablung-ava"
+    ]
+  },
+  "devDependencies": {
+    "@virtualpatterns/mablung-ava": "^1.0.0"
+  }
+}

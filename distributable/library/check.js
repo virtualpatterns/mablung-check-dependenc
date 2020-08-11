@@ -5,6 +5,7 @@ import Merge from 'deepmerge';
 
 import { Ava } from './special/ava.js';
 import { Babel } from './special/babel.js';
+import { Pug } from './special/pug.js';
 
 import { FileParseError } from './error/file-parse-error.js';
 import { FolderParseError } from './error/folder-parse-error.js';
@@ -27,7 +28,8 @@ export function Check(userPath = Process.cwd(), userOption = {}) {
         BaseCheck.special.bin,
         BaseCheck.special.eslint,
         Ava,
-        Babel] };
+        Babel,
+        Pug] };
 
 
 

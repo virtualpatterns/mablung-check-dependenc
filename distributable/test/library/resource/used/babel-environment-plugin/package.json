@@ -1,0 +1,14 @@
+{
+  "babel": {
+    "env": {
+      "environment": {
+        "plugins": [ 
+          "babel-environment-plugin"
+        ]
+      }
+    }
+  },
+  "devDependencies": {
+    "@virtualpatterns/mablung-babel-environment-plugin": "^1.0.0"
+  }
+}
