@@ -5,7 +5,7 @@ import Match from 'minimatch';
 import Path from 'path';
 import Query from 'jsonpath';
 
-import { GetDependencyName } from './get-dependency-name.js';
+import { GetDependencyName } from '../get-dependency-name.js';
 
 export async function Babel(filePath, packageDependency) {
   // console.log(`Babel('${Path.relative('', filePath)}', packageDependency) { ... }`)

@@ -5,7 +5,7 @@ import Merge from 'deepmerge';
 
 import { Ava } from './special/ava.js';
 import { Babel } from './special/babel.js';
-import { Pug } from './special/pug.js';
+import { Pug } from './parser/pug.js';
 
 import { FileParseError } from './error/file-parse-error.js';
 import { FolderParseError } from './error/folder-parse-error.js';
@@ -22,14 +22,14 @@ export function Check(userPath = Process.cwd(), userOption = {}) {
       let defaultOption = {
         'parser': {
           '*.cjs': BaseCheck.parser.es7.default,
-          '*.js': BaseCheck.parser.es7.default },
+          '*.js': BaseCheck.parser.es7.default,
+          '*.pug': Pug },
 
         'special': [
         BaseCheck.special.bin,
         BaseCheck.special.eslint,
         Ava,
-        Babel,
-        Pug] };
+        Babel] };
 
 
 
