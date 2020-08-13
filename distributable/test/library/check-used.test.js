@@ -162,7 +162,7 @@ Test('Check(\'used/dependency\')', async test => {
 
 });
 
-Test.only('Check(\'used/parcel\')', async test => {
+Test('Check(\'used/parcel\')', async test => {
   test.deepEqual(await Check(`${ResourcePath}/used/parcel`), {
     'missing': {},
     'unused': [],
