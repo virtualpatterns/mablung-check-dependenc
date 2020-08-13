@@ -27,6 +27,17 @@ Test('Check(\'unused/development-dependency\')', async test => {
 
 });
 
+Test('Check(\'unused/parcel\')', async test => {
+  test.deepEqual(await Check(`${ResourcePath}/unused/parcel`), {
+    'missing': {},
+    'unused': [
+    '@virtualpatterns/parcel-plugin-dependency',
+    'parcel-plugin-dependency'],
+
+    'used': {} });
+
+});
+
 Test('Check(\'unused/pug\')', async test => {
   test.deepEqual(await Check(`${ResourcePath}/unused/pug`), {
     'missing': {},

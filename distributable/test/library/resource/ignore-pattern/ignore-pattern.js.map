@@ -1,1 +1,0 @@
-{"version":3,"sources":["../../../../../source/test/library/resource/ignore-pattern/ignore-pattern.js"],"names":[],"mappings":"AAAA,OAAO,qCAAP","sourcesContent":["import '@virtualpatterns/mablung-dependency'\n"],"file":"ignore-pattern.js"}
