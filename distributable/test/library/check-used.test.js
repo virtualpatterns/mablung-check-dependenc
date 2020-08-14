@@ -165,10 +165,11 @@ Test('Check(\'used/dependency\')', async test => {
 Test('Check(\'used/parcel\')', async test => {
   test.deepEqual(await Check(`${ResourcePath}/used/parcel`), {
     'missing': {},
-    'unused': [],
+    'unused': [
+    'parcel-bundler'],
+
     'used': {
       '@studysync/parcel-plugin-bundle-visualiser': [`${ResourcePath}/used/parcel/package.json`],
-      'parcel-bundler': [`${ResourcePath}/used/parcel/package.json`],
       'parcel-plugin-asset-copier': [`${ResourcePath}/used/parcel/package.json`] } });
 
 
