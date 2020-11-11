@@ -8,30 +8,28 @@
       "type": "node",
       "request": "launch",
       "name": "Launch ...",
+      "autoAttachChildProcesses": false,
       "internalConsoleOptions": "openOnSessionStart",
-      // "preLaunchTask": "build",
-      "program": "${workspaceFolder}/distributable/command/check-dependency.js",
-      "runtimeArgs": [ "--experimental-import-meta-resolve" ],
-      "skipFiles": [ "<node_internals>/**" ]
+      "preLaunchTask": "build",
+      "program": "${workspaceFolder}/distributable-esmodule/sandbox/importq.js",
+      "skipFiles": [ "<node_internals>/**" ],
+      "stopOnEntry": false,
+      "args": []
     },
     {
       "type": "node",
       "request": "launch",
-      "name": "Test",
-      "internalConsoleOptions": "openOnSessionStart",
-      "outputCapture": "std",
-      "port": 9229,
+      "name": "Test ...",
       "preLaunchTask": "build",
-      "runtimeArgs": [
-        "debug",
-        "--break",
-        "distributable/test/command/check-dependency.test.js"
-      ],
       "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/ava",
+      "runtimeArgs": [
+        "--serial",
+        "distributable-commonjs/test/**/scenario-00.test.*"
+      ],
+      "outputCapture": "std",
       "skipFiles": [
         "<node_internals>/**/*.js"
-      ],
-      "autoAttachChildProcesses": true
-    }  
+      ]
+    } 
   ]
 }

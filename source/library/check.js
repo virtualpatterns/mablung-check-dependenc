@@ -2,6 +2,7 @@ import BaseCheck from 'depcheck'
 import BaseTransform from 'node-json-transform'
 import Is from '@pwn/is'
 import Merge from 'deepmerge'
+import Path from 'path'
 
 import { Ava } from './special/ava.js'
 import { Babel } from './special/babel.js'
@@ -56,7 +57,7 @@ export function Check(userPath = Process.cwd(), userOption = {}) {
         }
       }
   
-      let path = userPath
+      let path = Path.resolve(userPath)
       let option = Transform(Merge(defaultOption, userOption), map)
 
       BaseCheck(path, option, (unused) => {
