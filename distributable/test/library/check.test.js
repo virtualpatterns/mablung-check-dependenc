@@ -6,6 +6,7 @@ import { Check, FileParseError } from '../../index.js';
 
 const FilePath = URL.fileURLToPath(import.meta.url);
 const FolderPath = Path.dirname(FilePath);
+const Process = process;
 
 // the resources in source are used because 
 // babel doesn't copy dot files (e.g. .babelrc.json)
@@ -29,5 +30,10 @@ Test('Check(\'ignore-pattern\', { ignorePattern: [ ... ] })', async test => {
 
 Test('Check(\'error/babelrc.json\') throws FileParseError', async test => {
   await test.throwsAsync(Check(`${ResourcePath}/error/babelrc.json`), { 'instanceOf': FileParseError });
+});
+
+Test.only('...', async test => {
+  test.is(Process.cwd(), Path.normalize(`${FolderPath}/../../..`));
+  await test.notThrowsAsync(Check('./distributable/test/library/resource/ignore-match', {}));
 });
 //# sourceMappingURL=check.test.js.map
