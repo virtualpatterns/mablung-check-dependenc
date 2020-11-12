@@ -12,8 +12,8 @@ import { Pug } from './parser/pug.js'
 import { FileParseError } from './error/file-parse-error.js'
 import { FolderParseError } from './error/folder-parse-error.js'
 
-const Process = process
 const { transform: Transform } = BaseTransform
+const Process = process
 
 export function Check(userPath = Process.cwd(), userOption = {}) {
 
