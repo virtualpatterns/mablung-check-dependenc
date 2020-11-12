@@ -26,7 +26,7 @@ export function Check(userPath = Process.cwd(), userOption = {}) {
           '**/*.cjs': BaseCheck.parser.es7.default,
           '**/*.js': BaseCheck.parser.es7.default,
           '**/*.pug': Pug,
-          'package.json': Parcel },
+          '**/package.json': Parcel },
 
         'special': [
         BaseCheck.special.bin,
