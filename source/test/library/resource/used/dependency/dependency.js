@@ -1,1 +1,2 @@
-import '@virtualpatterns/mablung-dependency'
+import Default from '@virtualpatterns/mablung-dependency'
+console.log(Default)

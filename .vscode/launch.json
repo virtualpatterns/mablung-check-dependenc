@@ -24,7 +24,7 @@
       "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/ava",
       "runtimeArgs": [
         "--serial",
-        "distributable-commonjs/test/**/scenario-00.test.*"
+        "distributable/test/library/check-unused.test.js"
       ],
       "outputCapture": "std",
       "skipFiles": [
