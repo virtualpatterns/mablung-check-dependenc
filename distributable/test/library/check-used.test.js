@@ -152,7 +152,7 @@ Test('Check(\'used/babelrc.json-preset\')', async test => {
 
 });
 
-Test('Check(\'used/dependency\')', async test => {
+Test.only('Check(\'used/dependency\')', async test => {
   test.deepEqual(await Check(`${ResourcePath}/used/dependency`), {
     'missing': {},
     'unused': [],

@@ -23,10 +23,10 @@ export function Check(userPath = Process.cwd(), userOption = {}) {
 
       let defaultOption = {
         'parser': {
-          '*.cjs': BaseCheck.parser.es7.default,
-          '*.js': BaseCheck.parser.es7.default,
-          'package.json': Parcel,
-          '*.pug': Pug },
+          '**/*.cjs': BaseCheck.parser.es7.default,
+          '**/*.js': BaseCheck.parser.es7.default,
+          '**/*.pug': Pug,
+          'package.json': Parcel },
 
         'special': [
         BaseCheck.special.bin,
