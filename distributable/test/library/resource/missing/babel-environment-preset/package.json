@@ -3,9 +3,10 @@
     "env": {
       "environment": {
         "presets": [
-          "babel-environment-preset"
+          "babel-environment-preset/install"
         ]
       }
     }
-  }
+  },
+  "devDependencies": {}
 }

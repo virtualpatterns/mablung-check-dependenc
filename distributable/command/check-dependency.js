@@ -17,9 +17,13 @@ const Package = JSON5.parse(FileSystem.readFileSync(Require.resolve('../../packa
 
 Command.
 version(Package.version).
-option('--project-path <path>', 'Path of the project to check', Process.cwd()).
-option('--configuration-path <path>', 'Path of the configuration file, if it exists', `${Process.cwd()}/check-dependency.json`).
-option('--report-used', 'Report used dependencies').
+option('--project-path <path>', 'Path of the project to check', '.') // Process.cwd())
+.option('--configuration-path <path>', 'Path of the configuration file, if it exists', './check-dependency.json').
+option('--report-missing', 'Report missing dependencies', true).
+option('--no-report-missing', 'Do not report missing dependencies').
+option('--report-unused', 'Report used dependencies', true).
+option('--no-report-unused', 'Do not report used dependencies').
+option('--report-used', 'Report used dependencies', false).
 action(async option => {
 
   try {
@@ -34,8 +38,10 @@ action(async option => {
     }
 
     let dependency = await Check(path, configuration);
+    process.exitCode = 0;
 
-    if (Is.not.emptyObject(dependency.missing)) {
+    if (Is.not.emptyObject(dependency.missing) &&
+    option.reportMissing) {
 
       let missingDependency = null;
       missingDependency = Object.entries(dependency.missing);
@@ -56,7 +62,8 @@ action(async option => {
 
     }
 
-    if (dependency.unused.length > 0) {
+    if (dependency.unused.length > 0 &&
+    option.reportUnused) {
 
       console.log('-'.repeat(80));
       console.log('Unused dependencies');
@@ -88,16 +95,13 @@ action(async option => {
 
     }
 
-    if (Is.emptyObject(dependency.missing) &&
-    dependency.unused.length <= 0) {
+    // if (process.exitCode === 0) {
 
-      console.log('-'.repeat(80));
-      console.log('There are no dependency issues.');
-      console.log('-'.repeat(80));
+    //   console.log('-'.repeat(80))
+    //   console.log('There are no dependency issues.')
+    //   console.log('-'.repeat(80))
 
-      process.exitCode = 0;
-
-    }
+    // }
 
   } catch (error) {
     console.error(error);

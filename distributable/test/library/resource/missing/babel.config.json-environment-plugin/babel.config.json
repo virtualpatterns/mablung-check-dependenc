@@ -2,7 +2,7 @@
   "env": {
     "environment": {
       "plugins": [ 
-        "babel-environment-plugin"
+        "babel-environment-plugin/install"
       ]
     }
   }

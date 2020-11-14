@@ -6,6 +6,7 @@ import Path from 'path';
 
 import { Ava } from './special/ava.js';
 import { Babel } from './special/babel.js';
+import { Browser } from './parser/browser.js';
 import { Parcel } from './parser/parcel.js';
 import { Pug } from './parser/pug.js';
 
@@ -22,11 +23,16 @@ export function Check(userPath = Process.cwd(), userOption = {}) {
     try {
 
       let defaultOption = {
+        // 'ignoreMatch': [
+        //   'buffer',
+        //   'events',
+        //   'util'
+        // ],
         'parser': {
           '**/*.cjs': BaseCheck.parser.es7.default,
           '**/*.js': BaseCheck.parser.es7.default,
           '**/*.pug': Pug,
-          '**/package.json': Parcel },
+          '**/package.json': [Browser, Parcel] },
 
         'special': [
         BaseCheck.special.bin,

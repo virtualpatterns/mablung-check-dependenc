@@ -5,10 +5,9 @@ export async function Parcel(filePath, packageDependency) {
   // console.dir(packageDependency)
 
   let fileDependency = [];
-  let pattern = /(^|\/)parcel-plugin-/gi;
 
   if (packageDependency.includes('parcel-bundler')) {
-    fileDependency = packageDependency.filter(packageDependency => pattern.test(packageDependency));
+    fileDependency = packageDependency.filter(dependency => /(^|\/)parcel-plugin-/gi.test(dependency));
   }
 
   return fileDependency;

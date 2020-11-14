@@ -1,7 +1,11 @@
 {
   "babel": {
     "presets": [
-      "babel-preset"
+      "babel-preset/install",
+      "babel-lebab/install"
     ]
+  },
+  "devDependencies": {
+    "@virtualpatterns/mablung-babel-lebab": "^1.0.0"
   }
 }

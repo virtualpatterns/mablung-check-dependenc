@@ -1,0 +1,6 @@
+{
+  "devDependencies": {
+    "jstransformer-cdata-js": "^1.0.0",
+    "jstransformer-coffee-script": "^1.1.1"
+  }
+}

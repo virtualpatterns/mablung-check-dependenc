@@ -33,10 +33,14 @@ export async function Babel(filePath, packageDependency) {
     preset = preset.map(preset => Is.array(preset) ? preset[0] : preset);
     preset = preset.map(preset => GetDependencyName(preset));
 
-    fileDependency = (packageDependency.length <= 0 ? [...plugin, ...preset] : packageDependency).filter(packageDependency => [...plugin, ...preset].filter(name => packageDependency.endsWith(name)).length > 0);
+    fileDependency = [...plugin, ...preset].
+    map(dependency => packageDependency.
+    filter(packageDependency => packageDependency.endsWith(dependency)).
+    reduce((dependency, packageDependency) => packageDependency, dependency));
 
   }
 
+  // console.dir(fileDependency)
   return fileDependency;
 
 }
