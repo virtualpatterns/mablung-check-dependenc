@@ -32,7 +32,7 @@ Test('Check(\'error/babelrc.json\') throws FileParseError', async (test) => {
   await test.throwsAsync(Check(`${ResourcePath}/error/babelrc.json`), { 'instanceOf': FileParseError })
 })
 
-Test.only('...', async (test) => {
+Test('Check(\'./distributable/test/library/resource/ignore-match\')', async (test) => {
   test.is(Process.cwd(), Path.normalize(`${FolderPath}/../../..`))
-  await test.notThrowsAsync(Check('./distributable/test/library/resource/ignore-match', {}))
+  await test.notThrowsAsync(Check('./distributable/test/library/resource/ignore-match'))
 })

@@ -1,9 +1,9 @@
 import FileSystem from 'fs-extra'
+// import Path from 'path'
 import Query from 'jsonpath'
-import Path from 'path'
 
 import Lex from 'pug-lexer'
-import Link from 'pug-linker'
+// import Link from 'pug-linker'
 import Load from 'pug-load'
 import Parse from 'pug-parser'
 
@@ -14,17 +14,36 @@ export async function Pug(filePath, packageDependency) {
   // console.dir(packageDependency)
 
   let fileDependency = []
+
   let content = await FileSystem.readFile(filePath, { 'encoding': 'utf-8' })
+  let token = null
+  let ast = null
 
-  let lexerOutput = Lex(content, { 'filename': filePath })
-  let parserOutput = Parse(lexerOutput, { 'filename': filePath })
-  let loaderOutput = Load(parserOutput, { 'lex': Lex, 'parse': Parse })
-  let AST = Link(loaderOutput)
+  token = Lex(content, { 'filename': filePath })
+  ast = Parse(token, { 'filename': filePath })
+  ast = Load(ast, { 'lex': Lex, 'parse': Parse })
+  // ast = Link(ast)
 
-  let node = Query.query(AST, '$..*[?(@.type==\'Filter\')]')
-  let name = node.map((node) => GetDependencyName(node.name))
+  // console.dir(ast, { 'depth': null })
 
-  fileDependency = (packageDependency.length <= 0 ? name : packageDependency).filter((packageDependency) => name.filter((name) => packageDependency.endsWith(name)).length > 0)
+  // {
+  //   type: 'IncludeFilter',
+  //   name: 'markdown-it',
+  //   attrs: [],
+  //   line: 1,
+  //   column: 8,
+  //   filename: '/Volumes/DUMBLEDORE1/Users/fficnar/Projects/Shared Projects/mablung-check-dependency/source/test/library/resource/missing/pug-filter-include/template.pug'
+  // }
+
+  let node = Query.query(ast, '$..*[?(@.type==\'Filter\' || @.type==\'IncludeFilter\')]')
+  let dependency = node.map((node) => GetDependencyName(node.name))
+
+  // let fileDependency = (packageDependency.length <= 0 ? name : packageDependency).filter((dependency) => name.filter((name) => dependency.endsWith(name)).length > 0)
+  
+  fileDependency = dependency
+    .map((dependency) => packageDependency
+      .filter((packageDependency) => packageDependency.endsWith(dependency))
+      .reduce((dependency, packageDependency) => packageDependency, dependency))
 
   return fileDependency
 

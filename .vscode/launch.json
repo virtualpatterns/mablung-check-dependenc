@@ -24,7 +24,7 @@
       "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/ava",
       "runtimeArgs": [
         "--serial",
-        "distributable/test/library/check-unused.test.js"
+        "distributable/test/library/check-missing.test.js"
       ],
       "outputCapture": "std",
       "skipFiles": [

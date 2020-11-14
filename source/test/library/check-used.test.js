@@ -3,6 +3,7 @@ import Test from 'ava'
 import URL from 'url'
 
 import { Check } from '../../index.js'
+import test from 'ava'
 
 const FilePath = URL.fileURLToPath(import.meta.url)
 const FolderPath = Path.dirname(FilePath)
@@ -152,6 +153,22 @@ Test('Check(\'used/babelrc.json-preset\')', async (test) => {
   })
 })
 
+Test('Check(\'used/browser\')', async (test) => {
+  // the packages 'buffer', 'events', 'util' (maybe more)
+  // are ignored by depcheck even if returned by the browser.js parser
+  test.deepEqual(await Check(`${ResourcePath}/used/browser`), { 
+    'missing': {},
+    'unused': [
+      'buffer',
+      'events',
+      'util'
+    ],
+    'used': { 
+      'stream-browserify': [ `${ResourcePath}/used/browser/package.json` ] 
+    }
+  })
+})
+
 Test('Check(\'used/dependency\')', async (test) => {
   test.deepEqual(await Check(`${ResourcePath}/used/dependency`), { 
     'missing': {}, 
@@ -175,12 +192,33 @@ Test('Check(\'used/parcel\')', async (test) => {
   })
 })
 
-Test('Check(\'used/pug\')', async (test) => {
-  test.deepEqual(await Check(`${ResourcePath}/used/pug`), { 
+Test('Check(\'used/pug-filter\')', async (test) => {
+  test.deepEqual(await Check(`${ResourcePath}/used/pug-filter`), { 
     'missing': {}, 
     'unused': [],
     'used': { 
-      'jstransformer-markdown-it': [ Path.join(ResourcePath, 'used', 'pug/template.pug') ] 
+      'jstransformer-markdown-it': [ `${ResourcePath}/used/pug-filter/template.pug` ] 
+    }
+  })
+})
+
+Test('Check(\'used/pug-filter-include\')', async (test) => {
+  test.deepEqual(await Check(`${ResourcePath}/used/pug-filter-include`), { 
+    'missing': {}, 
+    'unused': [],
+    'used': { 
+      'jstransformer-markdown-it': [ `${ResourcePath}/used/pug-filter-include/template.pug` ] 
+    }
+  })
+})
+
+Test('Check(\'used/pug-filter-and-filter-include\')', async (test) => {
+  test.deepEqual(await Check(`${ResourcePath}/used/pug-filter-and-filter-include`), { 
+    'missing': {}, 
+    'unused': [],
+    'used': { 
+      'jstransformer-coffee-script': [ `${ResourcePath}/used/pug-filter-and-filter-include/template.pug` ],
+      'jstransformer-markdown-it': [ `${ResourcePath}/used/pug-filter-and-filter-include/template.pug` ] 
     }
   })
 })

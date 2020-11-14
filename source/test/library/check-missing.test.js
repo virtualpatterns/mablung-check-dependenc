@@ -64,7 +64,9 @@ Test('Check(\'missing/babel-plugin\')', async (test) => {
     'missing': { 
       'babel-plugin': [ Path.join(ResourcePath, 'missing', 'babel-plugin', 'package.json') ] 
     }, 
-    'unused': [],
+    'unused': [
+      '@virtualpatterns/mablung-dependency'
+    ],
     'used': { 
       'babel-plugin': [ Path.join(ResourcePath, 'missing', 'babel-plugin', 'package.json') ] 
     }
@@ -78,6 +80,7 @@ Test('Check(\'missing/babel-preset\')', async (test) => {
     }, 
     'unused': [],
     'used': { 
+      '@virtualpatterns/mablung-babel-lebab': [ Path.join(ResourcePath, 'missing', 'babel-preset', 'package.json') ],
       'babel-preset': [ Path.join(ResourcePath, 'missing', 'babel-preset', 'package.json') ] 
     }
   })
@@ -179,6 +182,20 @@ Test('Check(\'missing/babelrc.json-preset\')', async (test) => {
   })
 })
 
+Test('Check(\'missing/browser\')', async (test) => {
+  // the packages 'buffer', 'events', 'util' (maybe more)
+  // are ignored by depcheck even if returned by the browser.js parser
+  test.deepEqual(await Check(`${ResourcePath}/missing/browser`), { 
+    'missing': {
+      'stream-browserify': [ `${ResourcePath}/missing/browser/package.json` ] 
+    },
+    'unused': [],
+    'used': { 
+      'stream-browserify': [ `${ResourcePath}/missing/browser/package.json` ] 
+    }
+  })
+})
+
 Test('Check(\'missing/dependency\')', async (test) => {
   test.deepEqual(await Check(`${ResourcePath}/missing/dependency`), { 
     'missing': { 
@@ -191,14 +208,44 @@ Test('Check(\'missing/dependency\')', async (test) => {
   })
 })
 
-Test('Check(\'missing/pug\')', async (test) => {
-  test.deepEqual(await Check(`${ResourcePath}/missing/pug`), { 
+Test('Check(\'missing/pug-filter\')', async (test) => {
+  test.deepEqual(await Check(`${ResourcePath}/missing/pug-filter`), { 
     'missing': { 
-      'markdown-it': [ Path.join(ResourcePath, 'missing', 'pug', 'template.pug') ] 
+      'markdown-it': [ `${ResourcePath}/missing/pug-filter/template.pug` ] 
+    }, 
+    'unused': [
+      'jstransformer-cdata-js'
+    ],
+    'used': { 
+      'jstransformer-coffee-script': [ `${ResourcePath}/missing/pug-filter/template.pug` ], 
+      'markdown-it': [ `${ResourcePath}/missing/pug-filter/template.pug` ] 
+    }
+  })
+})
+
+Test('Check(\'missing/pug-filter-include\')', async (test) => {
+  test.deepEqual(await Check(`${ResourcePath}/missing/pug-filter-include`), { 
+    'missing': { 
+      'markdown-it': [ `${ResourcePath}/missing/pug-filter-include/template.pug` ] 
     }, 
     'unused': [],
     'used': { 
-      'markdown-it': [ Path.join(ResourcePath, 'missing', 'pug', 'template.pug') ] 
+      'jstransformer-coffee-script': [ `${ResourcePath}/missing/pug-filter-include/template.pug` ], 
+      'markdown-it': [ `${ResourcePath}/missing/pug-filter-include/template.pug` ] 
+    }
+  })
+})
+
+Test('Check(\'missing/pug-filter-and-filter-include\')', async (test) => {
+  test.deepEqual(await Check(`${ResourcePath}/missing/pug-filter-and-filter-include`), { 
+    'missing': { 
+      'coffee-script': [ `${ResourcePath}/missing/pug-filter-and-filter-include/template.pug` ],
+      'markdown-it': [ `${ResourcePath}/missing/pug-filter-and-filter-include/template.pug` ] 
+    }, 
+    'unused': [],
+    'used': { 
+      'coffee-script': [ `${ResourcePath}/missing/pug-filter-and-filter-include/template.pug` ],
+      'markdown-it': [ `${ResourcePath}/missing/pug-filter-and-filter-include/template.pug` ] 
     }
   })
 })
