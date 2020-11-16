@@ -20,12 +20,4 @@ forEach(([input, output]) => {
   });
 
 });
-
-// Test('@virtualpatterns/mablung-dependency', (test) => {
-//   test.is(GetDependencyName(test.title), '@virtualpatterns/mablung-dependency')
-// })
-
-// Test('@virtualpatterns/mablung-dependency/install', (test) => {
-//   test.is(GetDependencyName(test.title), '@virtualpatterns/mablung-dependency')
-// })
 //# sourceMappingURL=get-dependency-name.test.js.map

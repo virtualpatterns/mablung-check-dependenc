@@ -30,9 +30,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">89.47% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>17/19</span>
+                <span class='fraction'>22/22</span>
             </div>
         
             
@@ -112,42 +112,42 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">153x</span>
-<span class="cline-any cline-yes">153x</span>
-<span class="cline-any cline-yes">153x</span>
-<span class="cline-any cline-yes">153x</span>
-<span class="cline-any cline-yes">153x</span>
-<span class="cline-any cline-yes">153x</span>
-<span class="cline-any cline-yes">153x</span>
-<span class="cline-any cline-yes">153x</span>
-<span class="cline-any cline-yes">153x</span>
-<span class="cline-any cline-yes">74x</span>
-<span class="cline-any cline-yes">74x</span>
-<span class="cline-any cline-yes">74x</span>
-<span class="cline-any cline-yes">74x</span>
-<span class="cline-any cline-yes">74x</span>
-<span class="cline-any cline-yes">74x</span>
-<span class="cline-any cline-yes">74x</span>
-<span class="cline-any cline-yes">74x</span>
-<span class="cline-any cline-yes">74x</span>
-<span class="cline-any cline-yes">74x</span>
-<span class="cline-any cline-yes">74x</span>
-<span class="cline-any cline-yes">74x</span>
-<span class="cline-any cline-yes">74x</span>
-<span class="cline-any cline-yes">74x</span>
-<span class="cline-any cline-yes">74x</span>
-<span class="cline-any cline-yes">74x</span>
-<span class="cline-any cline-yes">74x</span>
-<span class="cline-any cline-yes">74x</span>
-<span class="cline-any cline-yes">25x</span>
-<span class="cline-any cline-yes">74x</span>
-<span class="cline-any cline-yes">74x</span>
-<span class="cline-any cline-yes">74x</span>
-<span class="cline-any cline-yes">152x</span>
-<span class="cline-any cline-yes">152x</span>
-<span class="cline-any cline-yes">152x</span>
-<span class="cline-any cline-yes">152x</span>
-<span class="cline-any cline-yes">152x</span></td><td class="text"><pre class="prettyprint lang-js">import FileSystem from 'fs-extra'
+<span class="cline-any cline-yes">267x</span>
+<span class="cline-any cline-yes">267x</span>
+<span class="cline-any cline-yes">267x</span>
+<span class="cline-any cline-yes">267x</span>
+<span class="cline-any cline-yes">267x</span>
+<span class="cline-any cline-yes">267x</span>
+<span class="cline-any cline-yes">267x</span>
+<span class="cline-any cline-yes">267x</span>
+<span class="cline-any cline-yes">267x</span>
+<span class="cline-any cline-yes">93x</span>
+<span class="cline-any cline-yes">93x</span>
+<span class="cline-any cline-yes">93x</span>
+<span class="cline-any cline-yes">93x</span>
+<span class="cline-any cline-yes">93x</span>
+<span class="cline-any cline-yes">93x</span>
+<span class="cline-any cline-yes">93x</span>
+<span class="cline-any cline-yes">93x</span>
+<span class="cline-any cline-yes">93x</span>
+<span class="cline-any cline-yes">93x</span>
+<span class="cline-any cline-yes">93x</span>
+<span class="cline-any cline-yes">93x</span>
+<span class="cline-any cline-yes">93x</span>
+<span class="cline-any cline-yes">93x</span>
+<span class="cline-any cline-yes">93x</span>
+<span class="cline-any cline-yes">93x</span>
+<span class="cline-any cline-yes">93x</span>
+<span class="cline-any cline-yes">93x</span>
+<span class="cline-any cline-yes">73x</span>
+<span class="cline-any cline-yes">93x</span>
+<span class="cline-any cline-yes">93x</span>
+<span class="cline-any cline-yes">93x</span>
+<span class="cline-any cline-yes">266x</span>
+<span class="cline-any cline-yes">266x</span>
+<span class="cline-any cline-yes">266x</span>
+<span class="cline-any cline-yes">266x</span>
+<span class="cline-any cline-yes">266x</span></td><td class="text"><pre class="prettyprint lang-js">import FileSystem from 'fs-extra'
 import Is from '@pwn/is'
 import JSON5 from 'json5'
 import Match from 'minimatch'
@@ -174,12 +174,12 @@ export async function Babel(filePath, packageDependency) {
     let plugin = null
     plugin = Query.query(configuration, '$..plugins[*]')
     plugin = plugin.filter((plugin) =&gt; Is.array(plugin) || plugin !== 'importMeta')
-    plugin = plugin.map((plugin) =&gt; <span class="branch-0 cbranch-no" title="branch not covered" >Is.array(plugin) ? plugin[0</span>] : plugin)
+    plugin = plugin.map((plugin) =&gt; Is.array(plugin) ? plugin[0] : plugin)
     plugin = plugin.map((plugin) =&gt; GetDependencyName(plugin))
 &nbsp;
     let preset = null
     preset = Query.query(configuration, '$..presets[*]')
-    preset = preset.map((preset) =&gt; <span class="branch-0 cbranch-no" title="branch not covered" >Is.array(preset) ? preset[0</span>] : preset)
+    preset = preset.map((preset) =&gt; Is.array(preset) ? preset[0] : preset)
     preset = preset.map((preset) =&gt; GetDependencyName(preset))
     
     fileDependency = [...plugin, ...preset]
@@ -199,7 +199,7 @@ export async function Babel(filePath, packageDependency) {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Fri Nov 13 2020 23:43:59 GMT-0500 (Eastern Standard Time)
+                at Sun Nov 15 2020 21:44:18 GMT-0500 (Eastern Standard Time)
             </div>
         </div>
         <script src="../../../prettify.js"></script>
