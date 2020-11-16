@@ -14,11 +14,11 @@ const ResourcePath = Path.normalize(`${FolderPath}/../../../source/test/library/
 Test('Check(\'missing/ava\')', async (test) => {
   test.deepEqual(await Check(`${ResourcePath}/missing/ava`), { 
     'missing': { 
-      '@virtualpatterns/mablung-ava': [ Path.join(ResourcePath, 'missing', 'ava', 'package.json') ] 
+      '@virtualpatterns/mablung-ava': [ `${ResourcePath}/missing/ava/package.json` ] 
     }, 
     'unused': [],
     'used': { 
-      '@virtualpatterns/mablung-ava': [ Path.join(ResourcePath, 'missing', 'ava', 'package.json') ] 
+      '@virtualpatterns/mablung-ava': [ `${ResourcePath}/missing/ava/package.json` ] 
     }
   })
 })
@@ -26,11 +26,11 @@ Test('Check(\'missing/ava\')', async (test) => {
 Test('Check(\'missing/ava.config.json\')', async (test) => {
   test.deepEqual(await Check(`${ResourcePath}/missing/ava.config.json`), { 
     'missing': { 
-      '@virtualpatterns/mablung-ava': [ Path.join(ResourcePath, 'missing', 'ava.config.json', 'ava.config.json') ] 
+      '@virtualpatterns/mablung-ava': [ `${ResourcePath}/missing/ava.config.json/ava.config.json` ] 
     }, 
     'unused': [],
     'used': { 
-      '@virtualpatterns/mablung-ava': [ Path.join(ResourcePath, 'missing', 'ava.config.json', 'ava.config.json') ] 
+      '@virtualpatterns/mablung-ava': [ `${ResourcePath}/missing/ava.config.json/ava.config.json` ] 
     }
   })
 })
@@ -38,11 +38,11 @@ Test('Check(\'missing/ava.config.json\')', async (test) => {
 Test('Check(\'missing/babel-environment-plugin\')', async (test) => {
   test.deepEqual(await Check(`${ResourcePath}/missing/babel-environment-plugin`), { 
     'missing': { 
-      'babel-environment-plugin': [ Path.join(ResourcePath, 'missing', 'babel-environment-plugin', 'package.json') ] 
+      'babel-environment-plugin': [ `${ResourcePath}/missing/babel-environment-plugin/package.json` ] 
     }, 
     'unused': [],
     'used': { 
-      'babel-environment-plugin': [ Path.join(ResourcePath, 'missing', 'babel-environment-plugin', 'package.json') ] 
+      'babel-environment-plugin': [ `${ResourcePath}/missing/babel-environment-plugin/package.json` ] 
     }
   })
 })
@@ -50,11 +50,11 @@ Test('Check(\'missing/babel-environment-plugin\')', async (test) => {
 Test('Check(\'missing/babel-environment-preset\')', async (test) => {
   test.deepEqual(await Check(`${ResourcePath}/missing/babel-environment-preset`), { 
     'missing': { 
-      'babel-environment-preset': [ Path.join(ResourcePath, 'missing', 'babel-environment-preset', 'package.json') ] 
+      'babel-environment-preset': [ `${ResourcePath}/missing/babel-environment-preset/package.json` ] 
     }, 
     'unused': [],
     'used': { 
-      'babel-environment-preset': [ Path.join(ResourcePath, 'missing', 'babel-environment-preset', 'package.json') ] 
+      'babel-environment-preset': [ `${ResourcePath}/missing/babel-environment-preset/package.json` ] 
     }
   })
 })
@@ -62,13 +62,13 @@ Test('Check(\'missing/babel-environment-preset\')', async (test) => {
 Test('Check(\'missing/babel-plugin\')', async (test) => {
   test.deepEqual(await Check(`${ResourcePath}/missing/babel-plugin`), { 
     'missing': { 
-      'babel-plugin': [ Path.join(ResourcePath, 'missing', 'babel-plugin', 'package.json') ] 
+      'babel-plugin': [ `${ResourcePath}/missing/babel-plugin/package.json` ] 
     }, 
     'unused': [
       '@virtualpatterns/mablung-dependency'
     ],
     'used': { 
-      'babel-plugin': [ Path.join(ResourcePath, 'missing', 'babel-plugin', 'package.json') ] 
+      'babel-plugin': [ `${ResourcePath}/missing/babel-plugin/package.json` ] 
     }
   })
 })
@@ -76,12 +76,12 @@ Test('Check(\'missing/babel-plugin\')', async (test) => {
 Test('Check(\'missing/babel-preset\')', async (test) => {
   test.deepEqual(await Check(`${ResourcePath}/missing/babel-preset`), { 
     'missing': { 
-      'babel-preset': [ Path.join(ResourcePath, 'missing', 'babel-preset', 'package.json') ] 
+      'babel-preset': [ `${ResourcePath}/missing/babel-preset/package.json` ] 
     }, 
     'unused': [],
     'used': { 
-      '@virtualpatterns/mablung-babel-lebab': [ Path.join(ResourcePath, 'missing', 'babel-preset', 'package.json') ],
-      'babel-preset': [ Path.join(ResourcePath, 'missing', 'babel-preset', 'package.json') ] 
+      '@virtualpatterns/mablung-babel-lebab': [ `${ResourcePath}/missing/babel-preset/package.json` ],
+      'babel-preset': [ `${ResourcePath}/missing/babel-preset/package.json` ] 
     }
   })
 })
@@ -89,11 +89,11 @@ Test('Check(\'missing/babel-preset\')', async (test) => {
 Test('Check(\'missing/babel.config.json-environment-plugin\')', async (test) => {
   test.deepEqual(await Check(`${ResourcePath}/missing/babel.config.json-environment-plugin`), { 
     'missing': { 
-      'babel-environment-plugin': [ Path.join(ResourcePath, 'missing', 'babel.config.json-environment-plugin', 'babel.config.json') ] 
+      'babel-environment-plugin': [ `${ResourcePath}/missing/babel.config.json-environment-plugin/babel.config.json` ] 
     }, 
     'unused': [],
     'used': { 
-      'babel-environment-plugin': [ Path.join(ResourcePath, 'missing', 'babel.config.json-environment-plugin', 'babel.config.json') ] 
+      'babel-environment-plugin': [ `${ResourcePath}/missing/babel.config.json-environment-plugin/babel.config.json` ] 
     }
   })
 })
@@ -101,11 +101,11 @@ Test('Check(\'missing/babel.config.json-environment-plugin\')', async (test) => 
 Test('Check(\'missing/babel.config.json-environment-preset\')', async (test) => {
   test.deepEqual(await Check(`${ResourcePath}/missing/babel.config.json-environment-preset`), { 
     'missing': { 
-      'babel-environment-preset': [ Path.join(ResourcePath, 'missing', 'babel.config.json-environment-preset', 'babel.config.json') ] 
+      'babel-environment-preset': [ `${ResourcePath}/missing/babel.config.json-environment-preset/babel.config.json` ] 
     }, 
     'unused': [],
     'used': { 
-      'babel-environment-preset': [ Path.join(ResourcePath, 'missing', 'babel.config.json-environment-preset', 'babel.config.json') ] 
+      'babel-environment-preset': [ `${ResourcePath}/missing/babel.config.json-environment-preset/babel.config.json` ] 
     }
   })
 })
@@ -113,11 +113,11 @@ Test('Check(\'missing/babel.config.json-environment-preset\')', async (test) => 
 Test('Check(\'missing/babel.config.json-plugin\')', async (test) => {
   test.deepEqual(await Check(`${ResourcePath}/missing/babel.config.json-plugin`), { 
     'missing': { 
-      'babel-plugin': [ Path.join(ResourcePath, 'missing', 'babel.config.json-plugin', 'babel.config.json') ] 
+      'babel-plugin': [ `${ResourcePath}/missing/babel.config.json-plugin/babel.config.json` ] 
     }, 
     'unused': [],
     'used': { 
-      'babel-plugin': [ Path.join(ResourcePath, 'missing', 'babel.config.json-plugin', 'babel.config.json') ] 
+      'babel-plugin': [ `${ResourcePath}/missing/babel.config.json-plugin/babel.config.json` ] 
     }
   })
 })
@@ -125,11 +125,11 @@ Test('Check(\'missing/babel.config.json-plugin\')', async (test) => {
 Test('Check(\'missing/babel.config.json-preset\')', async (test) => {
   test.deepEqual(await Check(`${ResourcePath}/missing/babel.config.json-preset`), { 
     'missing': { 
-      'babel-preset': [ Path.join(ResourcePath, 'missing', 'babel.config.json-preset', 'babel.config.json') ] 
+      'babel-preset': [ `${ResourcePath}/missing/babel.config.json-preset/babel.config.json` ] 
     }, 
     'unused': [],
     'used': { 
-      'babel-preset': [ Path.join(ResourcePath, 'missing', 'babel.config.json-preset', 'babel.config.json') ] 
+      'babel-preset': [ `${ResourcePath}/missing/babel.config.json-preset/babel.config.json` ] 
     }
   })
 })
@@ -137,11 +137,11 @@ Test('Check(\'missing/babel.config.json-preset\')', async (test) => {
 Test('Check(\'missing/babelrc.json-environment-plugin\')', async (test) => {
   test.deepEqual(await Check(`${ResourcePath}/missing/babelrc.json-environment-plugin`), { 
     'missing': { 
-      'babel-environment-plugin': [ Path.join(ResourcePath, 'missing', 'babelrc.json-environment-plugin', '.babelrc.json') ] 
+      'babel-environment-plugin': [ `${ResourcePath}/missing/babelrc.json-environment-plugin/.babelrc.json` ] 
     }, 
     'unused': [], 
     'used': { 
-      'babel-environment-plugin': [ Path.join(ResourcePath, 'missing', 'babelrc.json-environment-plugin', '.babelrc.json') ] 
+      'babel-environment-plugin': [ `${ResourcePath}/missing/babelrc.json-environment-plugin/.babelrc.json` ] 
     }
   })
 })
@@ -149,11 +149,11 @@ Test('Check(\'missing/babelrc.json-environment-plugin\')', async (test) => {
 Test('Check(\'missing/babelrc.json-environment-preset\')', async (test) => {
   test.deepEqual(await Check(`${ResourcePath}/missing/babelrc.json-environment-preset`), { 
     'missing': { 
-      'babel-environment-preset': [ Path.join(ResourcePath, 'missing', 'babelrc.json-environment-preset', '.babelrc.json') ] 
+      'babel-environment-preset': [ `${ResourcePath}/missing/babelrc.json-environment-preset/.babelrc.json` ] 
     }, 
     'unused': [],
     'used': { 
-      'babel-environment-preset': [ Path.join(ResourcePath, 'missing', 'babelrc.json-environment-preset', '.babelrc.json') ] 
+      'babel-environment-preset': [ `${ResourcePath}/missing/babelrc.json-environment-preset/.babelrc.json` ] 
     }
   })
 })
@@ -161,11 +161,11 @@ Test('Check(\'missing/babelrc.json-environment-preset\')', async (test) => {
 Test('Check(\'missing/babelrc.json-plugin\')', async (test) => {
   test.deepEqual(await Check(`${ResourcePath}/missing/babelrc.json-plugin`), { 
     'missing': { 
-      'babel-plugin': [ Path.join(ResourcePath, 'missing', 'babelrc.json-plugin', '.babelrc.json') ] 
+      'babel-plugin': [ `${ResourcePath}/missing/babelrc.json-plugin/.babelrc.json` ] 
     }, 
     'unused': [],
     'used': { 
-      'babel-plugin': [ Path.join(ResourcePath, 'missing', 'babelrc.json-plugin', '.babelrc.json') ] 
+      'babel-plugin': [ `${ResourcePath}/missing/babelrc.json-plugin/.babelrc.json` ] 
     }
   })
 })
@@ -173,17 +173,17 @@ Test('Check(\'missing/babelrc.json-plugin\')', async (test) => {
 Test('Check(\'missing/babelrc.json-preset\')', async (test) => {
   test.deepEqual(await Check(`${ResourcePath}/missing/babelrc.json-preset`), {
     'missing': { 
-      'babel-preset': [ Path.join(ResourcePath, 'missing', 'babelrc.json-preset', '.babelrc.json') ] 
+      'babel-preset': [ `${ResourcePath}/missing/babelrc.json-preset/.babelrc.json` ] 
     }, 
     'unused': [],
     'used': { 
-      'babel-preset': [ Path.join(ResourcePath, 'missing', 'babelrc.json-preset', '.babelrc.json') ] 
+      'babel-preset': [ `${ResourcePath}/missing/babelrc.json-preset/.babelrc.json` ] 
     }
   })
 })
 
 Test('Check(\'missing/browser\')', async (test) => {
-  // the packages 'buffer', 'events', 'util' (maybe more)
+  // the packages buffer, events, util (maybe more)
   // are ignored by depcheck even if returned by the browser.js parser
   test.deepEqual(await Check(`${ResourcePath}/missing/browser`), { 
     'missing': {
@@ -199,11 +199,11 @@ Test('Check(\'missing/browser\')', async (test) => {
 Test('Check(\'missing/dependency\')', async (test) => {
   test.deepEqual(await Check(`${ResourcePath}/missing/dependency`), { 
     'missing': { 
-      '@virtualpatterns/mablung-dependency': [ Path.join(ResourcePath, 'missing', 'dependency', 'dependency.js') ] 
+      '@virtualpatterns/mablung-dependency': [ `${ResourcePath}/missing/dependency/dependency.js` ] 
     }, 
     'unused': [],
     'used': { 
-      '@virtualpatterns/mablung-dependency': [ Path.join(ResourcePath, 'missing', 'dependency', 'dependency.js') ] 
+      '@virtualpatterns/mablung-dependency': [ `${ResourcePath}/missing/dependency/dependency.js` ] 
     } 
   })
 })

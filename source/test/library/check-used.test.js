@@ -17,7 +17,7 @@ Test('Check(\'used/ava\')', async (test) => {
     'missing': {}, 
     'unused': [],
     'used': { 
-      '@virtualpatterns/mablung-ava': [ Path.join(ResourcePath, 'used', 'ava', 'package.json') ] 
+      '@virtualpatterns/mablung-ava': [ `${ResourcePath}/used/ava/package.json` ] 
     }
   })
 })
@@ -27,7 +27,7 @@ Test('Check(\'used/ava.config.json\')', async (test) => {
     'missing': {}, 
     'unused': [],
     'used': { 
-      '@virtualpatterns/mablung-ava': [ Path.join(ResourcePath, 'used', 'ava.config.json', 'ava.config.json') ] 
+      '@virtualpatterns/mablung-ava': [ `${ResourcePath}/used/ava.config.json/ava.config.json` ] 
     }
   })
 })
@@ -37,7 +37,7 @@ Test('Check(\'used/babel-environment-plugin\')', async (test) => {
     'missing': {}, 
     'unused': [],
     'used': { 
-      '@virtualpatterns/mablung-babel-environment-plugin': [ Path.join(ResourcePath, 'used', 'babel-environment-plugin', 'package.json') ] 
+      '@virtualpatterns/mablung-babel-environment-plugin': [ `${ResourcePath}/used/babel-environment-plugin/package.json` ] 
     }
   })
 })
@@ -47,7 +47,7 @@ Test('Check(\'used/babel-environment-preset\')', async (test) => {
     'missing': {}, 
     'unused': [],
     'used': { 
-      '@virtualpatterns/mablung-babel-environment-preset': [ Path.join(ResourcePath, 'used', 'babel-environment-preset', 'package.json') ] 
+      '@virtualpatterns/mablung-babel-environment-preset': [ `${ResourcePath}/used/babel-environment-preset/package.json` ] 
     }
   })
 })
@@ -58,7 +58,7 @@ Test('Check(\'used/babel-plugin\')', async (test) => {
     'missing': {}, 
     'unused': [],
     'used': { 
-      '@virtualpatterns/mablung-babel-plugin': [ Path.join(ResourcePath, 'used', 'babel-plugin', 'package.json') ] 
+      '@virtualpatterns/mablung-babel-plugin': [ `${ResourcePath}/used/babel-plugin/package.json` ] 
     }
   })
 })
@@ -68,7 +68,7 @@ Test('Check(\'used/babel-preset\')', async (test) => {
     'missing': {}, 
     'unused': [],
     'used': { 
-      '@virtualpatterns/mablung-babel-preset': [ Path.join(ResourcePath, 'used', 'babel-preset', 'package.json') ] 
+      '@virtualpatterns/mablung-babel-preset': [ `${ResourcePath}/used/babel-preset/package.json` ] 
     }
   })
 })
@@ -78,7 +78,7 @@ Test('Check(\'used/babel.config.json-environment-plugin\')', async (test) => {
     'missing': {}, 
     'unused': [],
     'used': { 
-      '@virtualpatterns/mablung-babel-environment-plugin': [ Path.join(ResourcePath, 'used', 'babel.config.json-environment-plugin', 'babel.config.json') ] 
+      '@virtualpatterns/mablung-babel-environment-plugin': [ `${ResourcePath}/used/babel.config.json-environment-plugin/babel.config.json` ] 
     }
   })
 })
@@ -88,7 +88,7 @@ Test('Check(\'used/babel.config.json-environment-preset\')', async (test) => {
     'missing': {}, 
     'unused': [],
     'used': { 
-      '@virtualpatterns/mablung-babel-environment-preset': [ Path.join(ResourcePath, 'used', 'babel.config.json-environment-preset', 'babel.config.json') ] 
+      '@virtualpatterns/mablung-babel-environment-preset': [ `${ResourcePath}/used/babel.config.json-environment-preset/babel.config.json` ] 
     }
   })
 })
@@ -98,7 +98,7 @@ Test('Check(\'used/babel.config.json-plugin\')', async (test) => {
     'missing': {}, 
     'unused': [],
     'used': { 
-      '@virtualpatterns/mablung-babel-plugin': [ Path.join(ResourcePath, 'used', 'babel.config.json-plugin', 'babel.config.json') ] 
+      '@virtualpatterns/mablung-babel-plugin': [ `${ResourcePath}/used/babel.config.json-plugin/babel.config.json` ] 
     }
   })
 })
@@ -108,7 +108,7 @@ Test('Check(\'used/babel.config.json-preset\')', async (test) => {
     'missing': {}, 
     'unused': [],
     'used': { 
-      '@virtualpatterns/mablung-babel-preset': [ Path.join(ResourcePath, 'used', 'babel.config.json-preset', 'babel.config.json') ] 
+      '@virtualpatterns/mablung-babel-preset': [ `${ResourcePath}/used/babel.config.json-preset/babel.config.json` ] 
     }
   })
 })
@@ -118,7 +118,7 @@ Test('Check(\'used/babelrc.json-environment-plugin\')', async (test) => {
     'missing': {}, 
     'unused': [], 
     'used': { 
-      '@virtualpatterns/mablung-babel-environment-plugin': [ Path.join(ResourcePath, 'used', 'babelrc.json-environment-plugin', '.babelrc.json') ] 
+      '@virtualpatterns/mablung-babel-environment-plugin': [ `${ResourcePath}/used/babelrc.json-environment-plugin/.babelrc.json` ] 
     }
   })
 })
@@ -128,7 +128,7 @@ Test('Check(\'used/babelrc.json-environment-preset\')', async (test) => {
     'missing': {}, 
     'unused': [],
     'used': { 
-      '@virtualpatterns/mablung-babel-environment-preset': [ Path.join(ResourcePath, 'used', 'babelrc.json-environment-preset', '.babelrc.json') ] 
+      '@virtualpatterns/mablung-babel-environment-preset': [ `${ResourcePath}/used/babelrc.json-environment-preset/.babelrc.json` ] 
     }
   })
 })
@@ -138,7 +138,7 @@ Test('Check(\'used/babelrc.json-plugin\')', async (test) => {
     'missing': {}, 
     'unused': [],
     'used': { 
-      '@virtualpatterns/mablung-babel-plugin': [ Path.join(ResourcePath, 'used', 'babelrc.json-plugin', '.babelrc.json') ] 
+      '@virtualpatterns/mablung-babel-plugin': [ `${ResourcePath}/used/babelrc.json-plugin/.babelrc.json` ] 
     }
   })
 })
@@ -148,13 +148,13 @@ Test('Check(\'used/babelrc.json-preset\')', async (test) => {
     'missing': {}, 
     'unused': [],
     'used': { 
-      '@virtualpatterns/mablung-babel-preset': [ Path.join(ResourcePath, 'used', 'babelrc.json-preset', '.babelrc.json') ] 
+      '@virtualpatterns/mablung-babel-preset': [ `${ResourcePath}/used/babelrc.json-preset/.babelrc.json` ] 
     }
   })
 })
 
 Test('Check(\'used/browser\')', async (test) => {
-  // the packages 'buffer', 'events', 'util' (maybe more)
+  // the packages buffer, events, util (maybe more)
   // are ignored by depcheck even if returned by the browser.js parser
   test.deepEqual(await Check(`${ResourcePath}/used/browser`), { 
     'missing': {},
@@ -174,7 +174,7 @@ Test('Check(\'used/dependency\')', async (test) => {
     'missing': {}, 
     'unused': [],
     'used': { 
-      '@virtualpatterns/mablung-dependency': [ Path.join(ResourcePath, 'used', 'dependency/dependency.js') ] 
+      '@virtualpatterns/mablung-dependency': [ `${ResourcePath}/used/dependency/dependency.js` ] 
     } 
   })
 })
@@ -186,8 +186,8 @@ Test('Check(\'used/parcel\')', async (test) => {
       'parcel-bundler'
     ],
     'used': { 
-      '@studysync/parcel-plugin-bundle-visualiser': [ Path.join(ResourcePath, 'used', 'parcel', 'package.json') ],
-      'parcel-plugin-asset-copier': [ Path.join(ResourcePath, 'used', 'parcel', 'package.json') ] 
+      '@studysync/parcel-plugin-bundle-visualiser': [ `${ResourcePath}/used/parcel/package.json` ],
+      'parcel-plugin-asset-copier': [ `${ResourcePath}/used/parcel/package.json` ] 
     }
   })
 })

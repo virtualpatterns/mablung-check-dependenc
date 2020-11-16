@@ -1,0 +1,9 @@
+{
+  "babel": {
+    "env": {
+      "environment": {
+        "retainLines": true
+      }
+    }
+  }
+}

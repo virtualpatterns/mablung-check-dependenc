@@ -20,11 +20,3 @@ import { GetDependencyName } from '../../library/get-dependency-name.js'
   })
 
 })
-
-// Test('@virtualpatterns/mablung-dependency', (test) => {
-//   test.is(GetDependencyName(test.title), '@virtualpatterns/mablung-dependency')
-// })
-
-// Test('@virtualpatterns/mablung-dependency/install', (test) => {
-//   test.is(GetDependencyName(test.title), '@virtualpatterns/mablung-dependency')
-// })
