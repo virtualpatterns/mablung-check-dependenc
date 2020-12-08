@@ -23,16 +23,18 @@ Test('Check(\'ignore-match\', { ignoreMatch: [ ... ] })', async (test) => {
 Test('Check(\'ignore-pattern\', { ignorePattern: [ ... ] })', async (test) => {
   test.deepEqual(await Check(`${ResourcePath}/ignore-pattern`, { 'ignorePattern': [ 'ignore-pattern.js' ] }), { 
     'missing': {}, 
-    'unused': [ '@virtualpatterns/mablung-dependency' ],
+    'unused': [
+      '@virtualpatterns/mablung-dependency'
+    ],
     'used': {}
   })
 })
 
-Test('Check(\'error/babelrc.json\') throws FileParseError', async (test) => {
-  await test.throwsAsync(Check(`${ResourcePath}/error/babelrc.json`), { 'instanceOf': FileParseError })
+Test('Check(\'error\') throws FileParseError', async (test) => {
+  await test.throwsAsync(Check(`${ResourcePath}/error`), { 'instanceOf': FileParseError })
 })
 
-Test('Check(\'./distributable/test/library/resource/ignore-match\')', async (test) => {
+Test('Check(\'./release/test/library/resource/ignore-match\')', async (test) => {
   test.is(Process.cwd(), Path.normalize(`${FolderPath}/../../..`))
-  await test.notThrowsAsync(Check('./distributable/test/library/resource/ignore-match'))
+  await test.notThrowsAsync(Check('./release/test/library/resource/ignore-match'))
 })

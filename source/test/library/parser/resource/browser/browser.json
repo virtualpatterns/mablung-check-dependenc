@@ -1,6 +1,0 @@
-{
-  "browser": {
-    "stream": "stream-browserify",
-    "util": "util"
-  }
-}

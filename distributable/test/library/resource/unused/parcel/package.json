@@ -1,6 +1,0 @@
-{
-  "devDependencies": {
-    "@virtualpatterns/parcel-plugin-dependency": "^1.0.0",
-    "parcel-plugin-dependency": "^1.0.0"
-  }
-}

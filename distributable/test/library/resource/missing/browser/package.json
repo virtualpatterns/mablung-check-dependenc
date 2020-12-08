@@ -1,7 +1,0 @@
-{
-  "browser": {
-    "buffer": "buffer",
-    "events": "events",
-    "stream": "stream-browserify"
-  }
-}

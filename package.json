@@ -3,7 +3,7 @@
   "ava": {
     "failFast": true,
     "files": [
-      "distributable/test/**/*.test.*"
+      "release/test/**/*.test.*"
     ],
     "nodeArguments": [
       "--no-warnings",
@@ -15,19 +15,22 @@
     "verbose": true
   },
   "bin": {
-    "check-dependency": "./distributable/command/check-dependency.js"
+    "check-dependency": "./release/command/check-dependency.js"
   },
   "c8": {
     "exclude": [
-      "distributable/test"
+      "release/sandbox",
+      "release/test",
+      "source/sandbox",
+      "source/test"
     ],
     "reporter": [
-      "lcov"
+      "html"
     ]
   },
   "description": "TBD",
   "exports": {
-    ".": "./distributable/index.js",
+    ".": "./release/index.js",
     "./package.json": "./package.json"
   },
   "license": "GPL-3.0+",
@@ -46,20 +49,20 @@
     "upgrade:20": "shx rm -f package-lock.json",
     "upgrade:30": "npm install",
     "upgrade": "run-s --silent upgrade:*",
-    "clean:10": "shx rm -Rf coverage distributable process",
+    "clean:10": "shx rm -Rf coverage release process",
     "clean": "run-s --silent clean:*",
     "lint:10": "eslint --ignore-path .gitignore source",
     "lint": "run-s --silent lint:*",
-    "build:10": "babel source --copy-files --extensions .js --ignore ./source/test/command/resource,./source/test/library/resource --keep-file-extension --out-dir distributable --source-maps",
+    "build:10": "babel source --copy-files --extensions .js --ignore ./source/test/command/resource,./source/test/library/resource --keep-file-extension --out-dir release --source-maps",
     "build": "run-s --silent clean lint build:*",
     "test:10": "c8 ava",
     "test": "run-s --silent build \"test:10 {@}\" --",
     "run:10": "node --no-warnings --unhandled-rejections=strict",
     "run": "run-s --silent build \"run:10 {@}\" --",
-    "pre:push:10": "git add coverage distributable",
+    "pre:push:10": "git add coverage release",
     "pre:push:20": "git commit --message=\"post-test\"",
     "pre:push": "run-s --silent test pre:push:*",
-    "push:10": "./distributable/command/check-dependency.js",
+    "push:10": "./release/command/check-dependency.js",
     "push:20": "npm version prerelease",
     "push:30": "git push origin master",
     "push": "run-s --silent pre:push push:*"

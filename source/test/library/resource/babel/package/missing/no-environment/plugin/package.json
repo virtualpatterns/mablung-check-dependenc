@@ -1,0 +1,12 @@
+{
+  "babel": {
+    "plugins": [
+      "proposal-export-default-from",
+      [
+        "replace-identifier",
+        {}
+      ]
+    ],      
+    "retainLines": true
+  }
+}

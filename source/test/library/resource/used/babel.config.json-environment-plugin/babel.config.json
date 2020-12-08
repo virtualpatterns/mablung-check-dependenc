@@ -1,9 +1,0 @@
-{
-  "env": {
-    "environment": {
-      "plugins": [ 
-        "babel-environment-plugin"
-      ]
-    }
-  }
-}

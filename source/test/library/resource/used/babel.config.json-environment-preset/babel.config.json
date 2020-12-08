@@ -1,9 +1,0 @@
-{
-  "env": {
-    "environment": {
-      "presets": [
-        "babel-environment-preset"
-      ]
-    }
-  }
-}

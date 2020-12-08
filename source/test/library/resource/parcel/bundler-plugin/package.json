@@ -1,0 +1,6 @@
+{
+  "devDependencies": {
+    "@virtualpatterns/parcel-plugin-virtual-pug": "git+https://github.com/virtualpatterns/parcel-plugin-virtual-pug",
+    "parcel-bundler": "^1.12.4"
+  }
+}
