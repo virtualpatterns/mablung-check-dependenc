@@ -1,0 +1,16 @@
+{
+  "babel": {
+    "presets": [
+      "export-default-from",
+      [
+        "env",
+        {}
+      ]
+    ],
+    "retainLines": true
+  },
+  "devDependencies": {
+    "export-default-from": "^1.0.0",
+    "env": "^1.0.0"
+  }
+}

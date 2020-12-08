@@ -1,0 +1,6 @@
+{
+  "devDependencies": {
+    "jstransformer-coffee-script": "^1.0.0",
+    "jstransformer-markdown-it": "^1.1.1"
+  }
+}

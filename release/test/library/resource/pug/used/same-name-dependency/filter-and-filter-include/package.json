@@ -1,0 +1,6 @@
+{
+  "devDependencies": {
+    "coffee-script": "^1.0.0",
+    "markdown-it": "^1.1.1"
+  }
+}

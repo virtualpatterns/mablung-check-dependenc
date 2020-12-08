@@ -1,0 +1,6 @@
+{
+  "require": [
+    "@virtualpatterns/mablung-source-map-support/install"
+  ],
+  "verbose": true
+}

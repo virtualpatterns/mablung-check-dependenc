@@ -1,0 +1,9 @@
+{
+  "browser": {
+    "util": "util"
+  },
+  "devDependencies": {
+    "stream-browserify": "^3.0.0",
+    "util": "^0.12.3"
+  }
+}

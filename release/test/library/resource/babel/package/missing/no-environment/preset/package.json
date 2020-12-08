@@ -1,0 +1,12 @@
+{
+  "babel": {
+    "presets": [
+      "export-default-from",
+      [
+        "env",
+        {}
+      ]
+    ],
+    "retainLines": true
+  }
+}

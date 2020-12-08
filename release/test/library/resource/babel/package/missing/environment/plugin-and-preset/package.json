@@ -1,0 +1,23 @@
+{
+  "babel": {
+    "env": {
+      "environment": {
+        "plugins": [
+          "proposal-export-default-from",
+          [
+            "replace-identifier",
+            {}
+          ]
+        ],      
+        "presets": [
+          "export-default-from",
+          [
+            "env",
+            {}
+          ]
+        ],
+        "retainLines": true
+      }
+    }
+  }
+}

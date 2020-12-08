@@ -1,0 +1,29 @@
+{
+  "babel": {
+    "env": {
+      "environment": {
+        "plugins": [
+          "proposal-export-default-from",
+          [
+            "replace-identifier",
+            {}
+          ]
+        ],      
+        "presets": [
+          "export-default-from",
+          [
+            "env",
+            {}
+          ]
+        ],
+        "retainLines": true
+      }
+    }
+  },
+  "devDependencies": {
+    "proposal-export-default-from": "^1.0.0",
+    "replace-identifier": "^1.0.0",
+    "export-default-from": "^1.0.0",
+    "env": "^1.0.0"
+  }
+}
