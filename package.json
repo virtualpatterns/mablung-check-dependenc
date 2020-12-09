@@ -18,6 +18,7 @@
     "check-dependency": "./release/command/check-dependency.js"
   },
   "c8": {
+    "all": true,
     "exclude": [
       "release/sandbox",
       "release/test",
