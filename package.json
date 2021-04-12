@@ -41,7 +41,7 @@
     "url": "https://github.com/virtualpatterns/mablung-check-dependency"
   },
   "scripts": {
-    "refresh": "rm -Rf node_modules package-lock.json && npm cache clean --force && npm install",
+    "refresh": "rm -Rf node_modules package-lock.json && npm install",
     "upgrade:10": "npm-check-updates --upgrade",
     "upgrade:20": "shx rm -f package-lock.json",
     "upgrade:30": "npm install",
