@@ -12,7 +12,7 @@ const FolderPath = Path.dirname(FilePath)
 // dot files (e.g. .babelrc.json)
 const ResourcePath = Path.normalize(`${FolderPath}/resource`)
 
-Test('check-dependency', async (test) => {
+Test.only('check-dependency', async (test) => {
   let process = new CheckDependencyProcess()
   test.is(await process.whenExit(), 0)
 })
