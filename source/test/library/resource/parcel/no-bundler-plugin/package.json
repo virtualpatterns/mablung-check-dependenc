@@ -1,5 +1,5 @@
 {
   "devDependencies": {
-    "@virtualpatterns/parcel-plugin-virtual-pug": "git+https://github.com/virtualpatterns/parcel-plugin-virtual-pug"  
+    "@virtualpatterns/parcel-plugin-virtual-pug": "virtualpatterns/parcel-plugin-virtual-pug"  
   }
 }
