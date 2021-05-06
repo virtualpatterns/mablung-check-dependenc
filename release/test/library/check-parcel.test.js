@@ -9,7 +9,7 @@ const FolderPath = Path.dirname(FilePath);
 
 const ResourcePath = Path.normalize(`${FolderPath}/resource/parcel`);
 
-Test('Check(\'bundler-no-plugin\', {})', async test => {
+Test('Check(\'bundler-no-plugin\', {})', async (test) => {
   test.deepEqual(await Check(`${ResourcePath}/bundler-no-plugin`, {}), {
     'missing': {},
     'unused': [
@@ -19,7 +19,7 @@ Test('Check(\'bundler-no-plugin\', {})', async test => {
 
 });
 
-Test('Check(\'bundler-plugin\', {})', async test => {
+Test('Check(\'bundler-plugin\', {})', async (test) => {
   test.deepEqual(await Check(`${ResourcePath}/bundler-plugin`, {}), {
     'missing': {},
     'unused': [
@@ -31,7 +31,7 @@ Test('Check(\'bundler-plugin\', {})', async test => {
 
 });
 
-Test('Check(\'no-bundler\', {})', async test => {
+Test('Check(\'no-bundler\', {})', async (test) => {
   test.deepEqual(await Check(`${ResourcePath}/no-bundler`, {}), {
     'missing': {},
     'unused': [],
@@ -39,7 +39,7 @@ Test('Check(\'no-bundler\', {})', async test => {
 
 });
 
-Test('Check(\'no-bundler-plugin\', {})', async test => {
+Test('Check(\'no-bundler-plugin\', {})', async (test) => {
   test.deepEqual(await Check(`${ResourcePath}/no-bundler-plugin`, {}), {
     'missing': {},
     'unused': [
@@ -49,7 +49,7 @@ Test('Check(\'no-bundler-plugin\', {})', async test => {
 
 });
 
-Test('Check(\'no-dependency\', {})', async test => {
+Test('Check(\'no-dependency\', {})', async (test) => {
   test.deepEqual(await Check(`${ResourcePath}/no-dependency`, {}), {
     'missing': {},
     'unused': [],

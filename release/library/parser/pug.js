@@ -25,11 +25,11 @@ export async function Pug(filePath, packageDependency) {
   // console.dir(ast, { 'depth': null })
 
   let node = Query.query(ast, '$..*[?(@.type==\'Filter\' || @.type==\'IncludeFilter\')]');
-  let dependency = node.map(node => GetDependencyName(node.name));
+  let dependency = node.map((node) => GetDependencyName(node.name));
 
   fileDependency = dependency.
-  map(dependency => packageDependency.
-  filter(packageDependency => packageDependency.endsWith(dependency)).
+  map((dependency) => packageDependency.
+  filter((packageDependency) => packageDependency.endsWith(dependency)).
   reduce((dependency, packageDependency) => packageDependency, dependency));
 
   return fileDependency;

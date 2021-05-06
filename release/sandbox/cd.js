@@ -76,7 +76,7 @@ async function main() {
 
     console.log(folderPath);
 
-    Check(folderPath, option, unused => {
+    Check(folderPath, option, (unused) => {
       console.dir(unused.dependencies); // an array containing the unused dependencies
       console.dir(unused.devDependencies); // an array containing the unused devDependencies
       console.dir(unused.missing); // a lookup containing the dependencies missing in `package.json` and where they are used

@@ -13,7 +13,7 @@ const ResourcePath = Path.normalize(`${FolderPath}/../../../source/test/library/
 
 // .babelrc.json
 
-Test('Check(\'babelrc/used/rename-dependency/environment/plugin-and-preset\', {})', async test => {
+Test('Check(\'babelrc/used/rename-dependency/environment/plugin-and-preset\', {})', async (test) => {
   test.deepEqual(await Check(`${ResourcePath}/babelrc/used/rename-dependency/environment/plugin-and-preset`, {}), {
     'missing': {},
     'unused': [],
@@ -28,7 +28,7 @@ Test('Check(\'babelrc/used/rename-dependency/environment/plugin-and-preset\', {}
 
 // babel.config.json
 
-Test('Check(\'babel-config/used/rename-dependency/environment/plugin-and-preset\', {})', async test => {
+Test('Check(\'babel-config/used/rename-dependency/environment/plugin-and-preset\', {})', async (test) => {
   test.deepEqual(await Check(`${ResourcePath}/babel-config/used/rename-dependency/environment/plugin-and-preset`, {}), {
     'missing': {},
     'unused': [],
@@ -43,7 +43,7 @@ Test('Check(\'babel-config/used/rename-dependency/environment/plugin-and-preset\
 
 // package.json
 
-Test('Check(\'package/missing/environment/plugin\', {})', async test => {
+Test('Check(\'package/missing/environment/plugin\', {})', async (test) => {
   test.deepEqual(await Check(`${ResourcePath}/package/missing/environment/plugin`, {}), {
     'missing': {
       'proposal-export-default-from': [`${ResourcePath}/package/missing/environment/plugin/package.json`],
@@ -57,7 +57,7 @@ Test('Check(\'package/missing/environment/plugin\', {})', async test => {
 
 });
 
-Test('Check(\'package/missing/environment/plugin-and-preset\', {})', async test => {
+Test('Check(\'package/missing/environment/plugin-and-preset\', {})', async (test) => {
   test.deepEqual(await Check(`${ResourcePath}/package/missing/environment/plugin-and-preset`, {}), {
     'missing': {
       'proposal-export-default-from': [`${ResourcePath}/package/missing/environment/plugin-and-preset/package.json`],
@@ -75,7 +75,7 @@ Test('Check(\'package/missing/environment/plugin-and-preset\', {})', async test 
 
 });
 
-Test('Check(\'package/missing/environment/preset\', {})', async test => {
+Test('Check(\'package/missing/environment/preset\', {})', async (test) => {
   test.deepEqual(await Check(`${ResourcePath}/package/missing/environment/preset`, {}), {
     'missing': {
       'export-default-from': [`${ResourcePath}/package/missing/environment/preset/package.json`],
@@ -89,7 +89,7 @@ Test('Check(\'package/missing/environment/preset\', {})', async test => {
 
 });
 
-Test('Check(\'package/missing/no-environment/plugin\', {})', async test => {
+Test('Check(\'package/missing/no-environment/plugin\', {})', async (test) => {
   test.deepEqual(await Check(`${ResourcePath}/package/missing/no-environment/plugin`, {}), {
     'missing': {
       'proposal-export-default-from': [`${ResourcePath}/package/missing/no-environment/plugin/package.json`],
@@ -103,7 +103,7 @@ Test('Check(\'package/missing/no-environment/plugin\', {})', async test => {
 
 });
 
-Test('Check(\'package/missing/no-environment/plugin-and-preset\', {})', async test => {
+Test('Check(\'package/missing/no-environment/plugin-and-preset\', {})', async (test) => {
   test.deepEqual(await Check(`${ResourcePath}/package/missing/no-environment/plugin-and-preset`, {}), {
     'missing': {
       'proposal-export-default-from': [`${ResourcePath}/package/missing/no-environment/plugin-and-preset/package.json`],
@@ -121,7 +121,7 @@ Test('Check(\'package/missing/no-environment/plugin-and-preset\', {})', async te
 
 });
 
-Test('Check(\'package/missing/no-environment/preset\', {})', async test => {
+Test('Check(\'package/missing/no-environment/preset\', {})', async (test) => {
   test.deepEqual(await Check(`${ResourcePath}/package/missing/no-environment/preset`, {}), {
     'missing': {
       'export-default-from': [`${ResourcePath}/package/missing/no-environment/preset/package.json`],
@@ -135,7 +135,7 @@ Test('Check(\'package/missing/no-environment/preset\', {})', async test => {
 
 });
 
-Test('Check(\'package/no-babel\', {})', async test => {
+Test('Check(\'package/no-babel\', {})', async (test) => {
   test.deepEqual(await Check(`${ResourcePath}/package/no-babel`, {}), {
     'missing': {},
     'unused': [],
@@ -143,7 +143,7 @@ Test('Check(\'package/no-babel\', {})', async test => {
 
 });
 
-Test('Check(\'package/unused/environment/no-plugin-or-preset/\', {})', async test => {
+Test('Check(\'package/unused/environment/no-plugin-or-preset/\', {})', async (test) => {
   test.deepEqual(await Check(`${ResourcePath}/package/unused/environment/no-plugin-or-preset/`, {}), {
     'missing': {},
     'unused': [
@@ -156,7 +156,7 @@ Test('Check(\'package/unused/environment/no-plugin-or-preset/\', {})', async tes
 
 });
 
-Test('Check(\'package/unused/no-environment/no-plugin-or-preset/\', {})', async test => {
+Test('Check(\'package/unused/no-environment/no-plugin-or-preset/\', {})', async (test) => {
   test.deepEqual(await Check(`${ResourcePath}/package/unused/no-environment/no-plugin-or-preset/`, {}), {
     'missing': {},
     'unused': [
@@ -169,7 +169,7 @@ Test('Check(\'package/unused/no-environment/no-plugin-or-preset/\', {})', async 
 
 });
 
-Test('Check(\'package/used/rename-dependency/environment/plugin\', {})', async test => {
+Test('Check(\'package/used/rename-dependency/environment/plugin\', {})', async (test) => {
   test.deepEqual(await Check(`${ResourcePath}/package/used/rename-dependency/environment/plugin`, {}), {
     'missing': {},
     'unused': [],
@@ -180,7 +180,7 @@ Test('Check(\'package/used/rename-dependency/environment/plugin\', {})', async t
 
 });
 
-Test('Check(\'package/used/rename-dependency/environment/plugin-and-preset\', {})', async test => {
+Test('Check(\'package/used/rename-dependency/environment/plugin-and-preset\', {})', async (test) => {
   test.deepEqual(await Check(`${ResourcePath}/package/used/rename-dependency/environment/plugin-and-preset`, {}), {
     'missing': {},
     'unused': [],
@@ -193,7 +193,7 @@ Test('Check(\'package/used/rename-dependency/environment/plugin-and-preset\', {}
 
 });
 
-Test('Check(\'package/used/rename-dependency/environment/preset\', {})', async test => {
+Test('Check(\'package/used/rename-dependency/environment/preset\', {})', async (test) => {
   test.deepEqual(await Check(`${ResourcePath}/package/used/rename-dependency/environment/preset`, {}), {
     'missing': {},
     'unused': [],
@@ -204,7 +204,7 @@ Test('Check(\'package/used/rename-dependency/environment/preset\', {})', async t
 
 });
 
-Test('Check(\'package/used/rename-dependency/no-environment/plugin\', {})', async test => {
+Test('Check(\'package/used/rename-dependency/no-environment/plugin\', {})', async (test) => {
   test.deepEqual(await Check(`${ResourcePath}/package/used/rename-dependency/no-environment/plugin`, {}), {
     'missing': {},
     'unused': [],
@@ -215,7 +215,7 @@ Test('Check(\'package/used/rename-dependency/no-environment/plugin\', {})', asyn
 
 });
 
-Test('Check(\'package/used/rename-dependency/no-environment/plugin-and-preset\', {})', async test => {
+Test('Check(\'package/used/rename-dependency/no-environment/plugin-and-preset\', {})', async (test) => {
   test.deepEqual(await Check(`${ResourcePath}/package/used/rename-dependency/no-environment/plugin-and-preset`, {}), {
     'missing': {},
     'unused': [],
@@ -228,7 +228,7 @@ Test('Check(\'package/used/rename-dependency/no-environment/plugin-and-preset\',
 
 });
 
-Test('Check(\'package/used/rename-dependency/no-environment/preset\', {})', async test => {
+Test('Check(\'package/used/rename-dependency/no-environment/preset\', {})', async (test) => {
   test.deepEqual(await Check(`${ResourcePath}/package/used/rename-dependency/no-environment/preset`, {}), {
     'missing': {},
     'unused': [],
@@ -239,7 +239,7 @@ Test('Check(\'package/used/rename-dependency/no-environment/preset\', {})', asyn
 
 });
 
-Test('Check(\'package/used/same-name-dependency/environment/plugin\', {})', async test => {
+Test('Check(\'package/used/same-name-dependency/environment/plugin\', {})', async (test) => {
   test.deepEqual(await Check(`${ResourcePath}/package/used/same-name-dependency/environment/plugin`, {}), {
     'missing': {},
     'unused': [],
@@ -250,7 +250,7 @@ Test('Check(\'package/used/same-name-dependency/environment/plugin\', {})', asyn
 
 });
 
-Test('Check(\'package/used/same-name-dependency/environment/plugin-and-preset\', {})', async test => {
+Test('Check(\'package/used/same-name-dependency/environment/plugin-and-preset\', {})', async (test) => {
   test.deepEqual(await Check(`${ResourcePath}/package/used/same-name-dependency/environment/plugin-and-preset`, {}), {
     'missing': {},
     'unused': [],
@@ -263,7 +263,7 @@ Test('Check(\'package/used/same-name-dependency/environment/plugin-and-preset\',
 
 });
 
-Test('Check(\'package/used/same-name-dependency/environment/preset\', {})', async test => {
+Test('Check(\'package/used/same-name-dependency/environment/preset\', {})', async (test) => {
   test.deepEqual(await Check(`${ResourcePath}/package/used/same-name-dependency/environment/preset`, {}), {
     'missing': {},
     'unused': [],
@@ -274,7 +274,7 @@ Test('Check(\'package/used/same-name-dependency/environment/preset\', {})', asyn
 
 });
 
-Test('Check(\'package/used/same-name-dependency/no-environment/plugin\', {})', async test => {
+Test('Check(\'package/used/same-name-dependency/no-environment/plugin\', {})', async (test) => {
   test.deepEqual(await Check(`${ResourcePath}/package/used/same-name-dependency/no-environment/plugin`, {}), {
     'missing': {},
     'unused': [],
@@ -285,7 +285,7 @@ Test('Check(\'package/used/same-name-dependency/no-environment/plugin\', {})', a
 
 });
 
-Test('Check(\'package/used/same-name-dependency/no-environment/plugin-and-preset\', {})', async test => {
+Test('Check(\'package/used/same-name-dependency/no-environment/plugin-and-preset\', {})', async (test) => {
   test.deepEqual(await Check(`${ResourcePath}/package/used/same-name-dependency/no-environment/plugin-and-preset`, {}), {
     'missing': {},
     'unused': [],
@@ -298,7 +298,7 @@ Test('Check(\'package/used/same-name-dependency/no-environment/plugin-and-preset
 
 });
 
-Test('Check(\'package/used/same-name-dependency/no-environment/preset\', {})', async test => {
+Test('Check(\'package/used/same-name-dependency/no-environment/preset\', {})', async (test) => {
   test.deepEqual(await Check(`${ResourcePath}/package/used/same-name-dependency/no-environment/preset`, {}), {
     'missing': {},
     'unused': [],

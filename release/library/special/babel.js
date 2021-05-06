@@ -24,18 +24,18 @@ export async function Babel(filePath, packageDependency) {
 
     let plugin = null;
     plugin = Query.query(configuration, '$..plugins[*]');
-    plugin = plugin.filter(plugin => Is.array(plugin) || plugin !== 'importMeta');
-    plugin = plugin.map(plugin => Is.array(plugin) ? plugin[0] : plugin);
-    plugin = plugin.map(plugin => GetDependencyName(plugin));
+    plugin = plugin.filter((plugin) => Is.array(plugin) || plugin !== 'importMeta');
+    plugin = plugin.map((plugin) => Is.array(plugin) ? plugin[0] : plugin);
+    plugin = plugin.map((plugin) => GetDependencyName(plugin));
 
     let preset = null;
     preset = Query.query(configuration, '$..presets[*]');
-    preset = preset.map(preset => Is.array(preset) ? preset[0] : preset);
-    preset = preset.map(preset => GetDependencyName(preset));
+    preset = preset.map((preset) => Is.array(preset) ? preset[0] : preset);
+    preset = preset.map((preset) => GetDependencyName(preset));
 
     fileDependency = [...plugin, ...preset].
-    map(dependency => packageDependency.
-    filter(packageDependency => packageDependency.endsWith(dependency)).
+    map((dependency) => packageDependency.
+    filter((packageDependency) => packageDependency.endsWith(dependency)).
     reduce((dependency, packageDependency) => packageDependency, dependency));
 
   }

@@ -19,11 +19,11 @@ class CheckDependencyProcess extends ForkedProcess {
 
   whenExit() {
 
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
 
       let onExit = null;
 
-      this.on('exit', onExit = code => {
+      this.on('exit', onExit = (code) => {
 
         this.off('exit', onExit);
         onExit = null;

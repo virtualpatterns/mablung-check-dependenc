@@ -15,7 +15,7 @@ import { GetDependencyName } from '../../library/get-dependency-name.js';
 ['@virtualpatterns/mablung-dependency/install/install', '@virtualpatterns/mablung-dependency']].
 forEach(([input, output]) => {
 
-  Test(`GetDependencyName('${input}') returns '${output}'`, test => {
+  Test(`GetDependencyName('${input}') returns '${output}'`, (test) => {
     test.is(GetDependencyName(input), output);
   });
 

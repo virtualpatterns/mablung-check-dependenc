@@ -22,7 +22,7 @@ export async function Ava(filePath) {
 
     let require = Query.query(configuration, '$.require[*]');
 
-    fileDependency = require.map(dependency => GetDependencyName(dependency));
+    fileDependency = require.map((dependency) => GetDependencyName(dependency));
 
   }
 

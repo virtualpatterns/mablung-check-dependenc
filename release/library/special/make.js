@@ -31,13 +31,13 @@ export async function Make(filePath, packageDependency, packagePath) {
     let fileRecipe = Query.query(fileAst, '$..recipe[*]');
 
     fileDependency = dependencyBinary.
-    filter(binary => {
+    filter((binary) => {
       let binaryPattern = new RegExp(`(^|@|\\s)${binary.binaryName}($|\\s)`, 'm');
       return fileRecipe.
-      filter(recipe => binaryPattern.test(recipe)).
+      filter((recipe) => binaryPattern.test(recipe)).
       length > 0;
     }).
-    map(binary => binary.packageName).
+    map((binary) => binary.packageName).
     filter((dependency, index, fileDependency) => fileDependency.indexOf(dependency) === index);
 
   }

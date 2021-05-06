@@ -9,7 +9,7 @@ const FolderPath = Path.dirname(FilePath);
 
 const ResourcePath = Path.normalize(`${FolderPath}/resource/missing`);
 
-Test('Check(\'dependency\')', async test => {
+Test('Check(\'dependency\')', async (test) => {
   test.deepEqual(await Check(`${ResourcePath}/dependency`), {
     'missing': {
       '@virtualpatterns/mablung-dependency': [`${ResourcePath}/dependency/dependency.js`] },

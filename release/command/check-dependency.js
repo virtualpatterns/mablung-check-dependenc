@@ -24,7 +24,7 @@ option('--no-report-missing', 'Do not report missing dependencies').
 option('--report-unused', 'Report used dependencies', true).
 option('--no-report-unused', 'Do not report used dependencies').
 option('--report-used', 'Report used dependencies', false).
-action(async option => {
+action(async (option) => {
 
   try {
 
@@ -53,7 +53,7 @@ action(async option => {
 
       missingDependency.forEach(([dependency, path]) => {
         console.log(`${dependency} used in ...`);
-        console.log(path.sort().map(path => `  ${Path.relative('', path)}`).join('\n'));
+        console.log(path.sort().map((path) => `  ${Path.relative('', path)}`).join('\n'));
       });
 
       console.log();
@@ -68,7 +68,7 @@ action(async option => {
       console.log('-'.repeat(80));
       console.log('Unused dependencies');
       console.log('-'.repeat(80));
-      console.log(dependency.unused.sort().map(dependency => `${dependency}`).join('\n'));
+      console.log(dependency.unused.sort().map((dependency) => `${dependency}`).join('\n'));
       console.log();
 
       process.exitCode = 1;
@@ -88,7 +88,7 @@ action(async option => {
 
       usedDependency.forEach(([dependency, path]) => {
         console.log(`${dependency} used in ...`);
-        console.log(path.sort().map(path => `  ${Path.relative('', path)}`).join('\n'));
+        console.log(path.sort().map((path) => `  ${Path.relative('', path)}`).join('\n'));
       });
 
       console.log();

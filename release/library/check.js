@@ -57,7 +57,7 @@ export function Check(userPath = Process.cwd(), userOption = {}) {
           'parsers': 'parser',
           'specials': 'special' },
 
-        'each': item => {
+        'each': (item) => {
           if (Is.emptyObject(item.package)) {
             delete item.package;
           }
@@ -68,7 +68,7 @@ export function Check(userPath = Process.cwd(), userOption = {}) {
       let path = Path.resolve(userPath);
       let option = Transform(Merge(defaultOption, userOption), map);
 
-      BaseCheck(path, option, unused => {
+      BaseCheck(path, option, (unused) => {
 
         if (Is.emptyObject(unused.invalidFiles) &&
         Is.emptyObject(unused.invalidDirs)) {

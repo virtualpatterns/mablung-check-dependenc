@@ -11,7 +11,7 @@ const ResourcePath = Path.normalize(`${FolderPath}/resource/ava`);
 
 // ava.config.json
 
-Test('Check(\'ava-config/used\')', async test => {
+Test('Check(\'ava-config/used\')', async (test) => {
   test.deepEqual(await Check(`${ResourcePath}/ava-config/used`), {
     'missing': {},
     'unused': [],
@@ -23,7 +23,7 @@ Test('Check(\'ava-config/used\')', async test => {
 
 // package.json
 
-Test('Check(\'package/missing\')', async test => {
+Test('Check(\'package/missing\')', async (test) => {
   test.deepEqual(await Check(`${ResourcePath}/package/missing`), {
     'missing': {
       '@virtualpatterns/mablung-source-map-support': [`${ResourcePath}/package/missing/package.json`] },
@@ -35,7 +35,7 @@ Test('Check(\'package/missing\')', async test => {
 
 });
 
-Test('Check(\'package/no-ava\')', async test => {
+Test('Check(\'package/no-ava\')', async (test) => {
   test.deepEqual(await Check(`${ResourcePath}/package/no-ava`), {
     'missing': {},
     'unused': [
@@ -45,7 +45,7 @@ Test('Check(\'package/no-ava\')', async test => {
 
 });
 
-Test('Check(\'package/unused\')', async test => {
+Test('Check(\'package/unused\')', async (test) => {
   test.deepEqual(await Check(`${ResourcePath}/package/unused`), {
     'missing': {},
     'unused': [
@@ -55,7 +55,7 @@ Test('Check(\'package/unused\')', async test => {
 
 });
 
-Test('Check(\'package/used\')', async test => {
+Test('Check(\'package/used\')', async (test) => {
   test.deepEqual(await Check(`${ResourcePath}/package/used`), {
     'missing': {},
     'unused': [],

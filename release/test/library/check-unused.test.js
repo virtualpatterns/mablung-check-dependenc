@@ -9,7 +9,7 @@ const FolderPath = Path.dirname(FilePath);
 
 const ResourcePath = Path.normalize(`${FolderPath}/resource/unused`);
 
-Test('Check(\'dependency\')', async test => {
+Test('Check(\'dependency\')', async (test) => {
   test.deepEqual(await Check(`${ResourcePath}/dependency`), {
     'missing': {},
     'unused': ['@virtualpatterns/mablung-dependency'],
@@ -17,7 +17,7 @@ Test('Check(\'dependency\')', async test => {
 
 });
 
-Test('Check(\'development-dependency\')', async test => {
+Test('Check(\'development-dependency\')', async (test) => {
   test.deepEqual(await Check(`${ResourcePath}/development-dependency`), {
     'missing': {},
     'unused': ['@virtualpatterns/mablung-development-dependency'],

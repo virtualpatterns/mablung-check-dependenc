@@ -9,7 +9,7 @@ const FolderPath = Path.dirname(FilePath);
 
 const ResourcePath = Path.normalize(`${FolderPath}/resource/make`);
 
-Test('Check(\'makefile/missing\', {})', async test => {
+Test('Check(\'makefile/missing\', {})', async (test) => {
   test.deepEqual(await Check(`${ResourcePath}/makefile/missing`, {}), {
     'missing': {},
     'unused': [],
@@ -17,7 +17,7 @@ Test('Check(\'makefile/missing\', {})', async test => {
 
 });
 
-Test('Check(\'makefile/unused\', {})', async test => {
+Test('Check(\'makefile/unused\', {})', async (test) => {
   test.deepEqual(await Check(`${ResourcePath}/makefile/unused`, {}), {
     'missing': {},
     'unused': [
@@ -27,7 +27,7 @@ Test('Check(\'makefile/unused\', {})', async test => {
 
 });
 
-Test('Check(\'makefile/used/default\', {})', async test => {
+Test('Check(\'makefile/used/default\', {})', async (test) => {
   test.deepEqual(await Check(`${ResourcePath}/makefile/used/default`, {}), {
     'missing': {},
     'unused': [],
@@ -37,7 +37,7 @@ Test('Check(\'makefile/used/default\', {})', async test => {
 
 });
 
-Test('Check(\'makefile/used/@\', {})', async test => {
+Test('Check(\'makefile/used/@\', {})', async (test) => {
   test.deepEqual(await Check(`${ResourcePath}/makefile/used/@`, {}), {
     'missing': {},
     'unused': [],
@@ -47,7 +47,7 @@ Test('Check(\'makefile/used/@\', {})', async test => {
 
 });
 
-Test('Check(\'makefile/used/space-before\', {})', async test => {
+Test('Check(\'makefile/used/space-before\', {})', async (test) => {
   test.deepEqual(await Check(`${ResourcePath}/makefile/used/space-before`, {}), {
     'missing': {},
     'unused': [],
@@ -57,7 +57,7 @@ Test('Check(\'makefile/used/space-before\', {})', async test => {
 
 });
 
-Test('Check(\'makefile/used/space-after\', {})', async test => {
+Test('Check(\'makefile/used/space-after\', {})', async (test) => {
   test.deepEqual(await Check(`${ResourcePath}/makefile/used/space-after`, {}), {
     'missing': {},
     'unused': [],
@@ -67,7 +67,7 @@ Test('Check(\'makefile/used/space-after\', {})', async test => {
 
 });
 
-Test('Check(\'makefile/used/argument-after\', {})', async test => {
+Test('Check(\'makefile/used/argument-after\', {})', async (test) => {
   test.deepEqual(await Check(`${ResourcePath}/makefile/used/argument-after`, {}), {
     'missing': {},
     'unused': [],
@@ -77,7 +77,7 @@ Test('Check(\'makefile/used/argument-after\', {})', async test => {
 
 });
 
-Test('Check(\'makefile/used/prefix-before\', {})', async test => {
+Test('Check(\'makefile/used/prefix-before\', {})', async (test) => {
   test.deepEqual(await Check(`${ResourcePath}/makefile/used/prefix-before`, {}), {
     'missing': {},
     'unused': [],
@@ -87,7 +87,7 @@ Test('Check(\'makefile/used/prefix-before\', {})', async test => {
 
 });
 
-Test('Check(\'makefile/used/multiple\', {})', async test => {
+Test('Check(\'makefile/used/multiple\', {})', async (test) => {
   test.deepEqual(await Check(`${ResourcePath}/makefile/used/multiple`, {}), {
     'missing': {},
     'unused': [],
@@ -98,7 +98,7 @@ Test('Check(\'makefile/used/multiple\', {})', async test => {
 
 });
 
-Test('Check(\'makefile/used/rule\', {})', async test => {
+Test('Check(\'makefile/used/rule\', {})', async (test) => {
   test.deepEqual(await Check(`${ResourcePath}/makefile/used/rule`, {}), {
     'missing': {},
     'unused': [],

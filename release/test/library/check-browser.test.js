@@ -9,7 +9,7 @@ const FolderPath = Path.dirname(FilePath);
 
 const ResourcePath = Path.normalize(`${FolderPath}/resource/browser`);
 
-Test('Check(\'missing\', {})', async test => {
+Test('Check(\'missing\', {})', async (test) => {
   test.deepEqual(await Check(`${ResourcePath}/missing`, {}), {
     'missing': {
       'stream-browserify': [`${ResourcePath}/missing/package.json`] },
@@ -21,7 +21,7 @@ Test('Check(\'missing\', {})', async test => {
 
 });
 
-Test('Check(\'no-browser\', {})', async test => {
+Test('Check(\'no-browser\', {})', async (test) => {
   test.deepEqual(await Check(`${ResourcePath}/no-browser`, {}), {
     'missing': {},
     'unused': [
@@ -34,7 +34,7 @@ Test('Check(\'no-browser\', {})', async test => {
 
 });
 
-Test('Check(\'unused\', {})', async test => {
+Test('Check(\'unused\', {})', async (test) => {
   test.deepEqual(await Check(`${ResourcePath}/unused`, {}), {
     'missing': {},
     'unused': [
@@ -47,7 +47,7 @@ Test('Check(\'unused\', {})', async test => {
 
 });
 
-Test('Check(\'used\', {})', async test => {
+Test('Check(\'used\', {})', async (test) => {
   test.deepEqual(await Check(`${ResourcePath}/used`, {}), {
     'missing': {},
     'unused': [

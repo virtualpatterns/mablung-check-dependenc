@@ -12,7 +12,7 @@ const Process = process;
 // babel doesn't copy dot files (e.g. .babelrc.json)
 const ResourcePath = Path.normalize(`${FolderPath}/../../../source/test/library/resource`);
 
-Test('Check(\'ignore-match\', { ignoreMatch: [ ... ] })', async test => {
+Test('Check(\'ignore-match\', { ignoreMatch: [ ... ] })', async (test) => {
   test.deepEqual(await Check(`${ResourcePath}/ignore-match`, { 'ignoreMatch': ['@virtualpatterns/mablung-dependency'] }), {
     'missing': {},
     'unused': [],
@@ -20,7 +20,7 @@ Test('Check(\'ignore-match\', { ignoreMatch: [ ... ] })', async test => {
 
 });
 
-Test('Check(\'ignore-pattern\', { ignorePattern: [ ... ] })', async test => {
+Test('Check(\'ignore-pattern\', { ignorePattern: [ ... ] })', async (test) => {
   test.deepEqual(await Check(`${ResourcePath}/ignore-pattern`, { 'ignorePattern': ['ignore-pattern.js'] }), {
     'missing': {},
     'unused': [
@@ -30,11 +30,11 @@ Test('Check(\'ignore-pattern\', { ignorePattern: [ ... ] })', async test => {
 
 });
 
-Test('Check(\'error\') throws FileParseError', async test => {
+Test('Check(\'error\') throws FileParseError', async (test) => {
   await test.throwsAsync(Check(`${ResourcePath}/error`), { 'instanceOf': FileParseError });
 });
 
-Test('Check(\'./release/test/library/resource/ignore-match\')', async test => {
+Test('Check(\'./release/test/library/resource/ignore-match\')', async (test) => {
   test.is(Process.cwd(), Path.normalize(`${FolderPath}/../../..`));
   await test.notThrowsAsync(Check('./release/test/library/resource/ignore-match'));
 });

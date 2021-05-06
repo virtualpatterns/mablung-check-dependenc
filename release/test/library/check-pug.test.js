@@ -11,7 +11,7 @@ const ResourcePath = Path.normalize(`${FolderPath}/resource/pug`);
 
 // missing
 
-Test('Check(\'missing/filter\', {})', async test => {
+Test('Check(\'missing/filter\', {})', async (test) => {
   test.deepEqual(await Check(`${ResourcePath}/missing/filter`, {}), {
     'missing': {
       'markdown-it': [`${ResourcePath}/missing/filter/template.pug`] },
@@ -23,7 +23,7 @@ Test('Check(\'missing/filter\', {})', async test => {
 
 });
 
-Test('Check(\'missing/filter-and-filter-include\', {})', async test => {
+Test('Check(\'missing/filter-and-filter-include\', {})', async (test) => {
   test.deepEqual(await Check(`${ResourcePath}/missing/filter-and-filter-include`, {}), {
     'missing': {
       'coffee-script': [`${ResourcePath}/missing/filter-and-filter-include/template.pug`],
@@ -37,7 +37,7 @@ Test('Check(\'missing/filter-and-filter-include\', {})', async test => {
 
 });
 
-Test('Check(\'missing/filter-include\', {})', async test => {
+Test('Check(\'missing/filter-include\', {})', async (test) => {
   test.deepEqual(await Check(`${ResourcePath}/missing/filter-include`, {}), {
     'missing': {
       'markdown-it': [`${ResourcePath}/missing/filter-include/template.pug`] },
@@ -49,7 +49,7 @@ Test('Check(\'missing/filter-include\', {})', async test => {
 
 });
 
-Test('Check(\'missing/no-filter\', {})', async test => {
+Test('Check(\'missing/no-filter\', {})', async (test) => {
   test.deepEqual(await Check(`${ResourcePath}/missing/no-filter`, {}), {
     'missing': {},
     'unused': [],
@@ -59,7 +59,7 @@ Test('Check(\'missing/no-filter\', {})', async test => {
 
 // unused
 
-Test('Check(\'unused/no-filter\', {})', async test => {
+Test('Check(\'unused/no-filter\', {})', async (test) => {
   test.deepEqual(await Check(`${ResourcePath}/unused/no-filter`, {}), {
     'missing': {},
     'unused': [
@@ -71,7 +71,7 @@ Test('Check(\'unused/no-filter\', {})', async test => {
 
 // used/rename-dependency
 
-Test('Check(\'used/rename-dependency/filter\', {})', async test => {
+Test('Check(\'used/rename-dependency/filter\', {})', async (test) => {
   test.deepEqual(await Check(`${ResourcePath}/used/rename-dependency/filter`, {}), {
     'missing': {},
     'unused': [],
@@ -81,7 +81,7 @@ Test('Check(\'used/rename-dependency/filter\', {})', async test => {
 
 });
 
-Test('Check(\'used/rename-dependency/filter-and-filter-include\', {})', async test => {
+Test('Check(\'used/rename-dependency/filter-and-filter-include\', {})', async (test) => {
   test.deepEqual(await Check(`${ResourcePath}/used/rename-dependency/filter-and-filter-include`, {}), {
     'missing': {},
     'unused': [],
@@ -92,7 +92,7 @@ Test('Check(\'used/rename-dependency/filter-and-filter-include\', {})', async te
 
 });
 
-Test('Check(\'used/rename-dependency/filter-include\', {})', async test => {
+Test('Check(\'used/rename-dependency/filter-include\', {})', async (test) => {
   test.deepEqual(await Check(`${ResourcePath}/used/rename-dependency/filter-include`, {}), {
     'missing': {},
     'unused': [],
@@ -104,7 +104,7 @@ Test('Check(\'used/rename-dependency/filter-include\', {})', async test => {
 
 // used/same-name-dependency
 
-Test('Check(\'used/same-name-dependency/filter\', {})', async test => {
+Test('Check(\'used/same-name-dependency/filter\', {})', async (test) => {
   test.deepEqual(await Check(`${ResourcePath}/used/same-name-dependency/filter`, {}), {
     'missing': {},
     'unused': [],
@@ -114,7 +114,7 @@ Test('Check(\'used/same-name-dependency/filter\', {})', async test => {
 
 });
 
-Test('Check(\'used/same-name-dependency/filter-and-filter-include\', {})', async test => {
+Test('Check(\'used/same-name-dependency/filter-and-filter-include\', {})', async (test) => {
   test.deepEqual(await Check(`${ResourcePath}/used/same-name-dependency/filter-and-filter-include`, {}), {
     'missing': {},
     'unused': [],
@@ -125,7 +125,7 @@ Test('Check(\'used/same-name-dependency/filter-and-filter-include\', {})', async
 
 });
 
-Test('Check(\'used/same-name-dependency/filter-include\', {})', async test => {
+Test('Check(\'used/same-name-dependency/filter-include\', {})', async (test) => {
   test.deepEqual(await Check(`${ResourcePath}/used/same-name-dependency/filter-include`, {}), {
     'missing': {},
     'unused': [],
