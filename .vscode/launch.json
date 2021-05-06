@@ -20,16 +20,19 @@
       "type": "node",
       "request": "launch",
       "name": "Test ...",
-      "preLaunchTask": "build",
-      "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/ava",
-      "runtimeArgs": [
-        "--serial",
-        "distributable/test/library/check-missing.test.js"
-      ],
+      "internalConsoleOptions": "openOnSessionStart",
       "outputCapture": "std",
+      "port": 9229,
+      "preLaunchTask": "build",
+      "runtimeArgs": [
+        "debug",
+        "--break",
+        "release/test/library/check-make.test.js"
+      ],
+      "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/ava",
       "skipFiles": [
         "<node_internals>/**/*.js"
       ]
-    } 
+    }
   ]
 }

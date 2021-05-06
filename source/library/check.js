@@ -7,6 +7,7 @@ import Path from 'path'
 import { Ava } from './special/ava.js'
 import { Babel } from './special/babel.js'
 import { Browser } from './parser/browser.js'
+import { Make } from './special/make.js'
 import { Parcel } from './parser/parcel.js'
 import { Pug } from './parser/pug.js'
 
@@ -38,7 +39,8 @@ export function Check(userPath = Process.cwd(), userOption = {}) {
           BaseCheck.special.bin,
           BaseCheck.special.eslint,
           Ava,
-          Babel
+          Babel,
+          Make
         ]
       }
   
