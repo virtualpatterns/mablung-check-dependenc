@@ -11,4 +11,5 @@ class FileParseError extends ParseError {
 
 
 export { FileParseError };
+
 //# sourceMappingURL=file-parse-error.js.map

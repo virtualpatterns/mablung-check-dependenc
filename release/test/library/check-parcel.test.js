@@ -56,4 +56,5 @@ Test('Check(\'no-dependency\', {})', async (test) => {
     'used': {} });
 
 });
+
 //# sourceMappingURL=check-parcel.test.js.map

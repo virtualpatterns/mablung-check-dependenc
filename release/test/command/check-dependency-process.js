@@ -39,4 +39,5 @@ class CheckDependencyProcess extends ForkedProcess {
 
 
 export { CheckDependencyProcess };
+
 //# sourceMappingURL=check-dependency-process.js.map

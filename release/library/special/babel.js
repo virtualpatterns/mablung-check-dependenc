@@ -44,4 +44,5 @@ export async function Babel(filePath, packageDependency) {
   return fileDependency;
 
 }
+
 //# sourceMappingURL=babel.js.map

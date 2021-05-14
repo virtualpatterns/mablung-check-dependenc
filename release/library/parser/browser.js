@@ -17,4 +17,5 @@ export async function Browser(filePath) {
   return fileDependency;
 
 }
+
 //# sourceMappingURL=browser.js.map

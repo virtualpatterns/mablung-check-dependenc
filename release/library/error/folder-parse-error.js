@@ -11,4 +11,5 @@ class FolderParseError extends ParseError {
 
 
 export { FolderParseError };
+
 //# sourceMappingURL=folder-parse-error.js.map

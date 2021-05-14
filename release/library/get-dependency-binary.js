@@ -35,4 +35,5 @@ export async function GetDependencyBinary(packageDependency, dependencyPath = `$
   sort((leftBinary, rightBinary) => Is.not.equal(leftBinary.packageName, rightBinary.packageName) ? leftBinary.packageName.localeCompare(rightBinary.packageName) : leftBinary.binaryName.localeCompare(rightBinary.binaryName));
 
 }
+
 //# sourceMappingURL=get-dependency-binary.js.map

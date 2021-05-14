@@ -1,1 +1,3 @@
-import '@virtualpatterns/mablung-dependency'
+import '@virtualpatterns/mablung-dependency';
+
+//# sourceMappingURL=ignore-pattern.js.map

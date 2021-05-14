@@ -20,4 +20,5 @@ forEach(([input, output]) => {
   });
 
 });
+
 //# sourceMappingURL=get-dependency-name.test.js.map

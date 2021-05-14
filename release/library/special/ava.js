@@ -29,4 +29,5 @@ export async function Ava(filePath) {
   return fileDependency;
 
 }
+
 //# sourceMappingURL=ava.js.map

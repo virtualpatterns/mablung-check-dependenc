@@ -15,4 +15,5 @@ async function main() {
 }
 
 main();
+
 //# sourceMappingURL=puggy.js.map

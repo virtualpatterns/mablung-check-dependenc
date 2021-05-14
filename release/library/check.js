@@ -112,4 +112,5 @@ export function Check(userPath = Process.cwd(), userOption = {}) {
   });
 
 }
+
 //# sourceMappingURL=check.js.map

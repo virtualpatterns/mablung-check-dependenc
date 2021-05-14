@@ -66,4 +66,5 @@ Test('check-dependency --project-path error', async (test) => {
   let process = new CheckDependencyProcess({ '--project-path': `${ResourcePath}/error` });
   test.is(await process.whenExit(), 2);
 });
+
 //# sourceMappingURL=check-dependency.test.js.map

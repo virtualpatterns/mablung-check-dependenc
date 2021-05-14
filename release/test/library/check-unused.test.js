@@ -24,4 +24,5 @@ Test('Check(\'development-dependency\')', async (test) => {
     'used': {} });
 
 });
+
 //# sourceMappingURL=check-unused.test.js.map

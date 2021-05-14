@@ -38,4 +38,5 @@ Test('Check(\'./release/test/library/resource/ignore-match\')', async (test) => 
   test.is(Process.cwd(), Path.normalize(`${FolderPath}/../../..`));
   await test.notThrowsAsync(Check('./release/test/library/resource/ignore-match'));
 });
+
 //# sourceMappingURL=check.test.js.map

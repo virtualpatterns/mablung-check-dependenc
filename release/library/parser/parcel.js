@@ -13,4 +13,5 @@ export async function Parcel(filePath, packageDependency) {
   return fileDependency;
 
 }
+
 //# sourceMappingURL=parcel.js.map

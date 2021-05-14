@@ -1,1 +1,1 @@
-{"version":3,"sources":["../../source/sandbox/index.js"],"names":[],"mappings":"AAAA;AACA","sourcesContent":["// import gyhj from 'sderf'\n// export default from './child.js'"],"file":"index.js"}
+{"version":3,"sources":["../../source/sandbox/index.js"],"names":[],"mappings":"AAAA;AACA","file":"index.js","sourcesContent":["// import gyhj from 'sderf'\n// export default from './child.js'"]}

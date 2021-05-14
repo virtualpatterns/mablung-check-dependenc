@@ -19,4 +19,5 @@ export function GetDependencyName(dependency) {
 
 
 }
+
 //# sourceMappingURL=get-dependency-name.js.map

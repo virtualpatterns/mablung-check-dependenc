@@ -308,4 +308,5 @@ Test('Check(\'package/used/same-name-dependency/no-environment/preset\', {})', a
 
 
 });
+
 //# sourceMappingURL=check-babel.test.js.map

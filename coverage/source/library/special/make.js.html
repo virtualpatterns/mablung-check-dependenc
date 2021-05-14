@@ -30,9 +30,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">90% </span>
+                <span class="strong">77.78% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>9/10</span>
+                <span class='fraction'>7/9</span>
             </div>
         
             
@@ -115,41 +115,41 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">209x</span>
-<span class="cline-any cline-yes">209x</span>
-<span class="cline-any cline-yes">209x</span>
-<span class="cline-any cline-yes">209x</span>
-<span class="cline-any cline-yes">209x</span>
-<span class="cline-any cline-yes">209x</span>
-<span class="cline-any cline-yes">209x</span>
-<span class="cline-any cline-yes">209x</span>
-<span class="cline-any cline-yes">209x</span>
-<span class="cline-any cline-yes">209x</span>
-<span class="cline-any cline-yes">209x</span>
-<span class="cline-any cline-yes">209x</span>
-<span class="cline-any cline-yes">209x</span>
-<span class="cline-any cline-yes">209x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">209x</span>
-<span class="cline-any cline-yes">209x</span>
-<span class="cline-any cline-yes">209x</span>
-<span class="cline-any cline-yes">209x</span></td><td class="text"><pre class="prettyprint lang-js">import FileSystem from 'fs-extra'
+<span class="cline-any cline-yes">101x</span>
+<span class="cline-any cline-yes">101x</span>
+<span class="cline-any cline-yes">101x</span>
+<span class="cline-any cline-yes">101x</span>
+<span class="cline-any cline-yes">101x</span>
+<span class="cline-any cline-yes">101x</span>
+<span class="cline-any cline-yes">101x</span>
+<span class="cline-any cline-yes">101x</span>
+<span class="cline-any cline-yes">101x</span>
+<span class="cline-any cline-yes">101x</span>
+<span class="cline-any cline-yes">101x</span>
+<span class="cline-any cline-yes">101x</span>
+<span class="cline-any cline-yes">101x</span>
+<span class="cline-any cline-yes">101x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">15x</span>
+<span class="cline-any cline-yes">15x</span>
+<span class="cline-any cline-yes">15x</span>
+<span class="cline-any cline-yes">15x</span>
+<span class="cline-any cline-yes">15x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">101x</span>
+<span class="cline-any cline-yes">101x</span>
+<span class="cline-any cline-yes">101x</span>
+<span class="cline-any cline-yes">101x</span></td><td class="text"><pre class="prettyprint lang-js">import FileSystem from 'fs-extra'
 // import Is from '@pwn/is'
 import Match from 'minimatch'
 import Parse from '@kba/makefile-parser'
@@ -176,14 +176,14 @@ export async function Make(filePath, packageDependency, packagePath) {
 &nbsp;
   if (filePattern.reduce((isMatch, pattern) =&gt; isMatch<span class="branch-0 cbranch-no" title="branch not covered" > ? isMatch : M</span>atch(fileName, pattern), false)) {
 &nbsp;
-    let dependencyBinary = await GetDependencyBinary(packageDependency, await FileSystem.pathExists(`${packagePath}/node_modules`) ? `${packagePath}/node_modules` : packagePath)
+    let dependencyBinary = await GetDependencyBinary(packageDependency, <span class="branch-0 cbranch-no" title="branch not covered" >await FileSystem.pathExists(`${packagePath}/node_modules`) ? `${packagePath}/node_modules` : packagePath)</span>
 &nbsp;
     let { ast: fileAst } = Parse(await FileSystem.readFile(filePath, { 'encoding': 'utf-8' }))
     let fileRecipe = Query.query(fileAst, '$..recipe[*]')
     
     fileDependency = dependencyBinary
       .filter((binary) =&gt; {
-        let binaryPattern = new RegExp(`(^|@|\\s)${binary.binaryName}($|\\s)`, 'm')
+        let binaryPattern = new RegExp(`(^|\\+|-|@|\\s)${binary.binaryName}($|\\s)`, 'm')
         return fileRecipe
           .filter((recipe) =&gt; binaryPattern.test(recipe))
           .length &gt; 0
@@ -202,7 +202,7 @@ export async function Make(filePath, packageDependency, packagePath) {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Thu May 06 2021 00:06:24 GMT-0400 (Eastern Daylight Time)
+                at Thu May 13 2021 21:41:45 GMT-0400 (Eastern Daylight Time)
             </div>
         </div>
         <script src="../../../prettify.js"></script>

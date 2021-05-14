@@ -10,4 +10,5 @@ class ParseError extends CheckError {
 
 
 export { ParseError };
+
 //# sourceMappingURL=parse-error.js.map

@@ -111,4 +111,5 @@ action(async (option) => {
 });
 
 Command.parse(Process.argv);
+
 //# sourceMappingURL=check-dependency.js.map

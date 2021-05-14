@@ -7,4 +7,5 @@ class CheckError extends Error {
 
 
 export { CheckError };
+
 //# sourceMappingURL=check-error.js.map
