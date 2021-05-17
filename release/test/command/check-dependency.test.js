@@ -17,7 +17,7 @@ Test.skip('check-dependency', async (test) => {
   test.is(await process.whenExit(), 0);
 });
 
-Test('check-dependency --help', async (test) => {
+Test.only('check-dependency --help', async (test) => {
   let process = new CheckDependencyProcess({ '--help': true });
   test.is(await process.whenExit(), 0);
 });
