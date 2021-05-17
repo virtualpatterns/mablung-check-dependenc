@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">97.3% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>36/37</span>
+                <span class='fraction'>0/37</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">88.89% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>8/9</span>
+                <span class='fraction'>0/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/1</span>
+                <span class='fraction'>0/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">97.3% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>36/37</span>
+                <span class='fraction'>0/37</span>
             </div>
         
             
@@ -55,7 +55,7 @@
             Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
         </p>
     </div>
-    <div class='status-line high'></div>
+    <div class='status-line low'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -94,80 +94,80 @@
 <a name='L35'></a><a href='#L35'>35</a>
 <a name='L36'></a><a href='#L36'>36</a>
 <a name='L37'></a><a href='#L37'>37</a>
-<a name='L38'></a><a href='#L38'>38</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">1062x</span>
-<span class="cline-any cline-yes">1062x</span>
-<span class="cline-any cline-yes">1062x</span>
-<span class="cline-any cline-yes">1062x</span>
-<span class="cline-any cline-yes">65x</span>
-<span class="cline-any cline-yes">65x</span>
+<a name='L38'></a><a href='#L38'>38</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">65x</span>
-<span class="cline-any cline-yes">65x</span>
-<span class="cline-any cline-yes">65x</span>
-<span class="cline-any cline-yes">74x</span>
-<span class="cline-any cline-yes">74x</span>
-<span class="cline-any cline-yes">65x</span>
-<span class="cline-any cline-yes">65x</span>
-<span class="cline-any cline-yes">65x</span>
-<span class="cline-any cline-yes">65x</span>
-<span class="cline-any cline-yes">1062x</span>
-<span class="cline-any cline-yes">1062x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import FileSystem from 'fs-extra'
-import Find from 'find'
-import Is from '@pwn/is'
-import JSON5 from 'json5'
-&nbsp;
-const Process = process
-&nbsp;
-export async function GetDependencyBinary(packageDependency, dependencyPath = `${Process.cwd()}/node_modules`) {
-&nbsp;
-  let dependencyBinary = []
-  let packagePath = Find.fileSync(/package\.json$/, dependencyPath)
-&nbsp;
-  for (let _packagePath of packagePath) {
-&nbsp;
-    let { name: packageName, bin: packageBinary } = JSON5.parse(await FileSystem.readFile(_packagePath, { 'encoding': 'utf-8' }))
-&nbsp;
-    if (Is.not.undefined(packageBinary)) {
-&nbsp;
-      if (Is.string(packageBinary)) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ><span class="branch-0 cbranch-no" title="branch not covered" >import FileSystem from 'fs-extra'</span></span></span>
+<span class="cstat-no" title="statement not covered" >import Find from 'find'</span>
+<span class="cstat-no" title="statement not covered" >import Is from '@pwn/is'</span>
+<span class="cstat-no" title="statement not covered" >import JSON5 from 'json5'</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >const Process = process</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >export async function GetDependencyBinary(packageDependency, dependencyPath = `${Process.cwd()}/node_modules`) {</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >  let dependencyBinary = []</span>
+<span class="cstat-no" title="statement not covered" >  let packagePath = Find.fileSync(/package\.json$/, dependencyPath)</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >  for (let _packagePath of packagePath) {</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >    let { name: packageName, bin: packageBinary } = JSON5.parse(await FileSystem.readFile(_packagePath, { 'encoding': 'utf-8' }))</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >    if (Is.not.undefined(packageBinary)) {</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >      if (Is.string(packageBinary)) {</span>
 <span class="cstat-no" title="statement not covered" >        dependencyBinary.push({ 'packageName': packageName, 'binaryName': packageName })</span>
-      } else {
-&nbsp;
-        for (let property in packageBinary) {
-          dependencyBinary.push({ 'packageName': packageName, 'binaryName': property })
-        }
-&nbsp;
-      }
-&nbsp;
-    }
-&nbsp;
-  }
-&nbsp;
-  return dependencyBinary
-    .filter((binary) =&gt; packageDependency.includes(binary.packageName))
-    .sort((leftBinary, rightBinary) =&gt; Is.not.equal(leftBinary.packageName, rightBinary.packageName) ? leftBinary.packageName.localeCompare(rightBinary.packageName) : leftBinary.binaryName.localeCompare(rightBinary.binaryName))
-&nbsp;
-}
+<span class="cstat-no" title="statement not covered" >      } else {</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >        for (let property in packageBinary) {</span>
+<span class="cstat-no" title="statement not covered" >          dependencyBinary.push({ 'packageName': packageName, 'binaryName': property })</span>
+<span class="cstat-no" title="statement not covered" >        }</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >      }</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >    }</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >  }</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >  return dependencyBinary</span>
+<span class="cstat-no" title="statement not covered" >    .filter((binary) =&gt; packageDependency.includes(binary.packageName))</span>
+<span class="cstat-no" title="statement not covered" >    .sort((leftBinary, rightBinary) =&gt; Is.not.equal(leftBinary.packageName, rightBinary.packageName) ? leftBinary.packageName.localeCompare(rightBinary.packageName) : leftBinary.binaryName.localeCompare(rightBinary.binaryName))</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >}</span>
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -175,7 +175,7 @@ export async function GetDependencyBinary(packageDependency, dependencyPath = `$
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Sat May 15 2021 18:30:04 GMT-0400 (Eastern Daylight Time)
+                at Sun May 16 2021 20:08:18 GMT-0400 (Eastern Daylight Time)
             </div>
         </div>
         <script src="../../prettify.js"></script>

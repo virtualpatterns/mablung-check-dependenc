@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>19/19</span>
+                <span class='fraction'>0/19</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>3/3</span>
+                <span class='fraction'>0/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/1</span>
+                <span class='fraction'>0/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>19/19</span>
+                <span class='fraction'>0/19</span>
             </div>
         
             
@@ -55,7 +55,7 @@
             Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
         </p>
     </div>
-    <div class='status-line high'></div>
+    <div class='status-line low'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -76,44 +76,44 @@
 <a name='L17'></a><a href='#L17'>17</a>
 <a name='L18'></a><a href='#L18'>18</a>
 <a name='L19'></a><a href='#L19'>19</a>
-<a name='L20'></a><a href='#L20'>20</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">67x</span>
-<span class="cline-any cline-yes">67x</span>
-<span class="cline-any cline-yes">67x</span>
-<span class="cline-any cline-yes">67x</span>
-<span class="cline-any cline-yes">67x</span>
-<span class="cline-any cline-yes">67x</span>
-<span class="cline-any cline-yes">67x</span>
-<span class="cline-any cline-yes">67x</span>
-<span class="cline-any cline-yes">67x</span>
-<span class="cline-any cline-yes">67x</span>
-<span class="cline-any cline-yes">67x</span>
-<span class="cline-any cline-yes">67x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import FileSystem from 'fs-extra'
-import JSON5 from 'json5'
-// import Path from 'path'
-&nbsp;
-import { GetDependencyName } from '../get-dependency-name.js'
-&nbsp;
-export async function Browser(filePath) {
-  // console.log(`Browser('${Path.relative('', filePath)}') { ... }`)
-&nbsp;
-  let configuration = null
-  configuration = JSON5.parse(await FileSystem.readFile(filePath, { 'encoding': 'utf-8' }))
-  configuration = configuration.browser || {}
-&nbsp;
-  let fileDependency = Object.entries(configuration)
-    .map(([, value]) =&gt; GetDependencyName(value))
-&nbsp;
-  return fileDependency
-&nbsp;
-}
+<a name='L20'></a><a href='#L20'>20</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" ><span class="branch-0 cbranch-no" title="branch not covered" >import FileSystem from 'fs-extra'</span></span></span>
+<span class="cstat-no" title="statement not covered" >import JSON5 from 'json5'</span>
+<span class="cstat-no" title="statement not covered" >// import Path from 'path'</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >import { GetDependencyName } from '../get-dependency-name.js'</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >export async function Browser(filePath) {</span>
+<span class="cstat-no" title="statement not covered" >  // console.log(`Browser('${Path.relative('', filePath)}') { ... }`)</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >  let configuration = null</span>
+<span class="cstat-no" title="statement not covered" >  configuration = JSON5.parse(await FileSystem.readFile(filePath, { 'encoding': 'utf-8' }))</span>
+<span class="cstat-no" title="statement not covered" >  configuration = configuration.browser || {}</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >  let fileDependency = Object.entries(configuration)</span>
+<span class="cstat-no" title="statement not covered" >    .map(([, value]) =&gt; GetDependencyName(value))</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >  return fileDependency</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >}</span>
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -121,7 +121,7 @@ export async function Browser(filePath) {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Sat May 15 2021 18:30:04 GMT-0400 (Eastern Daylight Time)
+                at Sun May 16 2021 20:08:18 GMT-0400 (Eastern Daylight Time)
             </div>
         </div>
         <script src="../../../prettify.js"></script>

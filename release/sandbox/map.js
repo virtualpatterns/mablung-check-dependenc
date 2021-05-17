@@ -1,4 +1,4 @@
-import Transform from 'node-json-transform';
+import Transform from 'node-json-transform'
 
 async function main() {
 
@@ -6,28 +6,28 @@ async function main() {
 
     let source = {
       'ignorePattern': [
-      'distributable'],
-
+        'distributable'
+      ],
       'parser': {
         '*.js': 'es6',
-        '*.cjs': 'es6' },
-
+        '*.cjs': 'es6'
+      },
       'special': [
-      'bin',
-      'eslint'],
-
+        'bin',
+        'eslint'
+      ],
       'package': {
         // may specify dependencies instead of parsing package.json
         'dependency': {
-          'lodash': '^4.17.15' },
-
+          'lodash': '^4.17.15'
+        },
         'devDependency': {
-          'eslint': '^6.6.0' },
-
+          'eslint': '^6.6.0'
+        },
         'peerDependency': {},
-        'optionalDependency': {} } };
-
-
+        'optionalDependency': {}
+      }
+    }
 
     let map = {
       'item': {
@@ -37,22 +37,20 @@ async function main() {
           'dependencies': 'package.dependency',
           'devDependencies': 'package.devDependency',
           'peerDependencies': 'package.peerDependency',
-          'optionalDependencies': 'package.optionalDependency' } } };
+          'optionalDependencies': 'package.optionalDependency'
+        }
+      }
+    }
 
+    let target = await Transform.transformAsync(source, map)
 
-
-
-    let target = await Transform.transformAsync(source, map);
-
-    console.dir(source);
-    console.dir(target);
+    console.dir(source)
+    console.dir(target)
 
   } catch (error) {
-    console.error(error);
+    console.error(error)
   }
 
 }
 
-main();
-
-//# sourceMappingURL=map.js.map
+main()
