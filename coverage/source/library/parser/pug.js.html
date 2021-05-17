@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">29.73% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>37/37</span>
+                <span class='fraction'>11/37</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>5/5</span>
+                <span class='fraction'>0/0</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/1</span>
+                <span class='fraction'>0/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">29.73% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>37/37</span>
+                <span class='fraction'>11/37</span>
             </div>
         
             
@@ -55,7 +55,7 @@
             Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
         </p>
     </div>
-    <div class='status-line high'></div>
+    <div class='status-line low'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -104,32 +104,32 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">12x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span>
-<span class="cline-any cline-yes">11x</span></td><td class="text"><pre class="prettyprint lang-js">import FileSystem from 'fs-extra'
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import FileSystem from 'fs-extra'
 // import Path from 'path'
 import Query from 'jsonpath'
 &nbsp;
@@ -139,40 +139,40 @@ import Parse from 'pug-parser'
 &nbsp;
 import { GetDependencyName } from '../get-dependency-name.js'
 &nbsp;
-export async function Pug(filePath, packageDependency) {
-  // console.log(`Pug('${Path.relative('', filePath)}', packageDependency) { ... }`)
-  // console.dir(packageDependency)
-&nbsp;
-  let fileDependency = []
-&nbsp;
-  let content = await FileSystem.readFile(filePath, { 'encoding': 'utf-8' })
-  let token = null
-  let ast = null
-&nbsp;
-  token = Lex(content, { 'filename': filePath })
-  ast = Parse(token, { 'filename': filePath })
-  ast = Load(ast, { 'lex': Lex, 'parse': Parse })
-&nbsp;
-  // console.dir(ast, { 'depth': null })
-&nbsp;
-  let node = Query.query(ast, '$..*[?(@.type==\'Filter\' || @.type==\'IncludeFilter\')]')
-  let dependency = node.map((node) =&gt; GetDependencyName(node.name))
-  
-  fileDependency = dependency
-    .map((dependency) =&gt; packageDependency
-      .filter((packageDependency) =&gt; packageDependency.endsWith(dependency))
-      .reduce((dependency, packageDependency) =&gt; packageDependency, dependency))
-&nbsp;
-  return fileDependency
-&nbsp;
-}</pre></td></tr></table></pre>
+export <span class="fstat-no" title="function not covered" >async function Pug(filePath, packageDependency) {</span>
+<span class="cstat-no" title="statement not covered" >  // console.log(`Pug('${Path.relative('', filePath)}', packageDependency) { ... }`)</span>
+<span class="cstat-no" title="statement not covered" >  // console.dir(packageDependency)</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >  let fileDependency = []</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >  let content = await FileSystem.readFile(filePath, { 'encoding': 'utf-8' })</span>
+<span class="cstat-no" title="statement not covered" >  let token = null</span>
+<span class="cstat-no" title="statement not covered" >  let ast = null</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >  token = Lex(content, { 'filename': filePath })</span>
+<span class="cstat-no" title="statement not covered" >  ast = Parse(token, { 'filename': filePath })</span>
+<span class="cstat-no" title="statement not covered" >  ast = Load(ast, { 'lex': Lex, 'parse': Parse })</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >  // console.dir(ast, { 'depth': null })</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >  let node = Query.query(ast, '$..*[?(@.type==\'Filter\' || @.type==\'IncludeFilter\')]')</span>
+<span class="cstat-no" title="statement not covered" >  let dependency = node.map((node) =&gt; GetDependencyName(node.name))</span>
+<span class="cstat-no" title="statement not covered" >  </span>
+<span class="cstat-no" title="statement not covered" >  fileDependency = dependency</span>
+<span class="cstat-no" title="statement not covered" >    .map((dependency) =&gt; packageDependency</span>
+<span class="cstat-no" title="statement not covered" >      .filter((packageDependency) =&gt; packageDependency.endsWith(dependency))</span>
+<span class="cstat-no" title="statement not covered" >      .reduce((dependency, packageDependency) =&gt; packageDependency, dependency))</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >  return fileDependency</span>
+<span class="cstat-no" title="statement not covered" ></span>
+<span class="cstat-no" title="statement not covered" >}</span></pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Sun May 16 2021 20:48:49 GMT-0400 (Eastern Daylight Time)
+                at Sun May 16 2021 21:42:00 GMT-0400 (Eastern Daylight Time)
             </div>
         </div>
         <script src="../../../prettify.js"></script>
