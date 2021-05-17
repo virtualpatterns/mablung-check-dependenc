@@ -1,7 +1,7 @@
 
-const dotPattern = /^.{1,2}\//
-const namePattern = /^([^@].*?)\/.*/
-const scopePattern = /^(@.*?\/.*?)\/.*/
+const dotPattern = /^.{1,2}\//;
+const namePattern = /^([^@].*?)\/.*/;
+const scopePattern = /^(@.*?\/.*?)\/.*/;
 
 export function GetDependencyName(dependency) {
 
@@ -9,13 +9,15 @@ export function GetDependencyName(dependency) {
 
   switch (true) {
     case dotPattern.test(dependency):
-      return dependency
+      return dependency;
     case namePattern.test(dependency):
-      return dependency.replace(namePattern, '$1')
+      return dependency.replace(namePattern, '$1');
     case scopePattern.test(dependency):
-      return dependency.replace(scopePattern, '$1')
+      return dependency.replace(scopePattern, '$1');
     default:
-      return dependency
-  }
-  
+      return dependency;}
+
+
 }
+
+//# sourceMappingURL=get-dependency-name.js.map
