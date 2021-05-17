@@ -7,12 +7,12 @@ import { CheckDependencyProcess } from './check-dependency-process.js'
 const FilePath = URL.fileURLToPath(import.meta.url)
 const FolderPath = Path.dirname(FilePath)
 
-// the resources in distributable are used because 
+// the resources in release are used because 
 // and these tests don't rely on babel to copy 
 // dot files (e.g. .babelrc.json)
 const ResourcePath = Path.normalize(`${FolderPath}/resource`)
 
-Test.only('check-dependency', async (test) => {
+Test('check-dependency', async (test) => {
   let process = new CheckDependencyProcess()
   test.is(await process.whenExit(), 0)
 })

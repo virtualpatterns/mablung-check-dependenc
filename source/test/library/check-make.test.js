@@ -37,6 +37,16 @@ Test('Check(\'makefile/used/default\', {})', async (test) => {
   })
 })
 
+Test.only('Check(\'makefile/used/-\', {})', async (test) => {
+  test.deepEqual(await Check(`${ResourcePath}/makefile/used/-`, {}), {
+    'missing': {},
+    'unused': [],
+    'used': {
+      'shx': [`${ResourcePath}/makefile/used/-/makefile`]
+    }
+  })
+})
+
 Test('Check(\'makefile/used/@\', {})', async (test) => {
   test.deepEqual(await Check(`${ResourcePath}/makefile/used/@`, {}), {
     'missing': {},

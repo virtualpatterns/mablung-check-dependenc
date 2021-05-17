@@ -1,6 +1,10 @@
 {
   "ignoreMatch": [
+    "@babel/cli",
     "coffee-script",
     "markdown-it"
+  ],
+  "ignorePattern": [
+    "release"
   ]
 }

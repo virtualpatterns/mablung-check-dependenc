@@ -32,7 +32,7 @@ export async function Make(filePath, packageDependency, packagePath) {
     
     fileDependency = dependencyBinary
       .filter((binary) => {
-        let binaryPattern = new RegExp(`(^|@|\\s)${binary.binaryName}($|\\s)`, 'm')
+        let binaryPattern = new RegExp(`(^|\\+|-|@|\\s)${binary.binaryName}($|\\s)`, 'm')
         return fileRecipe
           .filter((recipe) => binaryPattern.test(recipe))
           .length > 0
