@@ -27,7 +27,7 @@ Test('Check(\'makefile/unused\', {})', async (test) => {
 
 });
 
-Test.only('Check(\'makefile/used/default\', {})', async (test) => {
+Test('Check(\'makefile/used/default\', {})', async (test) => {
   test.deepEqual(await Check(`${ResourcePath}/makefile/used/default`, {}), {
     'missing': {},
     'unused': [],
@@ -40,26 +40,6 @@ Test.only('Check(\'makefile/used/default\', {})', async (test) => {
       'fgh': [`${ResourcePath}/makefile/used/default/makefile`],
       'ghi': [`${ResourcePath}/makefile/used/default/makefile`],
       'hij': [`${ResourcePath}/makefile/used/default/makefile`] } });
-
-
-});
-
-Test.only('Check(\'makefile/used/-\', {})', async (test) => {
-  test.deepEqual(await Check(`${ResourcePath}/makefile/used/-`, {}), {
-    'missing': {},
-    'unused': [],
-    'used': {
-      'shx': [`${ResourcePath}/makefile/used/-/makefile`] } });
-
-
-});
-
-Test('Check(\'makefile/used/@\', {})', async (test) => {
-  test.deepEqual(await Check(`${ResourcePath}/makefile/used/@`, {}), {
-    'missing': {},
-    'unused': [],
-    'used': {
-      'shx': [`${ResourcePath}/makefile/used/@/makefile`] } });
 
 
 });
@@ -80,26 +60,6 @@ Test('Check(\'makefile/used/space-after\', {})', async (test) => {
     'unused': [],
     'used': {
       'shx': [`${ResourcePath}/makefile/used/space-after/makefile`] } });
-
-
-});
-
-Test('Check(\'makefile/used/argument-after\', {})', async (test) => {
-  test.deepEqual(await Check(`${ResourcePath}/makefile/used/argument-after`, {}), {
-    'missing': {},
-    'unused': [],
-    'used': {
-      'shx': [`${ResourcePath}/makefile/used/argument-after/makefile`] } });
-
-
-});
-
-Test('Check(\'makefile/used/prefix-before\', {})', async (test) => {
-  test.deepEqual(await Check(`${ResourcePath}/makefile/used/prefix-before`, {}), {
-    'missing': {},
-    'unused': [],
-    'used': {
-      'shx': [`${ResourcePath}/makefile/used/prefix-before/makefile`] } });
 
 
 });
