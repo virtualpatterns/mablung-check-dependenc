@@ -86,7 +86,7 @@ Test('Check(\'makefile/used/rule\', {})', async (test) => {
 
 });
 
-Test.only('Check(\'makefile/used/include\', {})', async (test) => {
+Test('Check(\'makefile/used/include\', {})', async (test) => {
   Process.env['MAKEFILE_LIST'] = 'makefile ./include';
   test.deepEqual(await Check(`${ResourcePath}/makefile/used/include`, {}), {
     'missing': {},
