@@ -27,12 +27,19 @@ Test('Check(\'makefile/unused\', {})', async (test) => {
 
 });
 
-Test('Check(\'makefile/used/default\', {})', async (test) => {
+Test.only('Check(\'makefile/used/default\', {})', async (test) => {
   test.deepEqual(await Check(`${ResourcePath}/makefile/used/default`, {}), {
     'missing': {},
     'unused': [],
     'used': {
-      'shx': [`${ResourcePath}/makefile/used/default/makefile`] } });
+      'abc': [`${ResourcePath}/makefile/used/default/makefile`],
+      'bcd': [`${ResourcePath}/makefile/used/default/makefile`],
+      'cde': [`${ResourcePath}/makefile/used/default/makefile`],
+      'def': [`${ResourcePath}/makefile/used/default/makefile`],
+      'efg': [`${ResourcePath}/makefile/used/default/makefile`],
+      'fgh': [`${ResourcePath}/makefile/used/default/makefile`],
+      'ghi': [`${ResourcePath}/makefile/used/default/makefile`],
+      'hij': [`${ResourcePath}/makefile/used/default/makefile`] } });
 
 
 });
