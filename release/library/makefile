@@ -1,1 +1,1 @@
-include $(rootPath)/makefile-source
+include $(rootPath)/include/source
