@@ -6,6 +6,7 @@ import { Check } from '../../index.js';
 
 const FilePath = URL.fileURLToPath(import.meta.url);
 const FolderPath = Path.dirname(FilePath);
+const Process = process;
 
 const ResourcePath = Path.normalize(`${FolderPath}/resource/make`);
 
@@ -81,6 +82,17 @@ Test('Check(\'makefile/used/rule\', {})', async (test) => {
     'unused': [],
     'used': {
       'shx': [`${ResourcePath}/makefile/used/rule/makefile`] } });
+
+
+});
+
+Test.only('Check(\'makefile/used/include\', {})', async (test) => {
+  Process.env['MAKEFILE_LIST'] = 'makefile ./include';
+  test.deepEqual(await Check(`${ResourcePath}/makefile/used/include`, {}), {
+    'missing': {},
+    'unused': [],
+    'used': {
+      'shx': [`${ResourcePath}/makefile/used/include/include`] } });
 
 
 });
