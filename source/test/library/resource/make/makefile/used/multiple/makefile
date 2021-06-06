@@ -1,4 +1,0 @@
-default:
-	shx
-another:
-	pwd

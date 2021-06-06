@@ -24,18 +24,15 @@ export function Check(userPath = Process.cwd(), userOption = {}) {
     try {
 
       let defaultOption = {
-        // 'ignoreMatch': [
-        //   'buffer',
-        //   'events',
-        //   'util'
-        // ],
         'parser': {
-          '**/*.cjs': BaseCheck.parser.es7.default,
-          '**/*.js': BaseCheck.parser.es7.default,
+          '**/*.cjs': BaseCheck.parser.es7.default, // [ BaseCheck.parser.es6, BaseCheck.parser.es7.default ],
+          '**/*.js': BaseCheck.parser.es7.default, // [ BaseCheck.parser.es6, BaseCheck.parser.es7.default ],
+          '**/*.mjs': BaseCheck.parser.es7.default, // [ BaseCheck.parser.es6, BaseCheck.parser.es7.default ],
           '**/*.pug': Pug,
           '**/package.json': [Browser, Parcel] },
 
         'special': [
+        // BaseCheck.special.babel,
         BaseCheck.special.bin,
         BaseCheck.special.eslint,
         Ava,
@@ -69,6 +66,8 @@ export function Check(userPath = Process.cwd(), userOption = {}) {
       let option = Transform(Merge(defaultOption, userOption), map);
 
       BaseCheck(path, option, (unused) => {
+
+        // console.dir(unused.using)
 
         if (Is.emptyObject(unused.invalidFiles) &&
         Is.emptyObject(unused.invalidDirs)) {

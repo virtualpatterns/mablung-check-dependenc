@@ -10,7 +10,8 @@ const Process = process;
 
 const ResourcePath = Path.normalize(`${FolderPath}/resource/make`);
 
-Test('Check(\'makefile/missing\', {})', async (test) => {
+Test.serial('Check(\'makefile/missing\', {})', async (test) => {
+  Process.env['MAKEFILE_PATH'] = `${ResourcePath}/makefile/missing/makefile`;
   test.deepEqual(await Check(`${ResourcePath}/makefile/missing`, {}), {
     'missing': {},
     'unused': [],
@@ -18,7 +19,8 @@ Test('Check(\'makefile/missing\', {})', async (test) => {
 
 });
 
-Test('Check(\'makefile/unused\', {})', async (test) => {
+Test.serial('Check(\'makefile/unused\', {})', async (test) => {
+  Process.env['MAKEFILE_PATH'] = `${ResourcePath}/makefile/unused/makefile`;
   test.deepEqual(await Check(`${ResourcePath}/makefile/unused`, {}), {
     'missing': {},
     'unused': [
@@ -28,7 +30,8 @@ Test('Check(\'makefile/unused\', {})', async (test) => {
 
 });
 
-Test('Check(\'makefile/used/default\', {})', async (test) => {
+Test.serial('Check(\'makefile/used/default\', {})', async (test) => {
+  Process.env['MAKEFILE_PATH'] = `${ResourcePath}/makefile/used/default/makefile`;
   test.deepEqual(await Check(`${ResourcePath}/makefile/used/default`, {}), {
     'missing': {},
     'unused': [],
@@ -40,59 +43,24 @@ Test('Check(\'makefile/used/default\', {})', async (test) => {
       'efg': [`${ResourcePath}/makefile/used/default/makefile`],
       'fgh': [`${ResourcePath}/makefile/used/default/makefile`],
       'ghi': [`${ResourcePath}/makefile/used/default/makefile`],
-      'hij': [`${ResourcePath}/makefile/used/default/makefile`] } });
+      'hij': [`${ResourcePath}/makefile/used/default/makefile`],
+      'ijk': [`${ResourcePath}/makefile/used/default/makefile`],
+      'jkl': [`${ResourcePath}/makefile/used/default/makefile`],
+      'klm': [`${ResourcePath}/makefile/used/default/makefile`],
+      'lmn': [`${ResourcePath}/makefile/used/default/makefile`] } });
 
 
 });
 
-Test('Check(\'makefile/used/space-before\', {})', async (test) => {
-  test.deepEqual(await Check(`${ResourcePath}/makefile/used/space-before`, {}), {
-    'missing': {},
-    'unused': [],
-    'used': {
-      'shx': [`${ResourcePath}/makefile/used/space-before/makefile`] } });
-
-
-});
-
-Test('Check(\'makefile/used/space-after\', {})', async (test) => {
-  test.deepEqual(await Check(`${ResourcePath}/makefile/used/space-after`, {}), {
-    'missing': {},
-    'unused': [],
-    'used': {
-      'shx': [`${ResourcePath}/makefile/used/space-after/makefile`] } });
-
-
-});
-
-Test('Check(\'makefile/used/multiple\', {})', async (test) => {
-  test.deepEqual(await Check(`${ResourcePath}/makefile/used/multiple`, {}), {
-    'missing': {},
-    'unused': [],
-    'used': {
-      'pwd': [`${ResourcePath}/makefile/used/multiple/makefile`],
-      'shx': [`${ResourcePath}/makefile/used/multiple/makefile`] } });
-
-
-});
-
-Test('Check(\'makefile/used/rule\', {})', async (test) => {
-  test.deepEqual(await Check(`${ResourcePath}/makefile/used/rule`, {}), {
-    'missing': {},
-    'unused': [],
-    'used': {
-      'shx': [`${ResourcePath}/makefile/used/rule/makefile`] } });
-
-
-});
-
-Test('Check(\'makefile/used/include\', {})', async (test) => {
-  Process.env['MAKEFILE_LIST'] = 'makefile ./include';
+Test.serial('Check(\'makefile/used/include\', {})', async (test) => {
+  Process.env['MAKEFILE_PATH'] = `${ResourcePath}/makefile/used/include/makefile ${ResourcePath}/makefile/used/include/node_modules/shx/makefile`;
   test.deepEqual(await Check(`${ResourcePath}/makefile/used/include`, {}), {
     'missing': {},
     'unused': [],
     'used': {
-      'shx': [`${ResourcePath}/makefile/used/include/include`] } });
+      'shx': [
+      `${ResourcePath}/makefile/used/include/makefile`] } });
+
 
 
 });

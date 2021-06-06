@@ -20,14 +20,10 @@
       "type": "node",
       "request": "launch",
       "name": "Test ...",
-      "internalConsoleOptions": "openOnSessionStart",
       "outputCapture": "std",
-      "port": 9229,
       "preLaunchTask": "build",
       "runtimeArgs": [
-        "debug",
-        "--break",
-        "release/test/library/check-make.test.js"
+        "release/test/dependency.test.js"
       ],
       "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/ava",
       "skipFiles": [

@@ -1,8 +1,5 @@
 import FileSystem from 'fs-extra';
-import Is from '@pwn/is';
-import Match from 'minimatch';
 import Parse from '@kba/makefile-parser';
-import Path from 'path';
 import Query from 'jsonpath';
 
 import { GetDependencyBinary } from '../get-dependency-binary.js';
@@ -12,52 +9,66 @@ const Process = process;
 export async function Make(filePath, packageDependency, packagePath) {
   // console.log(`Make('${Path.relative('', filePath)}', packageDependency, '${Path.relative('', packagePath)}') { ... }`)
   // console.dir(packageDependency)
+  // console.log(`Process.env['MAKEFILE_PATH'] = ${Process.env['MAKEFILE_PATH']}`)
 
   let fileDependency = [];
+  let makefilePath = Process.env['MAKEFILE_PATH'];
 
-  let fileName = Path.basename(filePath);
-  let filePattern = null;
+  if (makefilePath) {
 
-  if (Is.not.undefined(Process.env['MAKEFILE_LIST'])) {
+    makefilePath = makefilePath.
+    split(' ');
 
-    filePattern = Process.env['MAKEFILE_LIST'].
-    split(' ').
-    map((path) => Path.basename(path));
+    if (makefilePath.includes(filePath)) {
 
-  } else {
-    filePattern = ['Makefile', 'makefile'];
-  }
+      let dependencyBinary = await GetDependencyBinary(packageDependency, (await FileSystem.pathExists(`${packagePath}/node_modules`)) ? `${packagePath}/node_modules` : packagePath);
 
-  if (filePattern.reduce((isMatch, pattern) => isMatch ? isMatch : Match(fileName, pattern), false)) {
+      for (let path of makefilePath) {
 
-    let dependencyBinary = await GetDependencyBinary(packageDependency, (await FileSystem.pathExists(`${packagePath}/node_modules`)) ? `${packagePath}/node_modules` : packagePath);
+        let { ast } = Parse(await FileSystem.readFile(path, { 'encoding': 'utf-8' }));
+        let recipe = Query.query(ast, '$..recipe[*]');
 
-    let { ast: fileAst } = Parse(await FileSystem.readFile(filePath, { 'encoding': 'utf-8' }));
-    let fileRecipe = Query.query(fileAst, '$..recipe[*]');
+        fileDependency = fileDependency.
+        concat(
 
-    fileDependency = dependencyBinary.
-    filter((binary) => {
+        dependencyBinary.
+        filter((binary) => {
 
-      /*
-        Assumming shx is the binary, supports ...
-        shx
-        @shx
-        -shx
-        @-shx
-        -@shx
-        shx X
-        X shx
-        X shx X
-      */
+          /*
+            binaryPattern includes ...
+            abc
+            @bcd
+            -cde
+            @-def
+            -@efg
+            fgh X
+            @-X ghi
+            -@X hij X
+            $(abc)/ijk
+             jkl
+            klm 
+            $(lmn)
+          */
 
-      let binaryPattern = new RegExp(`^[@|-]{0,2}${binary.binaryName}$|^[@|-]{0,2}${binary.binaryName}\\s+.*$|.*\\s+${binary.binaryName}\\s+.*|.*\\s+${binary.binaryName}$`, 'm');
-      return fileRecipe.
-      filter((recipe) => binaryPattern.test(recipe)).
-      length > 0;
+          let binaryPattern = new RegExp(`^[@\\-/]{0,2}${binary.binaryName}$|^[@\\-/]{0,2}${binary.binaryName}\\s+.*$|.*[\\s/]+${binary.binaryName}\\s+.*|.*[\\s/]+${binary.binaryName}$|\\$\\(${binary.binaryName}\\)`, 'm');
+          return recipe.
+          filter((recipe) => binaryPattern.test(recipe)).
+          length > 0;
 
-    }).
-    map((binary) => binary.packageName).
-    filter((dependency, index, fileDependency) => fileDependency.indexOf(dependency) === index);
+        }).
+        map((binary) => binary.packageName));
+
+
+
+        fileDependency = fileDependency.
+        concat(packageDependency.filter((dependency) => path.indexOf(`node_modules/${dependency}`) !== -1));
+
+      }
+
+      fileDependency = fileDependency.
+      filter((dependency, index, fileDependency) => fileDependency.indexOf(dependency) === index);
+
+    }
 
   }
 

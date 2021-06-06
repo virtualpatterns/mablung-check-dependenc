@@ -1,47 +1,77 @@
 import FileSystem from 'fs-extra'
-// import Is from '@pwn/is'
-import Match from 'minimatch'
 import Parse from '@kba/makefile-parser'
-import Path from 'path'
 import Query from 'jsonpath'
 
 import { GetDependencyBinary } from '../get-dependency-binary.js'
 
-// const Process = process
+const Process = process
 
 export async function Make(filePath, packageDependency, packagePath) {
   // console.log(`Make('${Path.relative('', filePath)}', packageDependency, '${Path.relative('', packagePath)}') { ... }`)
   // console.dir(packageDependency)
+  // console.log(`Process.env['MAKEFILE_PATH'] = ${Process.env['MAKEFILE_PATH']}`)
 
   let fileDependency = []
+  let makefilePath = Process.env['MAKEFILE_PATH']
 
-  let fileName = Path.basename(filePath)
-  let filePattern = ['Makefile', 'makefile']
+  if (makefilePath) {
 
-  // if (Is.not.undefined(Process.env['MAKEFILE'])) {
-  //   filePattern.concat(Process.env['MAKEFILE'].split(' ')
-  //     .map((path) => Path.basename(path)))
-  // }
+    makefilePath = makefilePath
+      .split(' ')
 
-  if (filePattern.reduce((isMatch, pattern) => isMatch ? isMatch : Match(fileName, pattern), false)) {
+    if (makefilePath.includes(filePath)) {
 
-    let dependencyBinary = await GetDependencyBinary(packageDependency, await FileSystem.pathExists(`${packagePath}/node_modules`) ? `${packagePath}/node_modules` : packagePath)
+      let dependencyBinary = await GetDependencyBinary(packageDependency, await FileSystem.pathExists(`${packagePath}/node_modules`) ? `${packagePath}/node_modules` : packagePath)
 
-    let { ast: fileAst } = Parse(await FileSystem.readFile(filePath, { 'encoding': 'utf-8' }))
-    let fileRecipe = Query.query(fileAst, '$..recipe[*]')
-    
-    fileDependency = dependencyBinary
-      .filter((binary) => {
-        let binaryPattern = new RegExp(`(^|\\+|-|@|\\s)${binary.binaryName}($|\\s)`, 'm')
-        return fileRecipe
-          .filter((recipe) => binaryPattern.test(recipe))
-          .length > 0
-      })
-      .map((binary) => binary.packageName)
-      .filter((dependency, index, fileDependency) => fileDependency.indexOf(dependency) === index)
+      for (let path of makefilePath) {
+
+        let { ast } = Parse(await FileSystem.readFile(path, { 'encoding': 'utf-8' }))
+        let recipe = Query.query(ast, '$..recipe[*]')
+
+        fileDependency = fileDependency
+          .concat(
+
+            dependencyBinary
+              .filter((binary) => {
+
+                /*
+                  binaryPattern includes ...
+                  abc
+                  @bcd
+                  -cde
+                  @-def
+                  -@efg
+                  fgh X
+                  @-X ghi
+                  -@X hij X
+                  $(abc)/ijk
+                   jkl
+                  klm 
+                  $(lmn)
+                */
+
+                let binaryPattern = new RegExp(`^[@\\-/]{0,2}${binary.binaryName}$|^[@\\-/]{0,2}${binary.binaryName}\\s+.*$|.*[\\s/]+${binary.binaryName}\\s+.*|.*[\\s/]+${binary.binaryName}$|\\$\\(${binary.binaryName}\\)`, 'm')
+                return recipe
+                  .filter((recipe) => binaryPattern.test(recipe))
+                  .length > 0
+
+              })
+              .map((binary) => binary.packageName)
+
+          )
+
+        fileDependency = fileDependency
+          .concat(packageDependency.filter((dependency) => path.indexOf(`node_modules/${dependency}`) !== -1))
+        
+      }
+
+      fileDependency = fileDependency
+        .filter((dependency, index, fileDependency) => fileDependency.indexOf(dependency) === index)
+
+    }
 
   }
-
+  
   return fileDependency
 
 }

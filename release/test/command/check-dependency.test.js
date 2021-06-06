@@ -13,7 +13,7 @@ const FolderPath = Path.dirname(FilePath);
 const ResourcePath = Path.normalize(`${FolderPath}/resource`);
 
 Test('check-dependency', async (test) => {
-  let process = new CheckDependencyProcess();
+  let process = new CheckDependencyProcess({ '--report-used': true });
   test.is(await process.whenExit(), 0);
 });
 
