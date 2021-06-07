@@ -38,6 +38,8 @@ action(async (option) => {
     }
 
     let dependency = await Check(path, configuration);
+    // console.dir(dependency)
+
     process.exitCode = 0;
 
     if (Is.not.emptyObject(dependency.missing) &&
