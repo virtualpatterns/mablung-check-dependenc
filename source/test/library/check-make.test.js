@@ -10,18 +10,18 @@ const Process = process
 
 const ResourcePath = Path.normalize(`${FolderPath}/resource/make`)
 
-Test.serial('Check(\'makefile/missing\', {})', async (test) => {
-  Process.env['MAKEFILE_PATH'] = `${ResourcePath}/makefile/missing/makefile`
-  test.deepEqual(await Check(`${ResourcePath}/makefile/missing`, {}), {
+Test.serial('Check(\'missing\', {})', async (test) => {
+  Process.env['MAKEFILE_PATH'] = `${ResourcePath}/missing/makefile`
+  test.deepEqual(await Check(`${ResourcePath}/missing`, {}), {
     'missing': {},
     'unused': [],
     'used': {}
   })
 })
 
-Test.serial('Check(\'makefile/unused\', {})', async (test) => {
-  Process.env['MAKEFILE_PATH'] = `${ResourcePath}/makefile/unused/makefile`
-  test.deepEqual(await Check(`${ResourcePath}/makefile/unused`, {}), {
+Test.serial('Check(\'unused\', {})', async (test) => {
+  Process.env['MAKEFILE_PATH'] = `${ResourcePath}/unused/makefile`
+  test.deepEqual(await Check(`${ResourcePath}/unused`, {}), {
     'missing': {},
     'unused': [
       'shx'
@@ -30,36 +30,36 @@ Test.serial('Check(\'makefile/unused\', {})', async (test) => {
   })
 })
 
-Test.serial('Check(\'makefile/used/default\', {})', async (test) => {
-  Process.env['MAKEFILE_PATH'] = `${ResourcePath}/makefile/used/default/makefile`
-  test.deepEqual(await Check(`${ResourcePath}/makefile/used/default`, {}), {
+Test.serial('Check(\'used/default\', {})', async (test) => {
+  Process.env['MAKEFILE_PATH'] = `${ResourcePath}/used/default/makefile`
+  test.deepEqual(await Check(`${ResourcePath}/used/default`, {}), {
     'missing': {},
     'unused': [],
     'used': {
-      'abc': [`${ResourcePath}/makefile/used/default/makefile`],
-      'bcd': [`${ResourcePath}/makefile/used/default/makefile`],
-      'cde': [`${ResourcePath}/makefile/used/default/makefile`],
-      'def': [`${ResourcePath}/makefile/used/default/makefile`],
-      'efg': [`${ResourcePath}/makefile/used/default/makefile`],
-      'fgh': [`${ResourcePath}/makefile/used/default/makefile`],
-      'ghi': [`${ResourcePath}/makefile/used/default/makefile`],
-      'hij': [`${ResourcePath}/makefile/used/default/makefile`],
-      'ijk': [`${ResourcePath}/makefile/used/default/makefile`],
-      'jkl': [`${ResourcePath}/makefile/used/default/makefile`],
-      'klm': [`${ResourcePath}/makefile/used/default/makefile`],
-      'lmn': [`${ResourcePath}/makefile/used/default/makefile`]
+      'abc': [`${ResourcePath}/used/default/makefile`],
+      'bcd': [`${ResourcePath}/used/default/makefile`],
+      'cde': [`${ResourcePath}/used/default/makefile`],
+      'def': [`${ResourcePath}/used/default/makefile`],
+      'efg': [`${ResourcePath}/used/default/makefile`],
+      'fgh': [`${ResourcePath}/used/default/makefile`],
+      'ghi': [`${ResourcePath}/used/default/makefile`],
+      'hij': [`${ResourcePath}/used/default/makefile`],
+      'ijk': [`${ResourcePath}/used/default/makefile`],
+      'jkl': [`${ResourcePath}/used/default/makefile`],
+      'klm': [`${ResourcePath}/used/default/makefile`],
+      'lmn': [`${ResourcePath}/used/default/makefile`]
     }
   })
 })
 
-Test.serial('Check(\'makefile/used/include\', {})', async (test) => {
-  Process.env['MAKEFILE_PATH'] = `${ResourcePath}/makefile/used/include/makefile ${ResourcePath}/makefile/used/include/node_modules/shx/makefile`
-  test.deepEqual(await Check(`${ResourcePath}/makefile/used/include`, {}), {
+Test.serial('Check(\'used/include\', {})', async (test) => {
+  Process.env['MAKEFILE_PATH'] = `${ResourcePath}/used/include/makefile ${ResourcePath}/used/include/node_modules/shx/makefile`
+  test.deepEqual(await Check(`${ResourcePath}/used/include`, {}), {
     'missing': {},
     'unused': [],
     'used': {
       'shx': [
-        `${ResourcePath}/makefile/used/include/makefile`
+        `${ResourcePath}/used/include/makefile`
       ]
     }
   })
