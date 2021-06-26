@@ -59,12 +59,12 @@
     "shx": "^0.3.3"
   },
   "dependencies": {
-    "@kba/makefile-parser": "0.0.3",
+    "@kba/makefile-parser": "0.0.5",
     "@pwn/is": "^1.0.2",
     "@virtualpatterns/mablung-source-map-support": "virtualpatterns/mablung-source-map-support.git",
-    "commander": "^7.2.0",
+    "commander": "^8.0.0",
     "deepmerge": "^4.2.2",
-    "depcheck": "^1.4.1",
+    "depcheck": "^1.4.2",
     "find": "^0.3.0",
     "fs-extra": "^10.0.0",
     "json5": "^2.2.0",
