@@ -25,7 +25,7 @@ export async function Make(filePath, packageDependency, packagePath) {
 
       for (let path of makefilePath) {
 
-        let { ast } = Parse(await FileSystem.readFile(path, { 'encoding': 'utf-8' }))
+        let { ast } = Parse(await FileSystem.readFile(path, { 'encoding': 'utf-8' }), { 'unhandled': true })
         let recipe = Query.query(ast, '$..recipe[*]')
 
         fileDependency = fileDependency
