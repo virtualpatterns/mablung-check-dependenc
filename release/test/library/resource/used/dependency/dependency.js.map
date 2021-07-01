@@ -1,1 +1,0 @@
-{"version":3,"sources":["../../../../../../source/test/library/resource/used/dependency/dependency.js"],"names":[],"mappings":"AAAA,OAAO,OAAP,MAAoB,qCAApB;AACA,OAAO,CAAC,GAAR,CAAY,OAAZ","file":"dependency.js","sourcesContent":["import Default from '@virtualpatterns/mablung-dependency'\nconsole.log(Default)"]}

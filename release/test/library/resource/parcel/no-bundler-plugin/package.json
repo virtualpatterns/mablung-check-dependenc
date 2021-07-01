@@ -1,5 +1,0 @@
-{
-  "devDependencies": {
-    "@virtualpatterns/parcel-plugin-virtual-pug": "virtualpatterns/parcel-plugin-virtual-pug"  
-  }
-}

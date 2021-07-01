@@ -1,6 +1,0 @@
-{
-  "bin": {
-    "c": "./release/command/check-dependency.js"
-  },
-  "name": "@virtualpatterns/mablung-check-dependency"
-}
