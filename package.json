@@ -51,7 +51,7 @@
   "type": "module",
   "version": "0.0.1-44",
   "dependencies": {
-    "@kba/makefile-parser": "0.0.5",
+    "@kba/makefile-parser": "../makefile-parser",
     "@pwn/is": "^1.0.2",
     "@virtualpatterns/mablung-source-map-support": "0.0.2-43",
     "commander": "^8.0.0",
