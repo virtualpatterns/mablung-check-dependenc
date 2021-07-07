@@ -20,7 +20,9 @@
   "c8": {
     "all": true,
     "exclude": [
-      "release/sandbox"
+      "release/sandbox",
+      "release/test/command/resource",
+      "release/test/library/resource"
     ],
     "reporter": [
       "html"
