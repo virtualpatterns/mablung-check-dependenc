@@ -74,7 +74,6 @@
     "@virtualpatterns/mablung-makefile": "0.0.1-61",
     "@virtualpatterns/mablung-worker": "0.0.2-35",
     "ava": "^3.15.0",
-    "babel-plugin-add-header-comment": "^1.0.3",
     "c8": "^7.7.3",
     "eslint": "^7.30.0",
     "eslint-plugin-babel": "^5.3.1",
