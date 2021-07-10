@@ -9,8 +9,7 @@
   "globals": {},
   "parser": "@babel/eslint-parser",
   "parserOptions": {
-    "requireConfigFile": true,
-    "sourceType": "module"
+    "requireConfigFile": false
   },
   "plugins": [
     "eslint-plugin-babel"
