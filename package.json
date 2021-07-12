@@ -53,7 +53,7 @@
   "dependencies": {
     "@kba/makefile-parser": "0.0.6",
     "@pwn/is": "^1.0.2",
-    "@virtualpatterns/mablung-source-map-support": "0.0.2-52",
+    "@virtualpatterns/mablung-source-map-support": "0.0.2-53",
     "commander": "^8.0.0",
     "deepmerge": "^4.2.2",
     "depcheck": "^1.4.2",
