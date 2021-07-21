@@ -54,7 +54,7 @@
     "url": "https://github.com/virtualpatterns/mablung-check-dependency"
   },
   "type": "module",
-  "version": "0.0.1-60",
+  "version": "0.0.1-61",
   "dependencies": {
     "@kba/makefile-parser": "0.0.6",
     "@pwn/is": "^1.0.2",
