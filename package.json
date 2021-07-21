@@ -35,6 +35,9 @@
     "src": "release"
   },
   "description": "TBD",
+  "eslintConfig": {
+    "extends": "@virtualpatterns/eslint-config-mablung"
+  },
   "exports": {
     ".": "./release/index.js",
     "./package.json": "./package.json"
@@ -49,9 +52,6 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/virtualpatterns/mablung-check-dependency"
-  },
-  "scripts": {
-    "test": "make test"
   },
   "type": "module",
   "version": "0.0.1-60",
@@ -73,16 +73,9 @@
     "pug-parser": "^6.0.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.14.8",
-    "@babel/core": "^7.14.8",
-    "@babel/eslint-parser": "^7.14.7",
+    "@virtualpatterns/eslint-config-mablung": "0.0.1-2",
     "@virtualpatterns/mablung-makefile": "0.0.1-85",
     "@virtualpatterns/mablung-worker": "0.0.2-40",
-    "ava": "^3.15.0",
-    "c8": "^7.7.3",
-    "eslint": "^7.31.0",
-    "eslint-plugin-babel": "^5.3.1",
-    "npm-check-updates": "^11.8.3",
-    "shx": "^0.3.3"
+    "ava": "^3.15.0"
   }
 }
