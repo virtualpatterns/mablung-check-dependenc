@@ -16,6 +16,7 @@ export async function GetDependencyBinary(packageDependency, dependencyPath = `$
 
     if (Is.not.undefined(packageBinary)) {
 
+      /* c8 ignore next 3 */
       if (Is.string(packageBinary)) {
         dependencyBinary.push({ 'packageName': packageName, 'binaryName': packageName })
       } else {

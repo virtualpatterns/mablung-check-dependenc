@@ -89,6 +89,7 @@ export function Check(userPath = Process.cwd(), userOption = {}) {
 
             reject(new FileParseError(path, error))
 
+          /* c8 ignore next 10 */
           } else {
 
             let item = Object.entries(unused.invalidDirs)
