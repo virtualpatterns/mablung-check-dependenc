@@ -1,0 +1,7 @@
+{
+  "babel": {
+    "presets": [
+      "./release/index.cjs"
+    ]
+  }
+}

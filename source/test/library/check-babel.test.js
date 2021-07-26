@@ -43,6 +43,16 @@ Test('Check(\'babel-config/used/rename-dependency/environment/plugin-and-preset\
 
 // package.json
 
+// Test.only('Check(\'package/miscellaneous\', {})', async (test) => {
+//   test.deepEqual(await Check(`${ResourcePath}/package/miscellaneous`, {}), {
+//     'missing': {},
+//     'unused': [],
+//     'used': {
+//       './release/index.cjs': [`${ResourcePath}/package/miscellaneous/package.json`]
+//     }
+//   })
+// })
+
 Test('Check(\'package/missing/environment/plugin\', {})', async (test) => {
   test.deepEqual(await Check(`${ResourcePath}/package/missing/environment/plugin`, {}), { 
     'missing': {
