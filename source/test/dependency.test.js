@@ -4,7 +4,7 @@ import { Check } from '../index.js'
 
 const Process = process
 
-Test('dependency', async (test) => {
+Test('(default)', async (test) => {
 
   let dependency = await Check(Process.cwd())
 
