@@ -25,6 +25,7 @@
   "c8": {
     "all": true,
     "exclude": [
+      "release/header",
       "release/sandbox",
       "release/test/command/resource",
       "release/test/library/resource"
