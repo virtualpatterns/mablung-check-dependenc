@@ -1,7 +1,6 @@
 import FileSystem from 'fs-extra'
 import Find from 'find'
 import Is from '@pwn/is'
-import JSON5 from 'json5'
 
 const Process = process
 
@@ -12,7 +11,7 @@ export async function GetDependencyBinary(packageDependency, dependencyPath = `$
 
   for (let _packagePath of packagePath) {
 
-    let { name: packageName, bin: packageBinary } = JSON5.parse(await FileSystem.readFile(_packagePath, { 'encoding': 'utf-8' }))
+    let { name: packageName, bin: packageBinary } = await FileSystem.readJson(_packagePath, { 'encoding': 'utf-8' })
 
     if (Is.not.undefined(packageBinary)) {
 

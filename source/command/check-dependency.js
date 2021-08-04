@@ -5,7 +5,6 @@ import { createRequire as CreateRequire } from 'module'
 import Command from 'commander'
 import FileSystem from 'fs-extra'
 import Is from '@pwn/is'
-import JSON5 from 'json5'
 import Path from 'path'
 
 import { Check } from '../library/check.js'
@@ -13,7 +12,7 @@ import { Check } from '../library/check.js'
 const Process = process
 const Require = CreateRequire(import.meta.url)
 
-const Package = JSON5.parse(FileSystem.readFileSync(Require.resolve('../../package.json')), { 'encoding': 'utf-8' })
+const Package = FileSystem.readJsonSync(Require.resolve('../../package.json'), { 'encoding': 'utf-8' })
 
 Command
   .version(Package.version)
@@ -32,7 +31,7 @@ Command
       let configuration = null
 
       if (await FileSystem.pathExists(option.configurationPath)) {
-        configuration = JSON5.parse(await FileSystem.readFile(option.configurationPath, { 'encoding': 'utf-8' }))
+        configuration = await FileSystem.readJson(option.configurationPath, { 'encoding': 'utf-8' })
       } else {
         configuration = {}
       }
