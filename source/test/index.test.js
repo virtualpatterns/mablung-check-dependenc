@@ -7,8 +7,7 @@ Test.before(async (test) => {
 ;[
   'Check',
   'FileParseError',
-  'FolderParseError',
-  'OK'
+  'FolderParseError'
 ].forEach((name) => {
 
   Test(name, async (test) => {
