@@ -60,7 +60,7 @@ async function main() {
 
   try {
 
-    let filePath = Require.resolve('../../../mablung-babel-plugin/package.json')
+    let filePath = Require.resolve('../../../babel-plugin-mablung/package.json')
     let folderPath = Path.dirname(filePath) // Process.cwd() // 
 
     let option = {
