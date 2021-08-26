@@ -1,5 +1,5 @@
 {
   "dependencies": {
-    "@virtualpatterns/mablung-dependency": "^1.0.0"
+    "ignore-dependency-0": "^1.0.0"
   }
 }

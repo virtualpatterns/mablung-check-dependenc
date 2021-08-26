@@ -4,11 +4,11 @@ import Is from '@pwn/is'
 import Merge from 'deepmerge'
 import Path from 'path'
 
-import { Ava } from './special/ava.js'
-import { Babel } from './special/babel.js'
+import { Ava } from './parser/ava.js'
+import { Babel } from './parser/babel.js'
 import { Browser } from './parser/browser.js'
 import { Make } from './special/make.js'
-import { Parcel } from './parser/parcel.js'
+// import { Parcel } from './parser/parcel.js'
 import { Pug } from './parser/pug.js'
 
 import { FileParseError } from './error/file-parse-error.js'
@@ -27,20 +27,20 @@ export function Check(userPath = Process.cwd(), userOption = {}) {
         'parser': {
           '**/*.cjs': BaseCheck.parser.es7.default, // [ BaseCheck.parser.es6, BaseCheck.parser.es7.default ],
           '**/*.js': BaseCheck.parser.es7.default, // [ BaseCheck.parser.es6, BaseCheck.parser.es7.default ],
-          '**/*.mjs': BaseCheck.parser.es7.default, // [ BaseCheck.parser.es6, BaseCheck.parser.es7.default ],
           '**/*.pug': Pug,
-          '**/package.json': [ Browser, Parcel ]
+          '**/.babelrc.json': Babel,
+          '**/ava.config.cjs': Ava,
+          '**/babel.config.json': Babel,
+          '**/package.json': Browser // [ Browser, Parcel ]
         },
         'special': [
           // BaseCheck.special.babel,
           BaseCheck.special.bin,
           BaseCheck.special.eslint,
-          Ava,
-          Babel,
           Make
         ]
       }
-  
+
       let map = {
         'item': {
           'ignoreMatches': 'ignoreMatch',

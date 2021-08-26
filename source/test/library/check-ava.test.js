@@ -7,36 +7,22 @@ import { Check } from '../../index.js'
 const FilePath = URL.fileURLToPath(import.meta.url)
 const FolderPath = Path.dirname(FilePath)
 
-const ResourcePath = Path.normalize(`${FolderPath}/resource/ava`)
+const ResourcePath = `${FolderPath}/resource/ava`
 
-// ava.config.json
-
-Test('Check(\'ava-config/used\')', async (test) => {
-  test.deepEqual(await Check(`${ResourcePath}/ava-config/used`), { 
-    'missing': {}, 
-    'unused': [],
-    'used': {
-      '@virtualpatterns/mablung-source-map-support': [ `${ResourcePath}/ava-config/used/ava.config.json` ]
-    }
-  })
-})
-
-// package.json
-
-Test('Check(\'package/missing\')', async (test) => {
-  test.deepEqual(await Check(`${ResourcePath}/package/missing`), { 
+Test('Check(\'missing\')', async (test) => {
+  test.deepEqual(await Check(`${ResourcePath}/missing`), { 
     'missing': {
-      '@virtualpatterns/mablung-source-map-support': [ `${ResourcePath}/package/missing/package.json` ]
-    }, 
+      '@virtualpatterns/mablung-source-map-support': [ `${ResourcePath}/missing/ava.config.cjs` ]
+    },
     'unused': [],
     'used': {
-      '@virtualpatterns/mablung-source-map-support': [ `${ResourcePath}/package/missing/package.json` ]
+      '@virtualpatterns/mablung-source-map-support': [ `${ResourcePath}/missing/ava.config.cjs` ]
     }
   })
 })
 
-Test('Check(\'package/no-ava\')', async (test) => {
-  test.deepEqual(await Check(`${ResourcePath}/package/no-ava`), { 
+Test('Check(\'unused\')', async (test) => {
+  test.deepEqual(await Check(`${ResourcePath}/unused`), { 
     'missing': {}, 
     'unused': [
       '@virtualpatterns/mablung-source-map-support'
@@ -45,22 +31,12 @@ Test('Check(\'package/no-ava\')', async (test) => {
   })
 })
 
-Test('Check(\'package/unused\')', async (test) => {
-  test.deepEqual(await Check(`${ResourcePath}/package/unused`), { 
-    'missing': {}, 
-    'unused': [
-      '@virtualpatterns/mablung-source-map-support'
-    ],
-    'used': {}
-  })
-})
-
-Test('Check(\'package/used\')', async (test) => {
-  test.deepEqual(await Check(`${ResourcePath}/package/used`), { 
+Test('Check(\'used\')', async (test) => {
+  test.deepEqual(await Check(`${ResourcePath}/used`), { 
     'missing': {}, 
     'unused': [],
     'used': {
-      '@virtualpatterns/mablung-source-map-support': [ `${ResourcePath}/package/used/package.json` ]
+      '@virtualpatterns/mablung-source-map-support': [ `${ResourcePath}/used/ava.config.cjs` ]
     }
   })
 })

@@ -1,0 +1,8 @@
+{
+  "devDependencies": {
+    "plugin-dependency-0": "^1.0.0",
+    "plugin-dependency-1": "^1.0.0",
+    "preset-dependency-0": "^1.0.0",
+    "preset-dependency-1": "^1.0.0"
+  }
+}

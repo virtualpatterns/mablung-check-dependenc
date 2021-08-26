@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "unused-dependency-0": "^1.0.0"
+  },
+  "devDependencies": {
+    "unused-dependency-1": "^1.0.0"
+  }
+}

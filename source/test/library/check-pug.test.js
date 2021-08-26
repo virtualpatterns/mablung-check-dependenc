@@ -11,46 +11,46 @@ const ResourcePath = Path.normalize(`${FolderPath}/resource/pug`)
 
 // missing
 
-Test('Check(\'missing/filter\', {})', async (test) => {
-  test.deepEqual(await Check(`${ResourcePath}/missing/filter`, {}), { 
+Test('Check(\'missing/filter\')', async (test) => {
+  test.deepEqual(await Check(`${ResourcePath}/missing/filter`), { 
     'missing': { 
-      'markdown-it': [ `${ResourcePath}/missing/filter/template.pug` ] 
+      'jstransformer-markdown-it': [ `${ResourcePath}/missing/filter/template.pug` ] 
     },
     'unused': [],
     'used': { 
-      'markdown-it': [ `${ResourcePath}/missing/filter/template.pug` ] 
+      'jstransformer-markdown-it': [ `${ResourcePath}/missing/filter/template.pug` ] 
     }
   })
 })
 
-Test('Check(\'missing/filter-and-filter-include\', {})', async (test) => {
-  test.deepEqual(await Check(`${ResourcePath}/missing/filter-and-filter-include`, {}), { 
+Test('Check(\'missing/filter-and-filter-include\')', async (test) => {
+  test.deepEqual(await Check(`${ResourcePath}/missing/filter-and-filter-include`), { 
     'missing': { 
-      'coffee-script': [ `${ResourcePath}/missing/filter-and-filter-include/template.pug` ],
-      'markdown-it': [ `${ResourcePath}/missing/filter-and-filter-include/template.pug` ] 
+      'jstransformer-coffee-script': [ `${ResourcePath}/missing/filter-and-filter-include/template.pug` ],
+      'jstransformer-markdown-it': [ `${ResourcePath}/missing/filter-and-filter-include/template.pug` ] 
     }, 
     'unused': [],
     'used': { 
-      'coffee-script': [ `${ResourcePath}/missing/filter-and-filter-include/template.pug` ],
-      'markdown-it': [ `${ResourcePath}/missing/filter-and-filter-include/template.pug` ] 
+      'jstransformer-coffee-script': [ `${ResourcePath}/missing/filter-and-filter-include/template.pug` ],
+      'jstransformer-markdown-it': [ `${ResourcePath}/missing/filter-and-filter-include/template.pug` ] 
     }
   })
 })
 
-Test('Check(\'missing/filter-include\', {})', async (test) => {
-  test.deepEqual(await Check(`${ResourcePath}/missing/filter-include`, {}), { 
+Test('Check(\'missing/filter-include\')', async (test) => {
+  test.deepEqual(await Check(`${ResourcePath}/missing/filter-include`), { 
     'missing': { 
-      'markdown-it': [ `${ResourcePath}/missing/filter-include/template.pug` ] 
+      'jstransformer-markdown-it': [ `${ResourcePath}/missing/filter-include/template.pug` ] 
     },
     'unused': [],
     'used': { 
-      'markdown-it': [ `${ResourcePath}/missing/filter-include/template.pug` ] 
+      'jstransformer-markdown-it': [ `${ResourcePath}/missing/filter-include/template.pug` ] 
     }
   })
 })
 
-Test('Check(\'missing/no-filter\', {})', async (test) => {
-  test.deepEqual(await Check(`${ResourcePath}/missing/no-filter`, {}), { 
+Test('Check(\'missing/no-filter\')', async (test) => {
+  test.deepEqual(await Check(`${ResourcePath}/missing/no-filter`), { 
     'missing': {}, 
     'unused': [],
     'used': {}
@@ -59,8 +59,8 @@ Test('Check(\'missing/no-filter\', {})', async (test) => {
 
 // unused
 
-Test('Check(\'unused/no-filter\', {})', async (test) => {
-  test.deepEqual(await Check(`${ResourcePath}/unused/no-filter`, {}), { 
+Test('Check(\'unused/no-filter\')', async (test) => {
+  test.deepEqual(await Check(`${ResourcePath}/unused/no-filter`), { 
     'missing': {},
     'unused': [
       'jstransformer-markdown-it'
@@ -69,68 +69,35 @@ Test('Check(\'unused/no-filter\', {})', async (test) => {
   })
 })
 
-// used/rename-dependency
+// used
 
-Test('Check(\'used/rename-dependency/filter\', {})', async (test) => {
-  test.deepEqual(await Check(`${ResourcePath}/used/rename-dependency/filter`, {}), { 
+Test('Check(\'used/filter\')', async (test) => {
+  test.deepEqual(await Check(`${ResourcePath}/used/filter`), { 
     'missing': {},
     'unused': [],
     'used': { 
-      'jstransformer-markdown-it': [ `${ResourcePath}/used/rename-dependency/filter/template.pug` ] 
+      'jstransformer-markdown-it': [ `${ResourcePath}/used/filter/template.pug` ]
     }
   })
 })
 
-Test('Check(\'used/rename-dependency/filter-and-filter-include\', {})', async (test) => {
-  test.deepEqual(await Check(`${ResourcePath}/used/rename-dependency/filter-and-filter-include`, {}), { 
+Test('Check(\'used/filter-and-filter-include\')', async (test) => {
+  test.deepEqual(await Check(`${ResourcePath}/used/filter-and-filter-include`), { 
     'missing': {}, 
     'unused': [],
     'used': { 
-      'jstransformer-coffee-script': [ `${ResourcePath}/used/rename-dependency/filter-and-filter-include/template.pug` ],
-      'jstransformer-markdown-it': [ `${ResourcePath}/used/rename-dependency/filter-and-filter-include/template.pug` ] 
+      'jstransformer-coffee-script': [ `${ResourcePath}/used/filter-and-filter-include/template.pug` ],
+      'jstransformer-markdown-it': [ `${ResourcePath}/used/filter-and-filter-include/template.pug` ] 
     }
   })
 })
 
-Test('Check(\'used/rename-dependency/filter-include\', {})', async (test) => {
-  test.deepEqual(await Check(`${ResourcePath}/used/rename-dependency/filter-include`, {}), { 
+Test('Check(\'used/filter-include\')', async (test) => {
+  test.deepEqual(await Check(`${ResourcePath}/used/filter-include`), { 
     'missing': {}, 
     'unused': [],
     'used': { 
-      'jstransformer-markdown-it': [ `${ResourcePath}/used/rename-dependency/filter-include/template.pug` ] 
-    }
-  })
-})
-
-// used/same-name-dependency
-
-Test('Check(\'used/same-name-dependency/filter\', {})', async (test) => {
-  test.deepEqual(await Check(`${ResourcePath}/used/same-name-dependency/filter`, {}), { 
-    'missing': {},
-    'unused': [],
-    'used': { 
-      'markdown-it': [ `${ResourcePath}/used/same-name-dependency/filter/template.pug` ] 
-    }
-  })
-})
-
-Test('Check(\'used/same-name-dependency/filter-and-filter-include\', {})', async (test) => {
-  test.deepEqual(await Check(`${ResourcePath}/used/same-name-dependency/filter-and-filter-include`, {}), { 
-    'missing': {}, 
-    'unused': [],
-    'used': { 
-      'coffee-script': [ `${ResourcePath}/used/same-name-dependency/filter-and-filter-include/template.pug` ],
-      'markdown-it': [ `${ResourcePath}/used/same-name-dependency/filter-and-filter-include/template.pug` ] 
-    }
-  })
-})
-
-Test('Check(\'used/same-name-dependency/filter-include\', {})', async (test) => {
-  test.deepEqual(await Check(`${ResourcePath}/used/same-name-dependency/filter-include`, {}), { 
-    'missing': {}, 
-    'unused': [],
-    'used': { 
-      'markdown-it': [ `${ResourcePath}/used/same-name-dependency/filter-include/template.pug` ] 
+      'jstransformer-markdown-it': [ `${ResourcePath}/used/filter-include/template.pug` ] 
     }
   })
 })

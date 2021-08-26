@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@virtualpatterns/mablung-source-map-support": "0.0.26-6"
+  }
+}

@@ -1,77 +1,64 @@
 import FileSystem from 'fs-extra'
 import Parse from '@kba/makefile-parser'
-import Query from 'jsonpath'
+import JSON from 'jsonpath'
 
-import { GetDependencyBinary } from '../get-dependency-binary.js'
+import { GetPackageBinary } from '../get-package-binary.js'
 
 const Process = process
 
-export async function Make(filePath, packageDependency, packagePath) {
-  // console.log(`Make('${Path.relative('', filePath)}', packageDependency, '${Path.relative('', packagePath)}') { ... }`)
-  // console.dir(packageDependency)
-  // console.log(`Process.env['MAKEFILE_PATH'] = ${Process.env['MAKEFILE_PATH']}`)
+export async function Make(path, packageDependency, packagePath) {
+  
+  let dependency = []
 
-  let fileDependency = []
-  let makefilePath = Process.env['MAKEFILE_PATH']
+  let makefilePath = null
+  makefilePath = Process.env?.MAKEFILE_PATH || ''
+  makefilePath = makefilePath.split(' ')
 
-  if (makefilePath) {
+  if (makefilePath.includes(path)) {
 
-    makefilePath = makefilePath
-      .split(' ')
+    let binary = null
+    binary = await GetPackageBinary(`${packagePath}/node_modules`)
+    binary = binary
+      // .filter((binary) => packageDependency.includes(binary.name))
+      .map((binary) => {
 
-    if (makefilePath.includes(filePath)) {
+        /*
+          pattern includes ...
+          abc
+          @bcd
+          -cde
+          @-def
+          -@efg
+          fgh X
+          @-X ghi
+          -@X hij X
+          $(abc)/ijk
+            jkl
+          klm 
+          $(lmn)
+        */
 
-      let dependencyBinary = await GetDependencyBinary(packageDependency, await FileSystem.pathExists(`${packagePath}/node_modules`) ? `${packagePath}/node_modules` : packagePath)
+        binary.pattern = new RegExp(`^[@\\-/]{0,2}${binary.binary}$|^[@\\-/]{0,2}${binary.binary}\\s+.*$|.*[\\s/]+${binary.binary}\\s+.*|.*[\\s/]+${binary.binary}$|\\$\\(${binary.binary}\\)`, 'm')
 
-      for (let path of makefilePath) {
+        return binary
 
-        let { ast } = Parse(await FileSystem.readFile(path, { 'encoding': 'utf-8' }), { 'unhandled': true })
-        let recipe = Query.query(ast, '$..recipe[*]')
+      })
 
-        fileDependency = fileDependency
-          .concat(
+    let { ast } = Parse(await FileSystem.readFile(path, { 'encoding': 'utf-8' }), { 'unhandled': true })
+    let recipe = JSON.query(ast, '$..recipe[*]')
 
-            dependencyBinary
-              .filter((binary) => {
+    dependency = dependency.concat(
 
-                /*
-                  binaryPattern includes ...
-                  abc
-                  @bcd
-                  -cde
-                  @-def
-                  -@efg
-                  fgh X
-                  @-X ghi
-                  -@X hij X
-                  $(abc)/ijk
-                   jkl
-                  klm 
-                  $(lmn)
-                */
+      binary
+        .filter((binary) => recipe
+          .filter((recipe) => binary.pattern.test(recipe))
+          .length > 0)
+        .map((binary) => binary.name)
 
-                let binaryPattern = new RegExp(`^[@\\-/]{0,2}${binary.binaryName}$|^[@\\-/]{0,2}${binary.binaryName}\\s+.*$|.*[\\s/]+${binary.binaryName}\\s+.*|.*[\\s/]+${binary.binaryName}$|\\$\\(${binary.binaryName}\\)`, 'm')
-                return recipe
-                  .filter((recipe) => binaryPattern.test(recipe))
-                  .length > 0
-
-              })
-              .map((binary) => binary.packageName)
-
-          )
-
-        fileDependency = fileDependency
-          .concat(packageDependency.filter((dependency) => path.indexOf(`node_modules/${dependency}`) !== -1))
-        
-      }
-
-      fileDependency = fileDependency
-        .filter((dependency, index, fileDependency) => fileDependency.indexOf(dependency) === index)
-
-    }
+    )
 
   }
-  
-  return fileDependency
+
+  return dependency
 
 }

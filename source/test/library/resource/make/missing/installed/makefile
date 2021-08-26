@@ -1,0 +1,2 @@
+default:
+	dependency-0

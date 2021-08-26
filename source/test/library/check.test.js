@@ -6,14 +6,11 @@ import { Check, FileParseError } from '../../index.js'
 
 const FilePath = URL.fileURLToPath(import.meta.url)
 const FolderPath = Path.dirname(FilePath)
-const Process = process
 
-// the resources in source are used because 
-// babel doesn't copy dot files (e.g. .babelrc.json)
-const ResourcePath = Path.normalize(`${FolderPath}/../../../source/test/library/resource`)
+const ResourcePath = Path.normalize(`${FolderPath}/resource`)
 
 Test('Check(\'ignore-match\', { ignoreMatch: [ ... ] })', async (test) => {
-  test.deepEqual(await Check(`${ResourcePath}/ignore-match`, { 'ignoreMatch': [ '@virtualpatterns/mablung-dependency' ] }), { 
+  test.deepEqual(await Check(`${ResourcePath}/ignore-match`, { 'ignoreMatch': [ 'ignore-dependency-0' ] }), { 
     'missing': {}, 
     'unused': [],
     'used': {}
@@ -24,7 +21,7 @@ Test('Check(\'ignore-pattern\', { ignorePattern: [ ... ] })', async (test) => {
   test.deepEqual(await Check(`${ResourcePath}/ignore-pattern`, { 'ignorePattern': [ 'ignore-pattern.js' ] }), { 
     'missing': {}, 
     'unused': [
-      '@virtualpatterns/mablung-dependency'
+      'ignore-dependency-0'
     ],
     'used': {}
   })
@@ -34,7 +31,36 @@ Test('Check(\'error\') throws FileParseError', async (test) => {
   await test.throwsAsync(Check(`${ResourcePath}/error`), { 'instanceOf': FileParseError })
 })
 
-Test('Check(\'./release/test/library/resource/ignore-match\')', async (test) => {
-  test.is(Process.cwd(), Path.normalize(`${FolderPath}/../../..`))
-  await test.notThrowsAsync(Check('./release/test/library/resource/ignore-match'))
+Test('Check(\'missing\')', async (test) => {
+  test.deepEqual(await Check(`${ResourcePath}/missing`), {
+    'missing': {
+      'missing-dependency-0': [`${ResourcePath}/missing/missing.js`]
+    },
+    'unused': [],
+    'used': {
+      'missing-dependency-0': [`${ResourcePath}/missing/missing.js`]
+    }
+  })
+})
+
+Test('Check(\'unused\')', async (test) => {
+  test.deepEqual(await Check(`${ResourcePath}/unused`), {
+    'missing': {},
+    'unused': [
+      'unused-dependency-0',
+      'unused-dependency-1'
+    ],
+    'used': {}
+  })
+})
+
+Test('Check(\'used\')', async (test) => {
+  test.deepEqual(await Check(`${ResourcePath}/used`), {
+    'missing': {},
+    'unused': [],
+    'used': {
+      'used-dependency-0': [`${ResourcePath}/used/used.js`],
+      'used-dependency-1': [`${ResourcePath}/used/used.js`]
+    }
+  })
 })

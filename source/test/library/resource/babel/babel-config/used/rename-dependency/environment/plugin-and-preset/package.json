@@ -1,8 +1,0 @@
-{
-  "devDependencies": {
-    "babel-plugin-proposal-export-default-from": "^1.0.0",
-    "babel-plugin-replace-identifier": "^1.0.0",
-    "babel-preset-export-default-from": "^1.0.0",
-    "babel-preset-env": "^1.0.0"
-  }
-}

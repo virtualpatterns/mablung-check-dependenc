@@ -9,54 +9,38 @@ const FolderPath = Path.dirname(FilePath)
 
 const ResourcePath = Path.normalize(`${FolderPath}/resource/browser`)
 
-Test('Check(\'missing\', {})', async (test) => {
+Test('Check(\'missing\')', async (test) => {
   test.deepEqual(await Check(`${ResourcePath}/missing`, {}), { 
     'missing': {
-      'stream-browserify': [ `${ResourcePath}/missing/package.json` ]
+      'browser-dependency-0': [ `${ResourcePath}/missing/package.json` ],
+      'browser-dependency-1': [ `${ResourcePath}/missing/package.json` ]
     }, 
     'unused': [],
     'used': {
-      'stream-browserify': [ `${ResourcePath}/missing/package.json` ]
+      'browser-dependency-0': [ `${ResourcePath}/missing/package.json` ],
+      'browser-dependency-1': [ `${ResourcePath}/missing/package.json` ]
     }
   })
 })
 
-Test('Check(\'no-browser\', {})', async (test) => {
-  test.deepEqual(await Check(`${ResourcePath}/no-browser`, {}), { 
-    'missing': {}, 
-    'unused': [
-      // the packages buffer, events, util (maybe more)
-      // are ignored by depcheck even if returned by the browser.js parser
-      'stream-browserify',
-      'util'
-    ],
-    'used': {}
-  })
-})
-
-Test('Check(\'unused\', {})', async (test) => {
+Test('Check(\'unused\')', async (test) => {
   test.deepEqual(await Check(`${ResourcePath}/unused`, {}), { 
     'missing': {}, 
     'unused': [
-      // the packages buffer, events, util (maybe more)
-      // are ignored by depcheck even if returned by the browser.js parser
-      'stream-browserify',
-      'util'
+      'browser-dependency-0',
+      'browser-dependency-1'
     ],
     'used': {}
   })
 })
 
-Test('Check(\'used\', {})', async (test) => {
+Test('Check(\'used\')', async (test) => {
   test.deepEqual(await Check(`${ResourcePath}/used`, {}), { 
     'missing': {}, 
-    'unused': [
-      // the packages buffer, events, util (maybe more)
-      // are ignored by depcheck even if returned by the browser.js parser
-      'util'
-    ],
+    'unused': [],
     'used': {
-      'stream-browserify': [ `${ResourcePath}/used/package.json` ]
+      'browser-dependency-0': [ `${ResourcePath}/used/package.json` ],
+      'browser-dependency-1': [ `${ResourcePath}/used/package.json` ]
     }
   })
 })

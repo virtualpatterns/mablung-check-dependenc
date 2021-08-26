@@ -1,6 +1,6 @@
 {
   "browser": {
-    "stream": "stream-browserify",
-    "util": "util"
+    "0": "browser-dependency-0",
+    "1": "browser-dependency-1"
   }
 }

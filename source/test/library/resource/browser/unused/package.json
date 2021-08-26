@@ -1,9 +1,6 @@
 {
-  "browser": {
-    "util": "util"
-  },
   "devDependencies": {
-    "stream-browserify": "^3.0.0",
-    "util": "^0.12.3"
+    "browser-dependency-0": "^3.0.0",
+    "browser-dependency-1": "^0.12.3"
   }
 }

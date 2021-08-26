@@ -1,0 +1,14 @@
+{
+  "all": true,
+  "exclude": [
+    "release/header",
+    "release/sandbox",
+    "release/test/command/resource",
+    "release/test/library/resource",
+    "ava.config.cjs"
+  ],
+  "reporter": [
+    "html"
+  ],
+  "src": "release"
+}

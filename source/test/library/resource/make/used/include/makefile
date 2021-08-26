@@ -1,1 +1,1 @@
-include ./node_modules/shx/makefile
+include included

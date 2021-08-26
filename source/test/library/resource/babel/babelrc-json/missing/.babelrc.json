@@ -1,0 +1,20 @@
+{
+  "env": {
+    "environment": {
+      "plugins": [
+        "plugin-dependency-0",
+        [
+          "plugin-dependency-1",
+          {}
+        ]
+      ],
+      "presets": [
+        "preset-dependency-0",
+        [
+          "preset-dependency-1",
+          {}
+        ]
+      ]
+    }
+  }
+}

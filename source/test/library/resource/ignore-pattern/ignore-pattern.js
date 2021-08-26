@@ -1,1 +1,1 @@
-import '@virtualpatterns/mablung-dependency'
+import 'ignore-dependency-0'
