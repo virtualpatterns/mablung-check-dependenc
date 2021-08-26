@@ -39,7 +39,7 @@
   "devDependencies": {
     "@virtualpatterns/babel-preset-mablung-makefile": "0.0.26-25",
     "@virtualpatterns/eslint-config-mablung-makefile": "0.0.26-31",
-    "@virtualpatterns/mablung-makefile": "0.0.26-39",
+    "@virtualpatterns/mablung-makefile": "0.0.26-51",
     "@virtualpatterns/mablung-worker": "0.0.2-40",
     "ava": "^3.15.0"
   }
