@@ -1,20 +1,19 @@
 #!/usr/bin/env node
 
 import '@virtualpatterns/mablung-source-map-support/install'
-import { createRequire as CreateRequire } from 'module'
+
 import Command from 'commander'
 import FileSystem from 'fs-extra'
 import Is from '@pwn/is'
 import Path from 'path'
 
 import { Check } from '../library/check.js'
+import { Package } from '../library/package.js'
 
 const Process = process
-const Require = CreateRequire(import.meta.url)
-
-const Package = FileSystem.readJsonSync(Require.resolve('../../package.json'), { 'encoding': 'utf-8' })
 
 Command
+  .name(Package.name.replace(/^(.*)\/(.*)$/, '$2'))
   .version(Package.version)
   .option('--project-path <path>', 'Path of the project to check', '.') // Process.cwd())
   .option('--configuration-path <path>', 'Path of the configuration file, if it exists', './check-dependency.json')
@@ -111,4 +110,5 @@ Command
 
   })
 
-Command.parse(Process.argv)
+Command
+  .parse(Process.argv)
