@@ -7,10 +7,10 @@ import URL from 'url'
 
 const FilePath = URL.fileURLToPath(import.meta.url)
 const FolderPath = Path.dirname(FilePath)
-const LogPath = FilePath.replace(/\/release\//, '/data/').replace(/\.c?js$/, '.log')
+const LogPath = FilePath.replace(/\/release\//, '/data/').replace(/\.test\.c?js$/, '.log')
+const LoggedProcess = CreateLoggedProcess(ForkedProcess, LogPath)
 const Require = CreateRequire(import.meta.url)
 
-const LoggedProcess = CreateLoggedProcess(ForkedProcess, LogPath)
 const ResourcePath = `${FolderPath}/resource`
 
 Test.before(async () => {
