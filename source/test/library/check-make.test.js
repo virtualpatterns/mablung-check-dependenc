@@ -1,15 +1,14 @@
+import { Check } from '@virtualpatterns/mablung-check-dependency'
 import Path from 'path'
 import BaseTest from 'ava'
 import URL from 'url'
 
-import { Check } from '../../index.js'
-
 const FilePath = URL.fileURLToPath(import.meta.url)
 const FolderPath = Path.dirname(FilePath)
 const Process = process
-const Test = BaseTest.serial
 
 const ResourcePath = `${FolderPath}/resource/make`
+const Test = BaseTest.serial
 
 Test('default', async (test) => {
   delete Process.env.MAKEFILE_PATH

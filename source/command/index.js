@@ -24,6 +24,8 @@ Command
   .option('--report-used', 'Report used dependencies', false)
   .action(async (option) => {
 
+    process.exitCode = 0
+
     try {
 
       let path = option.projectPath
@@ -36,24 +38,19 @@ Command
       }
 
       let dependency = await Check(path, configuration)
-      // console.dir(dependency)
-
-      process.exitCode = 0
 
       if (Is.not.emptyObject(dependency.missing) &&
           option.reportMissing) {
 
         let missingDependency = null
         missingDependency = Object.entries(dependency.missing)
-        missingDependency = missingDependency.sort(([leftDependency], [rightDependency]) => leftDependency.localeCompare(rightDependency))
+        missingDependency = missingDependency.sort(([ leftDependency ], [ rightDependency ]) => leftDependency.localeCompare(rightDependency))
 
-        console.log('-'.repeat(80))
-        console.log('Missing dependencies')
-        console.log('-'.repeat(80))
+        console.log('- Missing dependencies ---------------------------')
 
         missingDependency.forEach(([dependency, path]) => {
-          console.log(`${dependency} used in ...`)
-          console.log(path.sort().map((path) => `  ${Path.relative('', path)}`).join('\n'))
+          console.log(`    ${dependency} used in ...`)
+          console.log(path.sort().map((path) => `      ${Path.relative('', path)}`).join('\n'))
         })
 
         console.log()
@@ -65,10 +62,8 @@ Command
       if (dependency.unused.length > 0 &&
           option.reportUnused) {
 
-        console.log('-'.repeat(80))
-        console.log('Unused dependencies')
-        console.log('-'.repeat(80))
-        console.log(dependency.unused.sort().map((dependency) => `${dependency}`).join('\n'))
+        console.log('- Unused dependencies ----------------------------')
+        console.log(dependency.unused.sort().map((dependency) => `    ${dependency}`).join('\n'))
         console.log()
 
         process.exitCode = 1
@@ -80,28 +75,22 @@ Command
 
         let usedDependency = null
         usedDependency = Object.entries(dependency.used)
-        usedDependency = usedDependency.sort(([leftDependency], [rightDependency]) => leftDependency.localeCompare(rightDependency))
+        usedDependency = usedDependency.sort(([ leftDependency ], [ rightDependency ]) => leftDependency.localeCompare(rightDependency))
     
-        console.log('-'.repeat(80))
-        console.log('Used dependencies')
-        console.log('-'.repeat(80))
+        console.log('- Used dependencies ------------------------------')
 
         usedDependency.forEach(([dependency, path]) => {
-          console.log(`${dependency} used in ...`)
-          console.log(path.sort().map((path) => `  ${Path.relative('', path)}`).join('\n'))
+          console.log(`    ${dependency} used in ...`)
+          console.log(path.sort().map((path) => `      ${Path.relative('', path)}`).join('\n'))
         })
 
         console.log()
 
       }
 
-      // if (process.exitCode === 0) {
-        
-      //   console.log('-'.repeat(80))
-      //   console.log('There are no dependency issues.')
-      //   console.log('-'.repeat(80))
-
-      // }
+      if (process.exitCode === 0) {
+        console.log('- There are no dependency issues -----------------')
+      }
       
     } catch (error) {
       console.error(error)

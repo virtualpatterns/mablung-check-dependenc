@@ -1,8 +1,7 @@
+import { Check } from '@virtualpatterns/mablung-check-dependency'
 import Path from 'path'
 import Test from 'ava'
 import URL from 'url'
-
-import { Check } from '../../index.js'
 
 const FilePath = URL.fileURLToPath(import.meta.url)
 const FolderPath = Path.dirname(FilePath)

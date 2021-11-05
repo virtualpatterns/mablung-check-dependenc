@@ -1,5 +1,6 @@
 import BaseCheck from 'depcheck'
 import BaseTransform from 'node-json-transform'
+import FileSystem from 'fs-extra'
 import Is from '@pwn/is'
 import Merge from 'deepmerge'
 import Path from 'path'
@@ -15,15 +16,19 @@ import { FileParseError } from './error/file-parse-error.js'
 import { FolderParseError } from './error/folder-parse-error.js'
 
 const { transform: Transform } = BaseTransform
+
 const Process = process
 
 export function Check(userPath = Process.cwd(), userOption = {}) {
-  
+
   return new Promise((resolve, reject) => {
 
     try {
 
+      const Package = FileSystem.readJsonSync(`${userPath}/package.json`, { 'encoding': 'utf-8' })
+
       let defaultOption = {
+        'ignoreMatch': Package.name ? [ Package.name ] : [],
         'parser': {
           '**/*.cjs': BaseCheck.parser.es7.default, // [ BaseCheck.parser.es6, BaseCheck.parser.es7.default ],
           '**/*.js': BaseCheck.parser.es7.default, // [ BaseCheck.parser.es6, BaseCheck.parser.es7.default ],

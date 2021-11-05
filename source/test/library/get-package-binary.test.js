@@ -2,10 +2,10 @@ import Path from 'path'
 import Test from 'ava'
 import URL from 'url'
 
+import { GetPackageBinary } from '../../library/get-package-binary.js'
+
 const FilePath = URL.fileURLToPath(import.meta.url)
 const FolderPath = Path.dirname(FilePath)
-
-import { GetPackageBinary } from '../../library/get-package-binary.js'
 
 const ResourcePath = `${FolderPath}/resource/get-package-binary`
 
