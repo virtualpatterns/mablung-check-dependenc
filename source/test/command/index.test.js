@@ -1,5 +1,6 @@
-import { CreateLoggedProcess, ForkedProcess } from '@virtualpatterns/mablung-worker'
+import { CreateLoggedProcess } from '@virtualpatterns/mablung-worker/test'
 import { createRequire as CreateRequire } from 'module'
+import { ForkedProcess } from '@virtualpatterns/mablung-worker'
 import FileSystem from 'fs-extra'
 import Path from 'path'
 import Test from 'ava'
@@ -15,7 +16,7 @@ const ResourcePath = `${FolderPath}/resource`
 
 Test.before(async () => {
   await FileSystem.ensureDir(Path.dirname(LogPath))
-  await FileSystem.remove(LogPath)
+  return FileSystem.remove(LogPath)
 })
 
 Test.serial('default', async (test) => {

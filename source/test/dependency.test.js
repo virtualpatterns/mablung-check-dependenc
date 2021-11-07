@@ -1,6 +1,5 @@
+import { Check } from '@virtualpatterns/mablung-check-dependency'
 import Test from 'ava'
-
-import { Check } from '../index.js'
 
 Test('default', async (test) => {
 

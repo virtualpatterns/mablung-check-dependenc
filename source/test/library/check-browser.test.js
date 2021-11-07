@@ -1,6 +1,6 @@
+import { Check } from '@virtualpatterns/mablung-check-dependency'
 import Path from 'path'
 import Test from 'ava'
-import { Check } from '@virtualpatterns/mablung-check-dependency'
 import URL from 'url'
 
 const FilePath = URL.fileURLToPath(import.meta.url)
