@@ -24,7 +24,7 @@ Command
   .option('--report-used', 'Report used dependencies', false)
   .action(async (option) => {
 
-    process.exitCode = 0
+    Process.exitCode = 0
 
     try {
 
@@ -42,6 +42,8 @@ Command
       if (Is.not.emptyObject(dependency.missing) &&
           option.reportMissing) {
 
+        Process.exitCode = 1
+
         let missingDependency = null
         missingDependency = Object.entries(dependency.missing)
         missingDependency = missingDependency.sort(([ leftDependency ], [ rightDependency ]) => leftDependency.localeCompare(rightDependency))
@@ -55,18 +57,16 @@ Command
 
         console.log()
 
-        process.exitCode = 1
-
       }
       
       if (dependency.unused.length > 0 &&
           option.reportUnused) {
 
+        Process.exitCode = 1
+
         console.log('- unused dependencies ----------------------------')
         console.log(dependency.unused.sort().map((dependency) => `    ${dependency}`).join('\n'))
         console.log()
-
-        process.exitCode = 1
 
       }
 
@@ -88,13 +88,13 @@ Command
 
       }
 
-      if (process.exitCode === 0) {
+      if (Process.exitCode === 0) {
         console.log('- there are no dependency issues -----------------')
       }
       
     } catch (error) {
+      Process.exitCode = 2
       console.error(error)
-      process.exitCode = 2
     }
 
   })
