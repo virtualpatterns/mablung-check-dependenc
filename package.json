@@ -22,7 +22,7 @@
   "dependencies": {
     "@kba/makefile-parser": "0.0.6",
     "@pwn/is": "^1.0.2",
-    "@virtualpatterns/mablung-source-map-support": "0.0.26-30",
+    "@virtualpatterns/mablung-source-map-support": "0.0.26-36",
     "commander": "^8.3.0",
     "deepmerge": "^4.2.2",
     "depcheck": "^1.4.2",
