@@ -48,7 +48,7 @@ Command
         missingDependency = Object.entries(dependency.missing)
         missingDependency = missingDependency.sort(([ leftDependency ], [ rightDependency ]) => leftDependency.localeCompare(rightDependency))
 
-        console.log('- missing dependencies ---------------------------')
+        console.log('- missing dependencies -----------------')
 
         missingDependency.forEach(([dependency, path]) => {
           console.log(`    ${dependency} used in ...`)
@@ -64,7 +64,7 @@ Command
 
         Process.exitCode = 1
 
-        console.log('- unused dependencies ----------------------------')
+        console.log('- unused dependencies ------------------')
         console.log(dependency.unused.sort().map((dependency) => `    ${dependency}`).join('\n'))
         console.log()
 
@@ -77,7 +77,7 @@ Command
         usedDependency = Object.entries(dependency.used)
         usedDependency = usedDependency.sort(([ leftDependency ], [ rightDependency ]) => leftDependency.localeCompare(rightDependency))
     
-        console.log('- used dependencies ------------------------------')
+        console.log('- used dependencies --------------------')
 
         usedDependency.forEach(([dependency, path]) => {
           console.log(`    ${dependency} used in ...`)
@@ -89,7 +89,7 @@ Command
       }
 
       if (Process.exitCode === 0) {
-        console.log('- there are no dependency issues -----------------')
+        console.log('There are no dependency issues')
       }
       
     } catch (error) {

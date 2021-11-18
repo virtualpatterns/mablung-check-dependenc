@@ -1,2 +1,2 @@
 default:
-	dependency-0
+	@npx package-0

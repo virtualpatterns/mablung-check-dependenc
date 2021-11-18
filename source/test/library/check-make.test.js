@@ -12,7 +12,7 @@ const Test = BaseTest.serial
 
 Test('default', async (test) => {
   delete Process.env.MAKEFILE_PATH
-  test.deepEqual(await Check(`${ResourcePath}/missing/installed`), {
+  test.deepEqual(await Check(`${ResourcePath}/default`), {
     'missing': {},
     'unused': [],
     'used': {}
@@ -23,11 +23,11 @@ Test('Check(\'missing/installed\')', async (test) => {
   Process.env.MAKEFILE_PATH = `${ResourcePath}/missing/installed/makefile`
   test.deepEqual(await Check(`${ResourcePath}/missing/installed`), {
     'missing': {
-      'dependency-0': [ `${ResourcePath}/missing/installed/makefile` ]
+      'package-0': [ `${ResourcePath}/missing/installed/makefile` ]
     },
     'unused': [],
     'used': {
-      'dependency-0': [ `${ResourcePath}/missing/installed/makefile` ]
+      'package-0': [ `${ResourcePath}/missing/installed/makefile` ]
     }
   })
 })
@@ -46,21 +46,9 @@ Test('Check(\'unused\')', async (test) => {
   test.deepEqual(await Check(`${ResourcePath}/unused`), {
     'missing': {},
     'unused': [
-      'dependency-0'
+      'package-0'
     ],
     'used': {}
-  })
-})
-
-Test('Check(\'used/simple\')', async (test) => {
-  Process.env.MAKEFILE_PATH = `${ResourcePath}/used/simple/makefile`
-  test.deepEqual(await Check(`${ResourcePath}/used/simple`), {
-    'missing': {},
-    'unused': [],
-    'used': {
-      'dependency-0': [ `${ResourcePath}/used/simple/makefile` ],
-      'dependency-1': [ `${ResourcePath}/used/simple/makefile` ]
-    }
   })
 })
 
@@ -70,18 +58,17 @@ Test('Check(\'used/complex\')', async (test) => {
     'missing': {},
     'unused': [],
     'used': {
-      'dependency-00': [ `${ResourcePath}/used/complex/makefile` ],
-      'dependency-01': [ `${ResourcePath}/used/complex/makefile` ],
-      'dependency-02': [ `${ResourcePath}/used/complex/makefile` ],
-      'dependency-03': [ `${ResourcePath}/used/complex/makefile` ],
-      'dependency-04': [ `${ResourcePath}/used/complex/makefile` ],
-      'dependency-05': [ `${ResourcePath}/used/complex/makefile` ],
-      'dependency-06': [ `${ResourcePath}/used/complex/makefile` ],
-      'dependency-07': [ `${ResourcePath}/used/complex/makefile` ],
-      'dependency-08': [ `${ResourcePath}/used/complex/makefile` ],
-      'dependency-09': [ `${ResourcePath}/used/complex/makefile` ],
-      'dependency-10': [ `${ResourcePath}/used/complex/makefile` ],
-      'dependency-11': [ `${ResourcePath}/used/complex/makefile` ]
+      'package-00': [`${ResourcePath}/used/complex/makefile`],
+      'package-01': [`${ResourcePath}/used/complex/makefile`],
+      'package-02': [`${ResourcePath}/used/complex/makefile`],
+      'package-03': [`${ResourcePath}/used/complex/makefile`],
+      'package-04': [`${ResourcePath}/used/complex/makefile`],
+      'package-05': [`${ResourcePath}/used/complex/makefile`],
+      'package-06': [`${ResourcePath}/used/complex/makefile`],
+      'package-07': [`${ResourcePath}/used/complex/makefile`],
+      'package-08': [`${ResourcePath}/used/complex/makefile`],
+      'package-09': [`${ResourcePath}/used/complex/makefile`],
+      'package-10': [`${ResourcePath}/used/complex/makefile`]
     }
   })
 })
@@ -92,7 +79,19 @@ Test('Check(\'used/include\')', async (test) => {
     'missing': {},
     'unused': [],
     'used': {
-      'dependency-0': [ `${ResourcePath}/used/include/included` ]
+      'package-0': [`${ResourcePath}/used/include/included`]
+    }
+  })
+})
+
+Test('Check(\'used/simple\')', async (test) => {
+  Process.env.MAKEFILE_PATH = `${ResourcePath}/used/simple/makefile`
+  test.deepEqual(await Check(`${ResourcePath}/used/simple`), {
+    'missing': {},
+    'unused': [],
+    'used': {
+      'package-0': [ `${ResourcePath}/used/simple/makefile` ],
+      'package-1': [ `${ResourcePath}/used/simple/makefile` ]
     }
   })
 })

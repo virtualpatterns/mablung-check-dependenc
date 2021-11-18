@@ -1,5 +1,6 @@
-import { Check, FileParseError } from '@virtualpatterns/mablung-check-dependency'
+import { Check, FileParseError, FolderParseError } from '@virtualpatterns/mablung-check-dependency'
 import Path from 'path'
+import Shell from 'shelljs'
 import Test from 'ava'
 import URL from 'url'
 
@@ -36,8 +37,20 @@ Test('Check(\'ignore-pattern\', { ignorePattern: [ ... ] })', async (test) => {
   })
 })
 
-Test('Check(\'error\') throws FileParseError', async (test) => {
-  await test.throwsAsync(Check(`${ResourcePath}/error`), { 'instanceOf': FileParseError })
+Test('Check(\'folder-parse-error\') throws FolderParseError', async (test) => {
+
+  Shell.chmod('ugo-rwx', `${ResourcePath}/folder-parse-error/folder`)
+
+  try {
+    await test.throwsAsync(Check(`${ResourcePath}/folder-parse-error`), { 'instanceOf': FolderParseError })
+  } finally {
+    Shell.chmod('ugo+rwx', `${ResourcePath}/folder-parse-error/folder`)
+  }
+
+})
+
+Test('Check(\'file-parse-error\') throws FileParseError', (test) => {
+  return test.throwsAsync(Check(`${ResourcePath}/file-parse-error`), { 'instanceOf': FileParseError })
 })
 
 Test('Check(\'missing\')', async (test) => {

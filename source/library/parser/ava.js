@@ -2,7 +2,7 @@ import { createRequire as CreateRequire } from 'module'
 import JSON from 'jsonpath'
 import Path from 'path'
 
-import { GetDependencyName } from '../get-dependency-name.js'
+import { GetPackageName } from '../get-package-name.js'
 
 const Require = CreateRequire(import.meta.url)
 
@@ -10,10 +10,10 @@ export async function Ava(path) {
   
   let configuration = Require(path)({ 'path': Path.dirname(path) })
 
-  let require = null
-  require = JSON.query(configuration, '$.require[*]')
-  require = require.map((dependency) => GetDependencyName(dependency))
+  let _package = JSON
+    .query(configuration, '$.require[*]')
+    .map((_package) => GetPackageName(_package))
 
-  return require
+  return _package
 
 }

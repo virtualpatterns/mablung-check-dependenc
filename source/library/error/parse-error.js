@@ -2,9 +2,9 @@ import { CheckError } from './check-error.js'
 
 class ParseError extends CheckError {
 
-  constructor(message, parseError) {
+  constructor(message, error) {
     super(message)
-    this._parseError = parseError
+    this.error = error
   }
 
 }

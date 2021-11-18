@@ -1,6 +1,6 @@
 import FileSystem from 'fs-extra'
 
-import { GetDependencyName } from '../get-dependency-name.js'
+import { GetPackageName } from '../get-package-name.js'
 
 export async function Browser(path) {
 
@@ -8,9 +8,10 @@ export async function Browser(path) {
   configuration = await FileSystem.readJson(path, { 'encoding': 'utf-8' })
   configuration = configuration.browser || {}
 
-  let dependency = Object.entries(configuration)
-    .map(([ , value ]) => GetDependencyName(value))
+  let _package = Object
+    .entries(configuration)
+    .map(([ , value ]) => GetPackageName(value))
 
-  return dependency
+  return _package
 
 }

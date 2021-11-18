@@ -1,3 +1,3 @@
 default:
-	@dependency-0
-	@binary-0
+	@npx package-0
+	@npx binary-0

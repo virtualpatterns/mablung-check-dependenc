@@ -1,16 +1,15 @@
 {
   "devDependencies": {
-    "dependency-00": "^0.3.3",
-    "dependency-01": "^0.3.3",
-    "dependency-02": "^0.3.3",
-    "dependency-03": "^0.3.3",
-    "dependency-04": "^0.3.3",
-    "dependency-05": "^0.3.3",
-    "dependency-06": "^0.3.3",
-    "dependency-07": "^0.3.3",
-    "dependency-08": "^0.3.3",
-    "dependency-09": "^0.3.3",
-    "dependency-10": "^0.3.3",
-    "dependency-11": "^0.3.3"
+    "package-00": "^0.3.3",
+    "package-01": "^0.3.3",
+    "package-02": "^0.3.3",
+    "package-03": "^0.3.3",
+    "package-04": "^0.3.3",
+    "package-05": "^0.3.3",
+    "package-06": "^0.3.3",
+    "package-07": "^0.3.3",
+    "package-08": "^0.3.3",
+    "package-09": "^0.3.3",
+    "package-10": "^0.3.3"
   }
 }
