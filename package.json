@@ -9,7 +9,7 @@
   "files": [
     "release/command",
     "release/library",
-    "release/index.js"
+    "release/index.*"
   ],
   "license": "GPL-3.0+",
   "name": "@virtualpatterns/mablung-check-dependency",
@@ -22,7 +22,7 @@
   "dependencies": {
     "@kba/makefile-parser": "0.0.6",
     "@pwn/is": "^1.0.2",
-    "@virtualpatterns/mablung-source-map-support": "0.0.26-44",
+    "@virtualpatterns/mablung-source-map-support": "0.0.26-46",
     "commander": "^8.3.0",
     "deepmerge": "^4.2.2",
     "depcheck": "^1.4.2",
@@ -35,10 +35,10 @@
     "pug-parser": "^6.0.0"
   },
   "devDependencies": {
-    "@virtualpatterns/babel-preset-mablung-makefile": "0.0.26-56",
-    "@virtualpatterns/eslint-config-mablung-makefile": "0.0.26-55",
-    "@virtualpatterns/mablung-makefile": "0.0.26-137",
-    "@virtualpatterns/mablung-worker": "0.0.2-102",
+    "@virtualpatterns/babel-preset-mablung-makefile": "0.0.26-58",
+    "@virtualpatterns/eslint-config-mablung-makefile": "0.0.26-57",
+    "@virtualpatterns/mablung-makefile": "0.0.26-144",
+    "@virtualpatterns/mablung-worker": "0.0.2-104",
     "ava": "^3.15.0",
     "shelljs": "^0.8.4"
   }
