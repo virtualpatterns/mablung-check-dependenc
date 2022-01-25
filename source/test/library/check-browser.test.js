@@ -6,24 +6,24 @@ import URL from 'url'
 const FilePath = URL.fileURLToPath(import.meta.url)
 const FolderPath = Path.dirname(FilePath)
 
-const ResourcePath = Path.normalize(`${FolderPath}/resource/browser`)
+const ResourcePath = Path.normalize(Path.resolve(FolderPath, 'resource/browser'))
 
 Test('Check(\'missing\')', async (test) => {
-  test.deepEqual(await Check(`${ResourcePath}/missing`, {}), { 
+  test.deepEqual(await Check(Path.resolve(ResourcePath, 'missing'), {}), { 
     'missing': {
-      'browser-dependency-0': [ `${ResourcePath}/missing/package.json` ],
-      'browser-dependency-1': [ `${ResourcePath}/missing/package.json` ]
+      'browser-dependency-0': [ Path.resolve(ResourcePath, 'missing/package.json') ],
+      'browser-dependency-1': [ Path.resolve(ResourcePath, 'missing/package.json') ]
     }, 
     'unused': [],
     'used': {
-      'browser-dependency-0': [ `${ResourcePath}/missing/package.json` ],
-      'browser-dependency-1': [ `${ResourcePath}/missing/package.json` ]
+      'browser-dependency-0': [ Path.resolve(ResourcePath, 'missing/package.json') ],
+      'browser-dependency-1': [ Path.resolve(ResourcePath, 'missing/package.json') ]
     }
   })
 })
 
 Test('Check(\'unused\')', async (test) => {
-  test.deepEqual(await Check(`${ResourcePath}/unused`, {}), { 
+  test.deepEqual(await Check(Path.resolve(ResourcePath, 'unused'), {}), { 
     'missing': {}, 
     'unused': [
       'browser-dependency-0',
@@ -34,12 +34,12 @@ Test('Check(\'unused\')', async (test) => {
 })
 
 Test('Check(\'used\')', async (test) => {
-  test.deepEqual(await Check(`${ResourcePath}/used`, {}), { 
+  test.deepEqual(await Check(Path.resolve(ResourcePath, 'used'), {}), { 
     'missing': {}, 
     'unused': [],
     'used': {
-      'browser-dependency-0': [ `${ResourcePath}/used/package.json` ],
-      'browser-dependency-1': [ `${ResourcePath}/used/package.json` ]
+      'browser-dependency-0': [ Path.resolve(ResourcePath, 'used/package.json') ],
+      'browser-dependency-1': [ Path.resolve(ResourcePath, 'used/package.json') ]
     }
   })
 })

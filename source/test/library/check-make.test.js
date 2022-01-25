@@ -7,12 +7,12 @@ const FilePath = URL.fileURLToPath(import.meta.url)
 const FolderPath = Path.dirname(FilePath)
 const Process = process
 
-const ResourcePath = `${FolderPath}/resource/make`
+const ResourcePath = Path.resolve(FolderPath, 'resource/make')
 const Test = BaseTest.serial
 
 Test('default', async (test) => {
   delete Process.env.MAKEFILE_PATH
-  test.deepEqual(await Check(`${ResourcePath}/default`), {
+  test.deepEqual(await Check(Path.resolve(ResourcePath, 'default')), {
     'missing': {},
     'unused': [],
     'used': {}
@@ -20,21 +20,21 @@ Test('default', async (test) => {
 })
 
 Test('Check(\'missing/installed\')', async (test) => {
-  Process.env.MAKEFILE_PATH = `${ResourcePath}/missing/installed/makefile`
-  test.deepEqual(await Check(`${ResourcePath}/missing/installed`), {
+  Process.env.MAKEFILE_PATH = Path.resolve(ResourcePath, 'missing/installed/makefile')
+  test.deepEqual(await Check(Path.resolve(ResourcePath, 'missing/installed')), {
     'missing': {
-      'package-0': [ `${ResourcePath}/missing/installed/makefile` ]
+      'package-0': [ Path.resolve(ResourcePath, 'missing/installed/makefile') ]
     },
     'unused': [],
     'used': {
-      'package-0': [ `${ResourcePath}/missing/installed/makefile` ]
+      'package-0': [ Path.resolve(ResourcePath, 'missing/installed/makefile') ]
     }
   })
 })
 
 Test('Check(\'missing/not-installed\')', async (test) => {
-  Process.env.MAKEFILE_PATH = `${ResourcePath}/missing/not-installed/makefile`
-  test.deepEqual(await Check(`${ResourcePath}/missing/not-installed`), {
+  Process.env.MAKEFILE_PATH = Path.resolve(ResourcePath, 'missing/not-installed/makefile')
+  test.deepEqual(await Check(Path.resolve(ResourcePath, 'missing/not-installed')), {
     'missing': {},
     'unused': [],
     'used': {}
@@ -42,8 +42,8 @@ Test('Check(\'missing/not-installed\')', async (test) => {
 })
 
 Test('Check(\'unused\')', async (test) => {
-  Process.env.MAKEFILE_PATH = `${ResourcePath}/unused/makefile`
-  test.deepEqual(await Check(`${ResourcePath}/unused`), {
+  Process.env.MAKEFILE_PATH = Path.resolve(ResourcePath, 'unused/makefile')
+  test.deepEqual(await Check(Path.resolve(ResourcePath, 'unused')), {
     'missing': {},
     'unused': [
       'package-0'
@@ -53,45 +53,51 @@ Test('Check(\'unused\')', async (test) => {
 })
 
 Test('Check(\'used/complex\')', async (test) => {
-  Process.env.MAKEFILE_PATH = `${ResourcePath}/used/complex/makefile`
-  test.deepEqual(await Check(`${ResourcePath}/used/complex`), {
+  Process.env.MAKEFILE_PATH = Path.resolve(ResourcePath, 'used/complex/makefile')
+  test.deepEqual(await Check(Path.resolve(ResourcePath, 'used/complex')), {
     'missing': {},
     'unused': [],
     'used': {
-      'package-00': [`${ResourcePath}/used/complex/makefile`],
-      'package-01': [`${ResourcePath}/used/complex/makefile`],
-      'package-02': [`${ResourcePath}/used/complex/makefile`],
-      'package-03': [`${ResourcePath}/used/complex/makefile`],
-      'package-04': [`${ResourcePath}/used/complex/makefile`],
-      'package-05': [`${ResourcePath}/used/complex/makefile`],
-      'package-06': [`${ResourcePath}/used/complex/makefile`],
-      'package-07': [`${ResourcePath}/used/complex/makefile`],
-      'package-08': [`${ResourcePath}/used/complex/makefile`],
-      'package-09': [`${ResourcePath}/used/complex/makefile`],
-      'package-10': [`${ResourcePath}/used/complex/makefile`]
+      'package-00': [ Path.resolve(ResourcePath, 'used/complex/makefile') ],
+      'package-01': [ Path.resolve(ResourcePath, 'used/complex/makefile') ],
+      'package-02': [ Path.resolve(ResourcePath, 'used/complex/makefile') ],
+      'package-03': [ Path.resolve(ResourcePath, 'used/complex/makefile') ],
+      'package-04': [ Path.resolve(ResourcePath, 'used/complex/makefile') ],
+      'package-05': [ Path.resolve(ResourcePath, 'used/complex/makefile') ],
+      'package-06': [ Path.resolve(ResourcePath, 'used/complex/makefile') ],
+      'package-07': [ Path.resolve(ResourcePath, 'used/complex/makefile') ],
+      'package-08': [ Path.resolve(ResourcePath, 'used/complex/makefile') ],
+      'package-09': [ Path.resolve(ResourcePath, 'used/complex/makefile') ],
+      'package-10': [ Path.resolve(ResourcePath, 'used/complex/makefile') ]
     }
   })
 })
 
 Test('Check(\'used/include\')', async (test) => {
-  Process.env.MAKEFILE_PATH = `${ResourcePath}/used/include/makefile ${ResourcePath}/used/include/included`
-  test.deepEqual(await Check(`${ResourcePath}/used/include`), {
+
+  Process.env.MAKEFILE_PATH = [
+    Path.resolve(ResourcePath, 'used/include/makefile'),
+    Path.resolve(ResourcePath, 'used/include/included')
+  ].join(' ')
+
+  test.deepEqual(await Check(Path.resolve(ResourcePath, 'used/include')), {
     'missing': {},
     'unused': [],
     'used': {
-      'package-0': [`${ResourcePath}/used/include/included`]
+      'package-0': [ Path.resolve(ResourcePath, 'used/include/included') ]
     }
   })
-})
+  
+}) 
 
 Test('Check(\'used/simple\')', async (test) => {
-  Process.env.MAKEFILE_PATH = `${ResourcePath}/used/simple/makefile`
-  test.deepEqual(await Check(`${ResourcePath}/used/simple`), {
+  Process.env.MAKEFILE_PATH = Path.resolve(ResourcePath, 'used/simple/makefile')
+  test.deepEqual(await Check(Path.resolve(ResourcePath, 'used/simple')), {
     'missing': {},
     'unused': [],
     'used': {
-      'package-0': [ `${ResourcePath}/used/simple/makefile` ],
-      'package-1': [ `${ResourcePath}/used/simple/makefile` ]
+      'package-0': [ Path.resolve(ResourcePath, 'used/simple/makefile') ],
+      'package-1': [ Path.resolve(ResourcePath, 'used/simple/makefile') ]
     }
   })
 })

@@ -1,0 +1,4 @@
+{
+  "bin": "./release/command/index.js",
+  "name": "folder-2-0"
+}

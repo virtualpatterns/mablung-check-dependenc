@@ -1,34 +1,43 @@
 import FileSystem from 'fs-extra'
-import Find from 'find'
 import Is from '@pwn/is'
+import Path from 'path'
 
 import { GetBinaryName } from './get-binary-name.js'
 
-const Process = process
+export async function GetBinary(packagePath = Path.resolve('package.json')) {
 
-export async function GetBinary(rootPath = `${Process.cwd()}/node_modules`) {
+  let { 'bin': binary, 'name': packageName } = await FileSystem.readJson(packagePath, { 'encoding': 'utf-8' })
+  let value = null
 
-  let binary = []
-  let packagePath = Find.fileSync(/package\.json$/, rootPath)
-
-  for (let item of packagePath) {
-
-    let { name: packageName, bin: packageBinary } = await FileSystem.readJson(item, { 'encoding': 'utf-8' })
-
-    if (Is.not.nil(packageBinary)) {
-
-      if (Is.string(packageBinary)) {
-        binary.push({ packageName, 'binaryName': GetBinaryName(packageName), 'binaryPattern': new RegExp(`(?:\\s|\\(|/)${GetBinaryName(packageName)}(?:\\)|\\s|$)`, 'm') })
-      } else {
-        for (let item in packageBinary) {
-          binary.push({ packageName, 'binaryName': item, 'binaryPattern': new RegExp(`(?:\\s|\\(|/)${item}(?:\\)|\\s|$)`, 'm') })
+  switch (true) {
+    case Is.string(binary):
+      value = [ {
+        'binary': {
+          'name': GetBinaryName(packageName),
+          'path': Path.resolve(Path.dirname(packagePath), binary),
+          'pattern': new RegExp(`(?:\\s|\\(|/)${GetBinaryName(packageName)}(?:\\)|\\s|$)`, 'm')
+        },
+        'package': {
+          'name': packageName,
+          'path': packagePath
         }
-      }
-
-    }
-
+      } ]
+      break
+    default:
+      value = Object.entries(binary || {})
+        .map(([binaryName, binaryPath]) => ({
+          'binary': {
+            'name': GetBinaryName(binaryName),
+            'path': Path.resolve(Path.dirname(packagePath), binaryPath),
+            'pattern': new RegExp(`(?:\\s|\\(|/)${GetBinaryName(binaryName)}(?:\\)|\\s|$)`, 'm')
+          },
+          'package': {
+            'name': packageName,
+            'path': packagePath
+          }
+        }))
   }
 
-  return binary
-  
+  return value
+
 }

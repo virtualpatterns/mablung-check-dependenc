@@ -1,8 +1,8 @@
-import { createRequire as CreateRequire } from 'module'
 import FileSystem from 'fs-extra'
+import Path from 'path'
+import URL from 'url'
 
-const Require = CreateRequire(import.meta.url)
+const FilePath = URL.fileURLToPath(import.meta.url)
+const FolderPath = Path.dirname(FilePath)
 
-const Package = FileSystem.readJsonSync(Require.resolve('../../package.json'), { 'encoding': 'utf-8' })
-
-export { Package }
+export const Package = FileSystem.readJsonSync(Path.resolve(FolderPath, '../../package.json'), { 'encoding': 'utf-8' })

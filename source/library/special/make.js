@@ -2,15 +2,14 @@ import FileSystem from 'fs-extra'
 import Parse from '@kba/makefile-parser'
 import JSON from 'jsonpath'
 
-import { GetBinary } from '../get-binary.js'
+import { GetProjectBinary } from '../get-project-binary.js'
 
 const Process = process
 
-export async function Make(path, packageDependency, packagePath) {
+export async function Make(path, packageDependency, projectPath) {
   
   let _package = []
-  let makefilePath = (Process.env?.MAKEFILE_PATH || '')
-    .split(' ')
+  let makefilePath = (Process.env.MAKEFILE_PATH || '').split(' ')
 
   if (makefilePath.includes(path)) {
 
@@ -19,7 +18,7 @@ export async function Make(path, packageDependency, packagePath) {
     let value = JSON.query(ast, '$..export.value')
     let recipe = JSON.query(ast, '$..recipe[*]')
 
-    let binary = await GetBinary(`${packagePath}/node_modules`)
+    let binary = (await GetProjectBinary(projectPath)).flat(Infinity)
 
     _package = _package
       .concat(
@@ -27,12 +26,12 @@ export async function Make(path, packageDependency, packagePath) {
         binary
           .filter((binary) =>
             value
-              .filter((value) => binary.binaryPattern.test(value))
+              .filter((value) => binary.binary.pattern.test(value))
               .length > 0 ||
             recipe
-              .filter((recipe) => binary.binaryPattern.test(recipe))
+              .filter((recipe) => binary.binary.pattern.test(recipe))
               .length > 0)
-          .map((binary) => binary.packageName)
+          .map((binary) => binary.package.name)
 
       ) 
 

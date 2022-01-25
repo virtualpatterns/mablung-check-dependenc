@@ -49,8 +49,8 @@
 //     // get bin dir ... cd dir in arg, npm bin
 //     // get contents of bin ... []
 
-//     // console.dir(getPackagePath(`${FolderPath}/lsbd/a`))
-//     // console.dir(await getBinary(`${FolderPath}/lsbd`))
+//     // console.dir(getPackagePath(Path.resolve(FolderPath, 'lsbd/a')))
+//     // console.dir(await getBinary(Path.resolve(FolderPath, 'lsbd')))
 //     // console.dir(await getBinary(`${Process.cwd()}/node_modules`))
 
 //     // get each bin in node-mod/.bin
