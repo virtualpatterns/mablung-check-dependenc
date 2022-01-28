@@ -1,19 +1,21 @@
-import { createRequire as CreateRequire } from 'module'
+import Is from '@pwn/is'
 import JSON from 'jsonpath'
-import Path from 'path'
 
 import { GetPackageName } from '../get-package-name.js'
 
-const Require = CreateRequire(import.meta.url)
-
-export async function Ava(path) {
+export async function Ava(filePath, allPackage, projectPath) {
   
-  let configuration = Require(path)({ 'path': Path.dirname(path) })
+  let configuration = await import(filePath)
+    .then((module) => module.default)
 
-  let _package = JSON
+  if (Is.function(configuration)) {
+    configuration = await configuration({ 'projectDir': projectPath })
+  }
+  
+  let usedPackage = JSON
     .query(configuration, '$.require[*]')
     .map((_package) => GetPackageName(_package))
 
-  return _package
+  return usedPackage
 
 }

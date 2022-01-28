@@ -31,7 +31,7 @@ export function Check(userPath = Process.cwd(), userOption = {}) {
           '**/*.js': BaseCheck.parser.es7.default,
           '**/*.pug': Pug,
           '**/.babelrc.json': Babel,
-          '**/ava.config.cjs': Ava,
+          '**/ava.config.js': Ava,
           '**/babel.config.json': Babel,
           '**/package.json': Browser
         },
