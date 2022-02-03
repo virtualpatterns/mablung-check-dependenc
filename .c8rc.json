@@ -4,7 +4,7 @@
     "release/sandbox",
     "release/test/command/resource",
     "release/test/library/resource",
-    "ava.config.cjs"
+    "ava.config.js"
   ],
   "reportDir": "data/c8", 
   "reporter": [
