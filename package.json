@@ -22,7 +22,7 @@
   "dependencies": {
     "@kba/makefile-parser": "0.0.6",
     "@pwn/is": "^1.0.2",
-    "@virtualpatterns/mablung-source-map-support": "0.0.26-69",
+    "@virtualpatterns/mablung-source-map-support": "0.0.26-71",
     "commander": "^9.0.0",
     "deepmerge": "^4.2.2",
     "depcheck": "^1.4.3",
@@ -34,8 +34,8 @@
     "pug-parser": "^6.0.0"
   },
   "devDependencies": {
-    "@virtualpatterns/babel-preset-mablung-makefile": "0.0.26-87",
-    "@virtualpatterns/eslint-config-mablung-makefile": "0.0.26-84",
+    "@virtualpatterns/babel-preset-mablung-makefile": "0.0.26-95",
+    "@virtualpatterns/eslint-config-mablung-makefile": "0.0.26-90",
     "@virtualpatterns/mablung-makefile": "0.0.26-215",
     "@virtualpatterns/mablung-worker": "0.0.2-115",
     "ava": "^4.0.1",
