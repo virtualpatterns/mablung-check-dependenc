@@ -13,17 +13,17 @@ const ResourcePath = Path.normalize(Path.resolve(FolderPath, 'resource/babel'))
 Test('Check(\'babel-config-json/missing\')', async (test) => {
   test.deepEqual(await Check(Path.resolve(ResourcePath, 'babel-config-json/missing')), {
     'missing': {
-      'plugin-dependency-0': [Path.resolve(ResourcePath, 'babel-config-json/missing/babel.config.json')],
-      'plugin-dependency-1': [Path.resolve(ResourcePath, 'babel-config-json/missing/babel.config.json')],
-      'preset-dependency-0': [Path.resolve(ResourcePath, 'babel-config-json/missing/babel.config.json')],
-      'preset-dependency-1': [Path.resolve(ResourcePath, 'babel-config-json/missing/babel.config.json')]
+      'plugin-dependency-0': [ Path.resolve(ResourcePath, 'babel-config-json/missing/babel.config.json') ],
+      'plugin-dependency-1': [ Path.resolve(ResourcePath, 'babel-config-json/missing/babel.config.json') ],
+      'preset-dependency-0': [ Path.resolve(ResourcePath, 'babel-config-json/missing/babel.config.json') ],
+      'preset-dependency-1': [ Path.resolve(ResourcePath, 'babel-config-json/missing/babel.config.json') ]
     },
     'unused': [],
     'used': {
-      'plugin-dependency-0': [Path.resolve(ResourcePath, 'babel-config-json/missing/babel.config.json')],
-      'plugin-dependency-1': [Path.resolve(ResourcePath, 'babel-config-json/missing/babel.config.json')],
-      'preset-dependency-0': [Path.resolve(ResourcePath, 'babel-config-json/missing/babel.config.json')],
-      'preset-dependency-1': [Path.resolve(ResourcePath, 'babel-config-json/missing/babel.config.json')]
+      'plugin-dependency-0': [ Path.resolve(ResourcePath, 'babel-config-json/missing/babel.config.json') ],
+      'plugin-dependency-1': [ Path.resolve(ResourcePath, 'babel-config-json/missing/babel.config.json') ],
+      'preset-dependency-0': [ Path.resolve(ResourcePath, 'babel-config-json/missing/babel.config.json') ],
+      'preset-dependency-1': [ Path.resolve(ResourcePath, 'babel-config-json/missing/babel.config.json') ]
     }
   })
 })
@@ -46,10 +46,10 @@ Test('Check(\'babel-config-json/used\')', async (test) => {
     'missing': {},
     'unused': [],
     'used': {
-      'plugin-dependency-0': [Path.resolve(ResourcePath, 'babel-config-json/used/babel.config.json')],
-      'plugin-dependency-1': [Path.resolve(ResourcePath, 'babel-config-json/used/babel.config.json')],
-      'preset-dependency-0': [Path.resolve(ResourcePath, 'babel-config-json/used/babel.config.json')],
-      'preset-dependency-1': [Path.resolve(ResourcePath, 'babel-config-json/used/babel.config.json')]
+      'plugin-dependency-0': [ Path.resolve(ResourcePath, 'babel-config-json/used/babel.config.json') ],
+      'plugin-dependency-1': [ Path.resolve(ResourcePath, 'babel-config-json/used/babel.config.json') ],
+      'preset-dependency-0': [ Path.resolve(ResourcePath, 'babel-config-json/used/babel.config.json') ],
+      'preset-dependency-1': [ Path.resolve(ResourcePath, 'babel-config-json/used/babel.config.json') ]
     }
   })
 })
@@ -59,17 +59,17 @@ Test('Check(\'babel-config-json/used\')', async (test) => {
 Test('Check(\'babelrc-json/missing\')', async (test) => {
   test.deepEqual(await Check(Path.resolve(ResourcePath, 'babelrc-json/missing')), {
     'missing': {
-      'plugin-dependency-0': [Path.resolve(ResourcePath, 'babelrc-json/missing/.babelrc.json')],
-      'plugin-dependency-1': [Path.resolve(ResourcePath, 'babelrc-json/missing/.babelrc.json')],
-      'preset-dependency-0': [Path.resolve(ResourcePath, 'babelrc-json/missing/.babelrc.json')],
-      'preset-dependency-1': [Path.resolve(ResourcePath, 'babelrc-json/missing/.babelrc.json')]
+      'plugin-dependency-0': [ Path.resolve(ResourcePath, 'babelrc-json/missing/.babelrc.json') ],
+      'plugin-dependency-1': [ Path.resolve(ResourcePath, 'babelrc-json/missing/.babelrc.json') ],
+      'preset-dependency-0': [ Path.resolve(ResourcePath, 'babelrc-json/missing/.babelrc.json') ],
+      'preset-dependency-1': [ Path.resolve(ResourcePath, 'babelrc-json/missing/.babelrc.json') ]
     },
     'unused': [],
     'used': {
-      'plugin-dependency-0': [Path.resolve(ResourcePath, 'babelrc-json/missing/.babelrc.json')],
-      'plugin-dependency-1': [Path.resolve(ResourcePath, 'babelrc-json/missing/.babelrc.json')],
-      'preset-dependency-0': [Path.resolve(ResourcePath, 'babelrc-json/missing/.babelrc.json')],
-      'preset-dependency-1': [Path.resolve(ResourcePath, 'babelrc-json/missing/.babelrc.json')]
+      'plugin-dependency-0': [ Path.resolve(ResourcePath, 'babelrc-json/missing/.babelrc.json') ],
+      'plugin-dependency-1': [ Path.resolve(ResourcePath, 'babelrc-json/missing/.babelrc.json') ],
+      'preset-dependency-0': [ Path.resolve(ResourcePath, 'babelrc-json/missing/.babelrc.json') ],
+      'preset-dependency-1': [ Path.resolve(ResourcePath, 'babelrc-json/missing/.babelrc.json') ]
     }
   })
 })
@@ -92,10 +92,10 @@ Test('Check(\'babelrc-json/used\')', async (test) => {
     'missing': {},
     'unused': [],
     'used': {
-      'plugin-dependency-0': [Path.resolve(ResourcePath, 'babelrc-json/used/.babelrc.json')],
-      'plugin-dependency-1': [Path.resolve(ResourcePath, 'babelrc-json/used/.babelrc.json')],
-      'preset-dependency-0': [Path.resolve(ResourcePath, 'babelrc-json/used/.babelrc.json')],
-      'preset-dependency-1': [Path.resolve(ResourcePath, 'babelrc-json/used/.babelrc.json')]
+      'plugin-dependency-0': [ Path.resolve(ResourcePath, 'babelrc-json/used/.babelrc.json') ],
+      'plugin-dependency-1': [ Path.resolve(ResourcePath, 'babelrc-json/used/.babelrc.json') ],
+      'preset-dependency-0': [ Path.resolve(ResourcePath, 'babelrc-json/used/.babelrc.json') ],
+      'preset-dependency-1': [ Path.resolve(ResourcePath, 'babelrc-json/used/.babelrc.json') ]
     }
   })
 })
