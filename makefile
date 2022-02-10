@@ -12,7 +12,7 @@ ifndef current-clean-folder
 
 pre-clean::
 	$(info - pre-clean ----------------------------)
-	@echo delete .... release/test/library/resource/make
+	$(if $(verbose),@echo delete .... release/test/library/resource/make)
 	@npx shx rm -Rf release/test/library/resource/make
 	
 endif
