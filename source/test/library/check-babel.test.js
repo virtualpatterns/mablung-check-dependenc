@@ -56,7 +56,7 @@ Test('Check(\'babel-config-json/used\')', async (test) => {
 
 // .babelrc.json
 
-Test('Check(\'babelrc-json/missing\')', async (test) => {
+Test.only('Check(\'babelrc-json/missing\')', async (test) => {
   test.deepEqual(await Check(Path.resolve(ResourcePath, 'babelrc-json/missing')), {
     'missing': {
       'plugin-dependency-0': [ Path.resolve(ResourcePath, 'babelrc-json/missing/.babelrc.json') ],
