@@ -1,2 +1,0 @@
-^[@\-/]{0,2}shx$|^[@\-/]{0,2}shx\s+.*$|.*[\s/]+shx\s+.*|.*[\s/]+shx$
-${binary.binaryName}

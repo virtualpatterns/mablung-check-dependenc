@@ -1,9 +1,5 @@
 import Test from 'ava'
 
-Test.before(async (test) => {
-  test.context.index = await import('@virtualpatterns/mablung-check-dependency')
-})
-
 ;[
   'Check',
   'FileParseError',
@@ -11,7 +7,7 @@ Test.before(async (test) => {
 ].forEach((name) => {
 
   Test(name, async (test) => {
-    test.truthy(test.context.index[name])
+    test.truthy(await import('@virtualpatterns/mablung-check-dependency') .then((module) => module[name]))
   })
   
 })

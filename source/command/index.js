@@ -1,14 +1,15 @@
 #!/usr/bin/env node
 
-import '@virtualpatterns/mablung-source-map-support/install'
-
 import { program as Command } from 'commander'
 import FileSystem from 'fs-extra'
 import Is from '@pwn/is'
 import Path from 'path'
+import SourceMapSupport from 'source-map-support'
 
 import { Check } from '../library/check.js'
 import { Package } from '../library/package.js'
+
+SourceMapSupport.install({ 'handleUncaughtExceptions': false })
 
 const Process = process
 

@@ -7,12 +7,12 @@
 
 include node_modules/@virtualpatterns/mablung-makefile/makefile
 
-ifndef current-build-folder
-ifndef current-clean-folder
+ifneq ($(is-building),true)
+ifneq ($(is-cleaning),true)
 
 pre-clean::
 	$(info - pre-clean ----------------------------)
-	$(if $(verbose),@echo delete .... release/test/library/resource/make)
+	$(if $(is-verbose),@echo delete .... release/test/library/resource/make)
 	@npx shx rm -Rf release/test/library/resource/make
 	
 endif
