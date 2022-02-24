@@ -2,6 +2,7 @@ import { transform as Transform } from 'node-json-transform'
 import BaseCheck from 'depcheck'
 import FileSystem from 'fs-extra'
 import Is from '@pwn/is'
+import Json from 'json5'
 import Merge from 'deepmerge'
 import Path from 'path'
 
@@ -22,7 +23,7 @@ export function Check(userPath = Process.cwd(), userOption = {}) {
 
     try {
 
-      const Package = FileSystem.readJsonSync(`${userPath}/package.json`, { 'encoding': 'utf-8' })
+      const Package = Json.parse(FileSystem.readFileSync(`${userPath}/package.json`, { 'encoding': 'utf-8' }))
 
       let defaultOption = {
         'ignoreMatch': Package.name ? [ Package.name ] : [],
