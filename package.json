@@ -35,9 +35,9 @@
     "source-map-support": "^0.5.21"
   },
   "devDependencies": {
-    "@virtualpatterns/babel-preset-mablung-makefile": "0.0.26-130",
-    "@virtualpatterns/eslint-config-mablung-makefile": "0.0.26-125",
-    "@virtualpatterns/mablung-makefile": "0.0.26-263",
+    "@virtualpatterns/babel-preset-mablung-makefile": "0.0.26-132",
+    "@virtualpatterns/eslint-config-mablung-makefile": "0.0.26-127",
+    "@virtualpatterns/mablung-makefile": "0.0.26-265",
     "@virtualpatterns/mablung-worker": "0.0.2-115",
     "ava": "^4.0.1",
     "shelljs": "^0.8.5",
