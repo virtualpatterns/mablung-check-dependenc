@@ -38,9 +38,9 @@
     "@virtualpatterns/babel-preset-mablung-makefile": "0.0.26-138",
     "@virtualpatterns/eslint-config-mablung-makefile": "0.0.26-133",
     "@virtualpatterns/mablung-makefile": "0.0.26-271",
-    "@virtualpatterns/mablung-worker": "0.0.2-115",
+    "@virtualpatterns/mablung-worker": "0.0.2-118",
     "ava": "^4.1.0",
     "shelljs": "^0.8.5",
-    "shx": "^0.0.0"
+    "shx": "^0.3.4"
   }
 }
