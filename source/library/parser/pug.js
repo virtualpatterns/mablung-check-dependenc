@@ -16,8 +16,7 @@ export async function Pug(path) {
   ast = Parse(token, { 'filename': path })
   ast = Load(ast, { 'lex': Lex, 'parse': Parse })
 
-  let _package = Json
-    .query(ast, '$..*[?(@.type==\'Filter\' || @.type==\'IncludeFilter\')]')
+  let _package = Json.query(ast, '$..*[?(@.type==\'Filter\' || @.type==\'IncludeFilter\')]')
     .map((node) => GetPackageName(node.name))
 
   return _package

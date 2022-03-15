@@ -5,7 +5,6 @@ const namePattern = /^([^@].*?)\/.*$/
 const scopePattern = /^(@.*?\/.*?)\/.*$/
 
 export function GetPackageName(packageName) {
-  // console.log(`GetPackageName('${packageName}')`)
 
   switch (true) {
     case dotPattern.test(packageName):

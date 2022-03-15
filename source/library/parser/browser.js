@@ -1,11 +1,12 @@
 import FileSystem from 'fs-extra'
+import JsonParse from 'json5'
 
 import { GetPackageName } from '../get-package-name.js'
 
 export async function Browser(path) {
 
   let configuration = null
-  configuration = await FileSystem.readJson(path, { 'encoding': 'utf-8' })
+  configuration = JsonParse.parse(await FileSystem.readFile(path, { 'encoding': 'utf-8' }))
   configuration = configuration.browser || {}
 
   let _package = Object.entries(configuration)
