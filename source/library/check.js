@@ -1,10 +1,10 @@
 import { transform as Transform } from 'node-json-transform'
 import BaseCheck from 'depcheck'
-import FileSystem from 'fs-extra'
 import Is from '@pwn/is'
-import Json from 'json5'
 import Merge from 'deepmerge'
 import Path from 'path'
+
+import { GetPackage } from './get-package.js'
 
 import { Ava } from './parser/ava.js'
 import { Babel } from './parser/babel.js'
@@ -23,7 +23,7 @@ export function Check(userPath = Process.cwd(), userOption = {}) {
 
     try {
 
-      const Package = Json.parse(FileSystem.readFileSync(`${userPath}/package.json`, { 'encoding': 'utf-8' }))
+      const Package = GetPackage(userPath)
 
       let defaultOption = {
         'ignoreMatch': Package.name ? [ Package.name ] : [],
@@ -64,10 +64,10 @@ export function Check(userPath = Process.cwd(), userOption = {}) {
         }
       }
   
-      let path = Path.resolve(userPath)
+      let projectPath = Path.resolve(userPath)
       let option = Transform(Merge(defaultOption, userOption), map)
 
-      BaseCheck(path, option, (unused) => {
+      BaseCheck(projectPath, option, (unused) => {
 
         switch (true) {
           case Is.not.emptyObject(unused.invalidDirs): {
@@ -95,10 +95,53 @@ export function Check(userPath = Process.cwd(), userOption = {}) {
 
           }
           default:
-
+  
             resolve({
+              'section': Object.entries(unused.using)
+                .filter(([ dependency ]) => !option.ignoreMatches.includes(dependency))
+                .reduce((accumulator, [ dependency, path ]) => {
+
+                  let actualCategory = null
+
+                  switch (true) {
+                    case Object.entries(Package.dependencies || {}).filter(([ packageDependency ]) => Is.equal(packageDependency, dependency)).length > 0:
+                      actualCategory = 'dependencies'
+                      break
+                    case Object.entries(Package.devDependencies || {}).filter(([ packageDependency ]) => Is.equal(packageDependency, dependency)).length > 0:
+                      actualCategory = 'devDependencies'
+                      break
+                    default:
+                      actualCategory = null
+                  }
+
+                  let expectedCategory = path.reduce((accumulator, fullPath) => {
+
+                    let relativePath = Path.relative(projectPath, fullPath)
+
+                    switch (true) {
+                      case /\/sandbox\/.*?\.c?js/i.test(relativePath) ||
+                           /\/test\/.*?\.c?js/i.test(relativePath):
+                        return Is.equal(accumulator, 'dependencies') ? accumulator : 'devDependencies'
+                      case /source\/.*?\.c?js/i.test(relativePath):
+                        return 'dependencies'
+                      default:
+                        return 'devDependencies'
+                    }
+
+                  }, 'devDependencies')
+                
+                  if (Is.not.equal(expectedCategory, actualCategory)) {
+                    accumulator[dependency] = {
+                      'actual': actualCategory,
+                      'expected': expectedCategory
+                    }
+                  }
+
+                  return accumulator
+
+                }, {}),
               'missing': unused.missing,
-              'unused': [...unused.dependencies, ...unused.devDependencies],
+              'unused': [ ...unused.dependencies, ...unused.devDependencies ],
               'used': unused.using
             })
 

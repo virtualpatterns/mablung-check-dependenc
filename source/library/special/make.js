@@ -1,6 +1,6 @@
 import FileSystem from 'fs-extra'
 import Parse from '@kba/makefile-parser'
-import JSON from 'jsonpath'
+import Json from 'jsonpath'
 
 import { GetProjectBinary } from '../get-project-binary.js'
 
@@ -15,8 +15,8 @@ export async function Make(filePath, allPackage, projectPath) {
 
     let { ast } = Parse(await FileSystem.readFile(filePath, { 'encoding': 'utf-8' }), { 'unhandled': true })
 
-    let value = JSON.query(ast, '$..export.value')
-    let recipe = JSON.query(ast, '$..recipe[*]')
+    let value = Json.query(ast, '$..export.value')
+    let recipe = Json.query(ast, '$..recipe[*]')
 
     let binary = (await GetProjectBinary(projectPath)).flat(Infinity)
 

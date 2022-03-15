@@ -41,6 +41,6 @@
     "@virtualpatterns/mablung-worker": "0.0.2-115",
     "ava": "^4.1.0",
     "shelljs": "^0.8.5",
-    "shx": "^0.3.4"
+    "shx": "^0.0.0"
   }
 }

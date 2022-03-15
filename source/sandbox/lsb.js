@@ -1,7 +1,7 @@
 // import { createRequire as CreateRequire } from 'module'
 // import FileSystem from 'fs-extra'
 // import Find from 'find'
-// import JSON5 from 'json5'
+// import Json5 from 'json5'
 // import Path from 'path'
 // import URL from 'url'
 
@@ -22,7 +22,7 @@
 
 //       // console.log(path)
 
-//       let { name, bin: binary } = JSON5.parse(await FileSystem.readFile(path, { 'encoding': 'utf-8' }))
+//       let { name, bin: binary } = Json5.parse(await FileSystem.readFile(path, { 'encoding': 'utf-8' }))
 
 //       if (binary !== undefined) {
 
@@ -91,7 +91,7 @@
 
 //   if (information.isFile()) {
 
-//     let { name, bin } = JSON5.parse(await FileSystem.readFile(path, { 'encoding': 'utf-8' }))
+//     let { name, bin } = Json5.parse(await FileSystem.readFile(path, { 'encoding': 'utf-8' }))
 
 //     return { name, bin }
 
@@ -115,7 +115,7 @@
 //   // promise.concat(item
 //   //   .filter((item) => item.isFile())
 //   //   .filter((file) => file.name == 'package.json')
-//   //   .map((file) => JSON5.parse(FileSystem.readFileSync(path, { 'encoding': 'utf-8' }))))
+//   //   .map((file) => Json5.parse(FileSystem.readFileSync(path, { 'encoding': 'utf-8' }))))
 
 //   // return Promise.all(promise)
 

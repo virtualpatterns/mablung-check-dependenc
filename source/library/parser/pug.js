@@ -1,5 +1,5 @@
 import FileSystem from 'fs-extra'
-import JSON from 'jsonpath'
+import Json from 'jsonpath'
 
 import Lex from 'pug-lexer'
 import Load from 'pug-load'
@@ -16,7 +16,7 @@ export async function Pug(path) {
   ast = Parse(token, { 'filename': path })
   ast = Load(ast, { 'lex': Lex, 'parse': Parse })
 
-  let _package = JSON
+  let _package = Json
     .query(ast, '$..*[?(@.type==\'Filter\' || @.type==\'IncludeFilter\')]')
     .map((node) => GetPackageName(node.name))
 

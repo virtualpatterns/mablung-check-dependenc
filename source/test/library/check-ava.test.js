@@ -10,6 +10,12 @@ const ResourcePath = Path.resolve(FolderPath, 'resource/ava')
 
 Test('Check(\'missing\')', async (test) => {
   test.deepEqual(await Check(Path.resolve(ResourcePath, 'missing')), { 
+    'section': {
+      '@virtualpatterns/mablung-source-map-support': {
+        actual: null,
+        expected: 'devDependencies'
+      }
+    },
     'missing': {
       '@virtualpatterns/mablung-source-map-support': [ Path.resolve(ResourcePath, 'missing/ava.config.js') ]
     },
@@ -22,6 +28,7 @@ Test('Check(\'missing\')', async (test) => {
 
 Test('Check(\'unused\')', async (test) => {
   test.deepEqual(await Check(Path.resolve(ResourcePath, 'unused')), { 
+    'section': {},
     'missing': {}, 
     'unused': [
       '@virtualpatterns/mablung-source-map-support'
@@ -32,6 +39,7 @@ Test('Check(\'unused\')', async (test) => {
 
 Test('Check(\'used\')', async (test) => {
   test.deepEqual(await Check(Path.resolve(ResourcePath, 'used')), { 
+    'section': {},
     'missing': {}, 
     'unused': [],
     'used': {

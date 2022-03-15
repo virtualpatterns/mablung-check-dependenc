@@ -3,7 +3,7 @@
 // import { createRequire as CreateRequire } from 'module'
 // // import FileSystem from 'fs-extra'
 // // import Is from '@pwn/is'
-// // import JSON5 from 'json5'
+// // import Json5 from 'json5'
 // // import Match from 'minimatch'
 // import Path from 'path'
 // // import Query from 'jsonpath'
@@ -17,7 +17,7 @@
 
 // //   console.log(`content = '${content}'`)
 
-// //   // let Package = JSON5.parse(content)
+// //   // let Package = Json5.parse(content)
 // //   // let ava = Package.ava
 // //   // let dependencyName = ava.require
 
@@ -36,7 +36,7 @@
 // //   if (pattern.reduce((isMatch, pattern) => isMatch ? isMatch : Match(fileName, pattern, { 'dot': true }), false)) {
 
 // //     let configuration = null
-// //     configuration = JSON5.parse(await FileSystem.readFile(filePath, { 'encoding': 'utf-8' }))
+// //     configuration = Json5.parse(await FileSystem.readFile(filePath, { 'encoding': 'utf-8' }))
 // //     configuration = fileName === 'package.json' ? (configuration.babel || {}) : configuration
 
 // //     let plugin = null

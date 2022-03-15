@@ -1,5 +1,5 @@
 import Is from '@pwn/is'
-import JSON from 'jsonpath'
+import Json from 'jsonpath'
 
 import { GetPackageName } from '../get-package-name.js'
 
@@ -12,7 +12,7 @@ export async function Ava(filePath, allPackage, projectPath) {
     configuration = await configuration({ 'projectDir': projectPath })
   }
   
-  let usedPackage = JSON
+  let usedPackage = Json
     .query(configuration, '$.require[*]')
     .map((_package) => GetPackageName(_package))
 

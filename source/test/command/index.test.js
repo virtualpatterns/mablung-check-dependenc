@@ -18,12 +18,22 @@ Test.before(async () => {
 })
 
 Test('default', async (test) => {
-  let process = new LoggedProcess(Path.resolve(FolderPath, '../../command/index.js'), { '--report-used': true })
+  let process = new LoggedProcess(Path.resolve(FolderPath, '../../command/index.js'))
   test.is(await process.whenExit(), 0)
 })
 
 Test('--help', async (test) => {
   let process = new LoggedProcess(Path.resolve(FolderPath, '../../command/index.js'), { '--help': true })
+  test.is(await process.whenExit(), 0)
+})
+
+Test('--project-path section', async (test) => {
+  let process = new LoggedProcess(Path.resolve(FolderPath, '../../command/index.js'), { '--project-path': Path.resolve(ResourcePath, 'section') })
+  test.is(await process.whenExit(), 1)
+})
+
+Test('--project-path section --no-report-section', async (test) => {
+  let process = new LoggedProcess(Path.resolve(FolderPath, '../../command/index.js'), { '--project-path': Path.resolve(ResourcePath, 'section'), '--no-report-section': true })
   test.is(await process.whenExit(), 0)
 })
 
@@ -47,8 +57,8 @@ Test('--project-path missing --report-missing', async (test) => {
   test.is(await process.whenExit(), 1)
 })
 
-Test('--project-path missing --no-report-missing', async (test) => {
-  let process = new LoggedProcess(Path.resolve(FolderPath, '../../command/index.js'), { '--project-path': Path.resolve(ResourcePath, 'missing'), '--no-report-missing': true })
+Test('--project-path missing --no-report-section --no-report-missing', async (test) => {
+  let process = new LoggedProcess(Path.resolve(FolderPath, '../../command/index.js'), { '--project-path': Path.resolve(ResourcePath, 'missing'), '--no-report-section': true, '--no-report-missing': true })
   test.is(await process.whenExit(), 0)
 })
 

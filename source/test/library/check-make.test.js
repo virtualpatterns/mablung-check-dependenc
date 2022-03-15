@@ -14,6 +14,7 @@ Test('default', async (test) => {
   delete Process.env.MAKEFILE_PATH
   test.deepEqual(await Check(Path.resolve(ResourcePath, 'default')), {
     'missing': {},
+    'section': {},
     'unused': [],
     'used': {}
   })
@@ -24,6 +25,12 @@ Test('Check(\'missing/installed\')', async (test) => {
   test.deepEqual(await Check(Path.resolve(ResourcePath, 'missing/installed')), {
     'missing': {
       'package-0': [ Path.resolve(ResourcePath, 'missing/installed/makefile') ]
+    },
+    'section': {
+      'package-0': {
+        'actual': null,
+        'expected': 'devDependencies'
+      }
     },
     'unused': [],
     'used': {
@@ -36,6 +43,7 @@ Test('Check(\'missing/not-installed\')', async (test) => {
   Process.env.MAKEFILE_PATH = Path.resolve(ResourcePath, 'missing/not-installed/makefile')
   test.deepEqual(await Check(Path.resolve(ResourcePath, 'missing/not-installed')), {
     'missing': {},
+    'section': {},
     'unused': [],
     'used': {}
   })
@@ -45,6 +53,7 @@ Test('Check(\'unused\')', async (test) => {
   Process.env.MAKEFILE_PATH = Path.resolve(ResourcePath, 'unused/makefile')
   test.deepEqual(await Check(Path.resolve(ResourcePath, 'unused')), {
     'missing': {},
+    'section': {},
     'unused': [
       'package-0'
     ],
@@ -56,6 +65,7 @@ Test('Check(\'used/complex\')', async (test) => {
   Process.env.MAKEFILE_PATH = Path.resolve(ResourcePath, 'used/complex/makefile')
   test.deepEqual(await Check(Path.resolve(ResourcePath, 'used/complex')), {
     'missing': {},
+    'section': {},
     'unused': [],
     'used': {
       'package-00': [ Path.resolve(ResourcePath, 'used/complex/makefile') ],
@@ -82,6 +92,7 @@ Test('Check(\'used/include\')', async (test) => {
 
   test.deepEqual(await Check(Path.resolve(ResourcePath, 'used/include')), {
     'missing': {},
+    'section': {},
     'unused': [],
     'used': {
       'package-0': [ Path.resolve(ResourcePath, 'used/include/included') ]
@@ -94,6 +105,7 @@ Test('Check(\'used/simple\')', async (test) => {
   Process.env.MAKEFILE_PATH = Path.resolve(ResourcePath, 'used/simple/makefile')
   test.deepEqual(await Check(Path.resolve(ResourcePath, 'used/simple')), {
     'missing': {},
+    'section': {},
     'unused': [],
     'used': {
       'package-0': [ Path.resolve(ResourcePath, 'used/simple/makefile') ],

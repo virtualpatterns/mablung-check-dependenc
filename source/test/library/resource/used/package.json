@@ -1,8 +1,6 @@
 {
-  "dependencies": {
-    "used-dependency-0": "^1.0.0"
-  },
   "devDependencies": {
+    "used-dependency-0": "^1.0.0",
     "used-dependency-1": "^1.0.0"
   }
 }

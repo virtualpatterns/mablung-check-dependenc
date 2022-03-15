@@ -12,24 +12,29 @@ const ResourcePath = Path.normalize(Path.resolve(FolderPath, 'resource'))
 Test('Check(\'default\')', async (test) => {
   test.deepEqual(await Check(Path.resolve(ResourcePath, 'default')), {
     'missing': {},
+    'section': {},
     'unused': [],
     'used': {
-      'some-package': [Path.resolve(ResourcePath, 'default/default.js')]
+      'some-package': [ Path.resolve(ResourcePath, 'default/default.js') ]
     }
   })
 })
 
 Test('Check(\'ignore-match\', { ignoreMatch: [ ... ] })', async (test) => {
-  test.deepEqual(await Check(Path.resolve(ResourcePath, 'ignore-match'), { 'ignoreMatch': [ 'ignore-dependency-0' ] }), { 
+  test.deepEqual(await Check(Path.resolve(ResourcePath, 'ignore-match'), { 'ignoreMatch': [ 'dependency-0', 'ignore-dependency-0' ] }), { 
     'missing': {}, 
+    'section': {},
     'unused': [],
-    'used': {}
+    'used': {
+      'dependency-0': [ Path.resolve(ResourcePath, 'ignore-match/match.js') ]
+    }
   })
 })
 
 Test('Check(\'ignore-pattern\', { ignorePattern: [ ... ] })', async (test) => {
   test.deepEqual(await Check(Path.resolve(ResourcePath, 'ignore-pattern'), { 'ignorePattern': [ 'ignore-pattern.js' ] }), { 
     'missing': {}, 
+    'section': {},
     'unused': [
       'ignore-dependency-0'
     ],
@@ -56,11 +61,17 @@ Test('Check(\'file-parse-error\') throws FileParseError', (test) => {
 Test('Check(\'missing\')', async (test) => {
   test.deepEqual(await Check(Path.resolve(ResourcePath, 'missing')), {
     'missing': {
-      'missing-dependency-0': [Path.resolve(ResourcePath, 'missing/missing.js')]
+      'missing-dependency-0': [ Path.resolve(ResourcePath, 'missing/missing.js') ]
+    },
+    'section': {
+      'missing-dependency-0': {
+        'actual': null,
+        'expected': 'devDependencies'
+      }
     },
     'unused': [],
     'used': {
-      'missing-dependency-0': [Path.resolve(ResourcePath, 'missing/missing.js')]
+      'missing-dependency-0': [ Path.resolve(ResourcePath, 'missing/missing.js') ]
     }
   })
 })
@@ -68,6 +79,7 @@ Test('Check(\'missing\')', async (test) => {
 Test('Check(\'unused\')', async (test) => {
   test.deepEqual(await Check(Path.resolve(ResourcePath, 'unused')), {
     'missing': {},
+    'section': {},
     'unused': [
       'unused-dependency-0',
       'unused-dependency-1'
@@ -79,10 +91,11 @@ Test('Check(\'unused\')', async (test) => {
 Test('Check(\'used\')', async (test) => {
   test.deepEqual(await Check(Path.resolve(ResourcePath, 'used')), {
     'missing': {},
+    'section': {},
     'unused': [],
     'used': {
-      'used-dependency-0': [Path.resolve(ResourcePath, 'used/used.js')],
-      'used-dependency-1': [Path.resolve(ResourcePath, 'used/used.js')]
+      'used-dependency-0': [ Path.resolve(ResourcePath, 'used/used.js') ],
+      'used-dependency-1': [ Path.resolve(ResourcePath, 'used/used.js') ]
     }
   })
 })

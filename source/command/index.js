@@ -7,7 +7,7 @@ import Path from 'path'
 import SourceMapSupport from 'source-map-support'
 
 import { Check } from '../library/check.js'
-import { Package } from '../library/package.js'
+import { Package } from './library/package.js'
 
 SourceMapSupport.install({ 'handleUncaughtExceptions': false })
 
@@ -18,6 +18,8 @@ Command
   .version(Package.version)
   .option('--project-path <path>', 'Path of the project to check', '.') // Process.cwd())
   .option('--configuration-path <path>', 'Path of the configuration file, if it exists', './check-dependency.json')
+  .option('--report-section', 'Report dependencies that are in the wrong section', true)
+  .option('--no-report-section', 'Do not report dependencies that are in the wrong section')
   .option('--report-missing', 'Report missing dependencies', true)
   .option('--no-report-missing', 'Do not report missing dependencies')
   .option('--report-unused', 'Report used dependencies', true)
@@ -40,6 +42,27 @@ Command
 
       let dependency = await Check(path, configuration)
 
+      if (Is.not.emptyObject(dependency.section) &&
+          option.reportSection) {
+
+        Process.exitCode = 1
+
+        let section = null
+        section = Object.entries(dependency.section)
+        section = section.sort(([ leftDependency ], [ rightDependency ]) => leftDependency.localeCompare(rightDependency))
+
+        console.log('- mis-matched section ------------------')
+
+        section.forEach(([ dependency, section ]) => {
+          console.log(`    ${dependency} ...`)
+          console.log(`      expected ... ${section.expected}`)
+          console.log(`      actual ..... ${section.actual}`)
+        })
+
+        console.log()
+
+      }
+      
       if (Is.not.emptyObject(dependency.missing) &&
           option.reportMissing) {
 
@@ -51,7 +74,7 @@ Command
 
         console.log('- missing dependencies -----------------')
 
-        missingDependency.forEach(([dependency, path]) => {
+        missingDependency.forEach(([ dependency, path ]) => {
           console.log(`    ${dependency} used in ...`)
           console.log(path.sort().map((path) => `      ${Path.relative('', path)}`).join('\n'))
         })
@@ -80,7 +103,7 @@ Command
     
         console.log('- used dependencies --------------------')
 
-        usedDependency.forEach(([dependency, path]) => {
+        usedDependency.forEach(([ dependency, path ]) => {
           console.log(`    ${dependency} used in ...`)
           console.log(path.sort().map((path) => `      ${Path.relative('', path)}`).join('\n'))
         })

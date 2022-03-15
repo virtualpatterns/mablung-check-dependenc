@@ -8,8 +8,7 @@ export async function Browser(path) {
   configuration = await FileSystem.readJson(path, { 'encoding': 'utf-8' })
   configuration = configuration.browser || {}
 
-  let _package = Object
-    .entries(configuration)
+  let _package = Object.entries(configuration)
     .map(([ , value ]) => GetPackageName(value))
 
   return _package

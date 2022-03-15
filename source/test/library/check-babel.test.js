@@ -18,6 +18,24 @@ Test('Check(\'babel-config-json/missing\')', async (test) => {
       'preset-dependency-0': [ Path.resolve(ResourcePath, 'babel-config-json/missing/babel.config.json') ],
       'preset-dependency-1': [ Path.resolve(ResourcePath, 'babel-config-json/missing/babel.config.json') ]
     },
+    'section': {
+      'plugin-dependency-0': {
+        actual: null,
+        expected: 'devDependencies'
+      },
+      'plugin-dependency-1': {
+        actual: null,
+        expected: 'devDependencies'
+      },
+      'preset-dependency-0': {
+        actual: null,
+        expected: 'devDependencies'
+      },
+      'preset-dependency-1': {
+        actual: null,
+        expected: 'devDependencies'
+      }
+    },
     'unused': [],
     'used': {
       'plugin-dependency-0': [ Path.resolve(ResourcePath, 'babel-config-json/missing/babel.config.json') ],
@@ -31,6 +49,7 @@ Test('Check(\'babel-config-json/missing\')', async (test) => {
 Test('Check(\'babel-config-json/unused\')', async (test) => {
   test.deepEqual(await Check(Path.resolve(ResourcePath, 'babel-config-json/unused')), {
     'missing': {},
+    'section': {},
     'unused': [
       'plugin-dependency-0',
       'plugin-dependency-1',
@@ -44,6 +63,7 @@ Test('Check(\'babel-config-json/unused\')', async (test) => {
 Test('Check(\'babel-config-json/used\')', async (test) => {
   test.deepEqual(await Check(Path.resolve(ResourcePath, 'babel-config-json/used')), {
     'missing': {},
+    'section': {},
     'unused': [],
     'used': {
       'plugin-dependency-0': [ Path.resolve(ResourcePath, 'babel-config-json/used/babel.config.json') ],
@@ -64,6 +84,24 @@ Test('Check(\'babelrc-json/missing\')', async (test) => {
       'preset-dependency-0': [ Path.resolve(ResourcePath, 'babelrc-json/missing/.babelrc.json') ],
       'preset-dependency-1': [ Path.resolve(ResourcePath, 'babelrc-json/missing/.babelrc.json') ]
     },
+    'section': {
+      'plugin-dependency-0': {
+        actual: null,
+        expected: 'devDependencies'
+      },
+      'plugin-dependency-1': {
+        actual: null,
+        expected: 'devDependencies'
+      },
+      'preset-dependency-0': {
+        actual: null,
+        expected: 'devDependencies'
+      },
+      'preset-dependency-1': {
+        actual: null,
+        expected: 'devDependencies'
+      }
+    },
     'unused': [],
     'used': {
       'plugin-dependency-0': [ Path.resolve(ResourcePath, 'babelrc-json/missing/.babelrc.json') ],
@@ -77,6 +115,7 @@ Test('Check(\'babelrc-json/missing\')', async (test) => {
 Test('Check(\'babelrc-json/unused\')', async (test) => {
   test.deepEqual(await Check(Path.resolve(ResourcePath, 'babelrc-json/unused')), {
     'missing': {},
+    'section': {},
     'unused': [
       'plugin-dependency-0',
       'plugin-dependency-1',
@@ -90,6 +129,7 @@ Test('Check(\'babelrc-json/unused\')', async (test) => {
 Test('Check(\'babelrc-json/used\')', async (test) => {
   test.deepEqual(await Check(Path.resolve(ResourcePath, 'babelrc-json/used')), {
     'missing': {},
+    'section': {},
     'unused': [],
     'used': {
       'plugin-dependency-0': [ Path.resolve(ResourcePath, 'babelrc-json/used/.babelrc.json') ],
