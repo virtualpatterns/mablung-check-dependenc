@@ -17,7 +17,7 @@ Command
   .name(Package.name.replace(/^(.*)\/(.*)$/, '$2'))
   .version(Package.version)
   .option('--project-path <path>', 'Path of the project to check', '.') // Process.cwd())
-  .option('--configuration-path <path>', 'Path of the configuration file, if it exists', './check-dependency.json')
+  .option('--configuration-path <path>', 'Path of the configuration file, if it exists', './mablung-check-dependency.json')
   .option('--report-section', 'Report dependencies that are in the wrong section', true)
   .option('--no-report-section', 'Do not report dependencies that are in the wrong section')
   .option('--report-missing', 'Report missing dependencies', true)
